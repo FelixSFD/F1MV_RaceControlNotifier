@@ -1,0 +1,513 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DC47D8C3288C0FA200A32091 /* RaceControlNotifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47D8C2288C0FA200A32091 /* RaceControlNotifierApp.swift */; };
+		DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47D8C4288C0FA200A32091 /* ContentView.swift */; };
+		DC47D8C7288C0FA500A32091 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC47D8C6288C0FA500A32091 /* Assets.xcassets */; };
+		DC47D8CA288C0FA500A32091 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC47D8C9288C0FA500A32091 /* Preview Assets.xcassets */; };
+		DC47D8D2288C0FC700A32091 /* RCMFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47D8D1288C0FC700A32091 /* RCMFetcher.swift */; };
+		DC47D8D4288C114B00A32091 /* RaceControlMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47D8D3288C114B00A32091 /* RaceControlMessageModel.swift */; };
+		DC47D8D6288C132B00A32091 /* RCMNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47D8D5288C132B00A32091 /* RCMNotifier.swift */; };
+		DC47D8D8288C288E00A32091 /* TextToSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47D8D7288C288E00A32091 /* TextToSpeech.swift */; };
+		DC5502F528F1B4690024113C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5502F428F1B4690024113C /* SettingsView.swift */; };
+		DC5502F728F1C5520024113C /* RaceControlMessageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5502F628F1C5520024113C /* RaceControlMessageCategory.swift */; };
+		DC5502F928F1C58E0024113C /* FlagColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5502F828F1C58E0024113C /* FlagColor.swift */; };
+		DC55030B28F1D5C40024113C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DC55030A28F1D5C40024113C /* SDWebImageSwiftUI */; };
+		DC55031C28F1D8440024113C /* red.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55030D28F1D8430024113C /* red.gif */; };
+		DC55031D28F1D8440024113C /* chequered.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55030E28F1D8440024113C /* chequered.gif */; };
+		DC55031E28F1D8440024113C /* void.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55030F28F1D8440024113C /* void.gif */; };
+		DC55031F28F1D8440024113C /* ss.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031028F1D8440024113C /* ss.gif */; };
+		DC55032028F1D8440024113C /* sc.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031128F1D8440024113C /* sc.gif */; };
+		DC55032128F1D8440024113C /* yellow.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031228F1D8440024113C /* yellow.gif */; };
+		DC55032228F1D8440024113C /* green.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031328F1D8440024113C /* green.gif */; };
+		DC55032328F1D8440024113C /* mec.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031428F1D8440024113C /* mec.gif */; };
+		DC55032428F1D8440024113C /* blue.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031528F1D8440024113C /* blue.gif */; };
+		DC55032528F1D8440024113C /* blackandwhite.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031628F1D8440024113C /* blackandwhite.gif */; };
+		DC55032628F1D8440024113C /* white.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031728F1D8440024113C /* white.gif */; };
+		DC55032728F1D8440024113C /* slippery.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031828F1D8440024113C /* slippery.gif */; };
+		DC55032828F1D8440024113C /* dyellow.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031928F1D8440024113C /* dyellow.gif */; };
+		DC55032928F1D8440024113C /* rs.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031A28F1D8440024113C /* rs.gif */; };
+		DC55032A28F1D8440024113C /* vsc.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031B28F1D8440024113C /* vsc.gif */; };
+		DC55032C28F20C660024113C /* FlagPreviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */; };
+		DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */; };
+		DCA1DCA4290DC9EF002A1AB1 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */; };
+		DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */; };
+		DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCE02F0290F009300867F82 /* MenuBarListView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DC47D8BF288C0FA200A32091 /* RaceControlNotifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaceControlNotifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC47D8C2288C0FA200A32091 /* RaceControlNotifierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceControlNotifierApp.swift; sourceTree = "<group>"; };
+		DC47D8C4288C0FA200A32091 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DC47D8C6288C0FA500A32091 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DC47D8C9288C0FA500A32091 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DC47D8CB288C0FA500A32091 /* RaceControlNotifier.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RaceControlNotifier.entitlements; sourceTree = "<group>"; };
+		DC47D8D1288C0FC700A32091 /* RCMFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCMFetcher.swift; sourceTree = "<group>"; };
+		DC47D8D3288C114B00A32091 /* RaceControlMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceControlMessageModel.swift; sourceTree = "<group>"; };
+		DC47D8D5288C132B00A32091 /* RCMNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCMNotifier.swift; sourceTree = "<group>"; };
+		DC47D8D7288C288E00A32091 /* TextToSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeech.swift; sourceTree = "<group>"; };
+		DC5502F428F1B4690024113C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DC5502F628F1C5520024113C /* RaceControlMessageCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceControlMessageCategory.swift; sourceTree = "<group>"; };
+		DC5502F828F1C58E0024113C /* FlagColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagColor.swift; sourceTree = "<group>"; };
+		DC55030D28F1D8430024113C /* red.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = red.gif; sourceTree = "<group>"; };
+		DC55030E28F1D8440024113C /* chequered.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = chequered.gif; sourceTree = "<group>"; };
+		DC55030F28F1D8440024113C /* void.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = void.gif; sourceTree = "<group>"; };
+		DC55031028F1D8440024113C /* ss.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ss.gif; sourceTree = "<group>"; };
+		DC55031128F1D8440024113C /* sc.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sc.gif; sourceTree = "<group>"; };
+		DC55031228F1D8440024113C /* yellow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yellow.gif; sourceTree = "<group>"; };
+		DC55031328F1D8440024113C /* green.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = green.gif; sourceTree = "<group>"; };
+		DC55031428F1D8440024113C /* mec.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mec.gif; sourceTree = "<group>"; };
+		DC55031528F1D8440024113C /* blue.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = blue.gif; sourceTree = "<group>"; };
+		DC55031628F1D8440024113C /* blackandwhite.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = blackandwhite.gif; sourceTree = "<group>"; };
+		DC55031728F1D8440024113C /* white.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = white.gif; sourceTree = "<group>"; };
+		DC55031828F1D8440024113C /* slippery.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = slippery.gif; sourceTree = "<group>"; };
+		DC55031928F1D8440024113C /* dyellow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dyellow.gif; sourceTree = "<group>"; };
+		DC55031A28F1D8440024113C /* rs.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = rs.gif; sourceTree = "<group>"; };
+		DC55031B28F1D8440024113C /* vsc.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = vsc.gif; sourceTree = "<group>"; };
+		DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPreviewButtonView.swift; sourceTree = "<group>"; };
+		DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagToggleView.swift; sourceTree = "<group>"; };
+		DC820D3A290FFF6A00745B6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
+		DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListItemView.swift; sourceTree = "<group>"; };
+		DCCE02F0290F009300867F82 /* MenuBarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarListView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC47D8BC288C0FA200A32091 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC55030B28F1D5C40024113C /* SDWebImageSwiftUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DC47D8B6288C0FA200A32091 = {
+			isa = PBXGroup;
+			children = (
+				DC47D8C1288C0FA200A32091 /* RaceControlNotifier */,
+				DC47D8C0288C0FA200A32091 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DC47D8C0288C0FA200A32091 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC47D8BF288C0FA200A32091 /* RaceControlNotifier.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC47D8C1288C0FA200A32091 /* RaceControlNotifier */ = {
+			isa = PBXGroup;
+			children = (
+				DC820D3A290FFF6A00745B6A /* Info.plist */,
+				DCCE02EF290F007000867F82 /* MenuBar */,
+				DCA1DCA2290DC9DB002A1AB1 /* MessageList */,
+				DC55030C28F1D8260024113C /* GIFs */,
+				DC5502F328F1B4590024113C /* Settings */,
+				DC47D8C2288C0FA200A32091 /* RaceControlNotifierApp.swift */,
+				DC47D8C4288C0FA200A32091 /* ContentView.swift */,
+				DC47D8C6288C0FA500A32091 /* Assets.xcassets */,
+				DC47D8CB288C0FA500A32091 /* RaceControlNotifier.entitlements */,
+				DC47D8C8288C0FA500A32091 /* Preview Content */,
+				DC47D8D1288C0FC700A32091 /* RCMFetcher.swift */,
+				DC47D8D3288C114B00A32091 /* RaceControlMessageModel.swift */,
+				DC47D8D5288C132B00A32091 /* RCMNotifier.swift */,
+				DC47D8D7288C288E00A32091 /* TextToSpeech.swift */,
+				DC5502F628F1C5520024113C /* RaceControlMessageCategory.swift */,
+				DC5502F828F1C58E0024113C /* FlagColor.swift */,
+			);
+			path = RaceControlNotifier;
+			sourceTree = "<group>";
+		};
+		DC47D8C8288C0FA500A32091 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DC47D8C9288C0FA500A32091 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DC5502F328F1B4590024113C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DC5502F428F1B4690024113C /* SettingsView.swift */,
+				DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */,
+				DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DC55030C28F1D8260024113C /* GIFs */ = {
+			isa = PBXGroup;
+			children = (
+				DC55031628F1D8440024113C /* blackandwhite.gif */,
+				DC55031528F1D8440024113C /* blue.gif */,
+				DC55030E28F1D8440024113C /* chequered.gif */,
+				DC55031928F1D8440024113C /* dyellow.gif */,
+				DC55031328F1D8440024113C /* green.gif */,
+				DC55031428F1D8440024113C /* mec.gif */,
+				DC55030D28F1D8430024113C /* red.gif */,
+				DC55031A28F1D8440024113C /* rs.gif */,
+				DC55031128F1D8440024113C /* sc.gif */,
+				DC55031828F1D8440024113C /* slippery.gif */,
+				DC55031028F1D8440024113C /* ss.gif */,
+				DC55030F28F1D8440024113C /* void.gif */,
+				DC55031B28F1D8440024113C /* vsc.gif */,
+				DC55031728F1D8440024113C /* white.gif */,
+				DC55031228F1D8440024113C /* yellow.gif */,
+			);
+			path = GIFs;
+			sourceTree = "<group>";
+		};
+		DCA1DCA2290DC9DB002A1AB1 /* MessageList */ = {
+			isa = PBXGroup;
+			children = (
+				DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */,
+				DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */,
+			);
+			path = MessageList;
+			sourceTree = "<group>";
+		};
+		DCCE02EF290F007000867F82 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				DCCE02F0290F009300867F82 /* MenuBarListView.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC47D8BE288C0FA200A32091 /* RaceControlNotifier */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC47D8CE288C0FA500A32091 /* Build configuration list for PBXNativeTarget "RaceControlNotifier" */;
+			buildPhases = (
+				DC47D8BB288C0FA200A32091 /* Sources */,
+				DC47D8BC288C0FA200A32091 /* Frameworks */,
+				DC47D8BD288C0FA200A32091 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RaceControlNotifier;
+			packageProductDependencies = (
+				DC55030A28F1D5C40024113C /* SDWebImageSwiftUI */,
+			);
+			productName = RaceControlNotifier;
+			productReference = DC47D8BF288C0FA200A32091 /* RaceControlNotifier.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC47D8B7288C0FA200A32091 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				ORGANIZATIONNAME = FelixSFD;
+				TargetAttributes = {
+					DC47D8BE288C0FA200A32091 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = DC47D8BA288C0FA200A32091 /* Build configuration list for PBXProject "RaceControlNotifier" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DC47D8B6288C0FA200A32091;
+			packageReferences = (
+				DC55030928F1D5C40024113C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
+			productRefGroup = DC47D8C0288C0FA200A32091 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC47D8BE288C0FA200A32091 /* RaceControlNotifier */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DC47D8BD288C0FA200A32091 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC55031F28F1D8440024113C /* ss.gif in Resources */,
+				DC55032828F1D8440024113C /* dyellow.gif in Resources */,
+				DC55032028F1D8440024113C /* sc.gif in Resources */,
+				DC55032528F1D8440024113C /* blackandwhite.gif in Resources */,
+				DC55032128F1D8440024113C /* yellow.gif in Resources */,
+				DC55032A28F1D8440024113C /* vsc.gif in Resources */,
+				DC55032728F1D8440024113C /* slippery.gif in Resources */,
+				DC55032228F1D8440024113C /* green.gif in Resources */,
+				DC55031C28F1D8440024113C /* red.gif in Resources */,
+				DC47D8CA288C0FA500A32091 /* Preview Assets.xcassets in Resources */,
+				DC55032328F1D8440024113C /* mec.gif in Resources */,
+				DC55032628F1D8440024113C /* white.gif in Resources */,
+				DC55032428F1D8440024113C /* blue.gif in Resources */,
+				DC55031E28F1D8440024113C /* void.gif in Resources */,
+				DC47D8C7288C0FA500A32091 /* Assets.xcassets in Resources */,
+				DC55031D28F1D8440024113C /* chequered.gif in Resources */,
+				DC55032928F1D8440024113C /* rs.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC47D8BB288C0FA200A32091 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC5502F528F1B4690024113C /* SettingsView.swift in Sources */,
+				DC47D8D6288C132B00A32091 /* RCMNotifier.swift in Sources */,
+				DC47D8D8288C288E00A32091 /* TextToSpeech.swift in Sources */,
+				DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */,
+				DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */,
+				DC5502F728F1C5520024113C /* RaceControlMessageCategory.swift in Sources */,
+				DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */,
+				DC55032C28F20C660024113C /* FlagPreviewButtonView.swift in Sources */,
+				DC47D8D2288C0FC700A32091 /* RCMFetcher.swift in Sources */,
+				DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */,
+				DC5502F928F1C58E0024113C /* FlagColor.swift in Sources */,
+				DCA1DCA4290DC9EF002A1AB1 /* MessageListView.swift in Sources */,
+				DC47D8D4288C114B00A32091 /* RaceControlMessageModel.swift in Sources */,
+				DC47D8C3288C0FA200A32091 /* RaceControlNotifierApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DC47D8CC288C0FA500A32091 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DC47D8CD288C0FA500A32091 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		DC47D8CF288C0FA500A32091 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RaceControlNotifier/RaceControlNotifier.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RaceControlNotifier/Preview Content\"";
+				DEVELOPMENT_TEAM = 3F4S66H5G7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RaceControlNotifier/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.felixsfd.RaceControlNotifier;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DC47D8D0288C0FA500A32091 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RaceControlNotifier/RaceControlNotifier.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RaceControlNotifier/Preview Content\"";
+				DEVELOPMENT_TEAM = 3F4S66H5G7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RaceControlNotifier/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.felixsfd.RaceControlNotifier;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC47D8BA288C0FA200A32091 /* Build configuration list for PBXProject "RaceControlNotifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC47D8CC288C0FA500A32091 /* Debug */,
+				DC47D8CD288C0FA500A32091 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC47D8CE288C0FA500A32091 /* Build configuration list for PBXNativeTarget "RaceControlNotifier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC47D8CF288C0FA500A32091 /* Debug */,
+				DC47D8D0288C0FA500A32091 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DC55030928F1D5C40024113C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC55030A28F1D5C40024113C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC55030928F1D5C40024113C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DC47D8B7288C0FA200A32091 /* Project object */;
+}
