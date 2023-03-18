@@ -156,7 +156,7 @@ struct SettingsView: View {
                 SettingsView.SaveSettingsToggle(forKey: "announce.offTrack", toggleOffTrackState)
                 SettingsView.SaveSettingsToggle(forKey: "announce.mazespin", toggleSpunState)
                 
-                //UserDefaults.standard.set(apiBaseUrl, forKey: "api.url")
+                UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: "api.url")
                 
                 print("successfully saved")
             }
