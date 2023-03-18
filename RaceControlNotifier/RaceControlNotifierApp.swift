@@ -23,7 +23,7 @@ struct RaceControlNotifierApp: App {
     private static let tts = TextToSpeech()
     
     
-    @StateObject var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: tts)
+    @State var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: tts)
     
     
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
@@ -31,11 +31,7 @@ struct RaceControlNotifierApp: App {
     
     var body: some Scene {
         let settingsWindow = SettingsView()
-        let messagesListView = MessageListView(messages: $notifier.reversedMessages, tts: RaceControlNotifierApp.tts)
-        
-        //WindowGroup {
-        //    messagesListView
-        //}
+        let messagesListView = MessageListView(rcmNotifier: notifier, tts: RaceControlNotifierApp.tts)
         
         WindowGroup("All Messages", id: "all_messages.window") {
             messagesListView

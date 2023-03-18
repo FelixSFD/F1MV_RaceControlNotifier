@@ -18,6 +18,18 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+
+class TextViewModel: ObservableObject {
+    @Published var text: String
+    
+    
+    init(text: String) {
+        self.text = text
+        print("init with text: " + text)
+    }
+}
+
+
 struct SettingsView: View {
     @State var toggleFlagsState = GetSettingsToggle(forKey: "announce.flags", defaultValue: true)
     
@@ -36,7 +48,8 @@ struct SettingsView: View {
     @State var toggleSpunState = GetSettingsToggle(forKey: "announce.mazespin", defaultValue: true)
     
     
-    @State var apiBaseUrl = UserDefaults.standard.string(forKey: "api.url") ?? ""
+    //@State var apiBaseUrl = UserDefaults.standard.string(forKey: "api.url") ?? ""
+    @ObservedObject private var apiBaseUrlTextViewModel = TextViewModel(text: UserDefaults.standard.string(forKey: "api.url") ?? "")
     
     
     @State var hoverFlagName: String? = nil
@@ -114,7 +127,7 @@ struct SettingsView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Base URL:")
-                    TextField("http://...", text: $apiBaseUrl)
+                    TextField("http://...", text: $apiBaseUrlTextViewModel.text)
                 }
                 .padding()
                 
@@ -143,7 +156,7 @@ struct SettingsView: View {
                 SettingsView.SaveSettingsToggle(forKey: "announce.offTrack", toggleOffTrackState)
                 SettingsView.SaveSettingsToggle(forKey: "announce.mazespin", toggleSpunState)
                 
-                UserDefaults.standard.set(apiBaseUrl, forKey: "api.url")
+                UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: "api.url")
                 
                 print("successfully saved")
             }

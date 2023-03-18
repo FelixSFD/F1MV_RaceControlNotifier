@@ -19,8 +19,10 @@ import SwiftUI
 
 struct MessageListView: View {
     
-    @Binding
-    var messages: [RaceControlMessageModel]
+    let rcmNotifier: RCMNotifier
+    
+    @State
+    private var messages: [RaceControlMessageModel] = []
     
     
     let tts: TextToSpeech
@@ -48,8 +50,10 @@ struct MessageListView: View {
 struct MessageListView_Previews: PreviewProvider {
     @State static var sampleMessages = [RaceControlMessageModel(date: Date.now, message: "CAR 63 (RUS) TIME 1:19.376 DELETED - TRACK LIMITS AT TURN 12 LAP 18 15:59:37", category: .other), RaceControlMessageModel(date: Date.now, message: "CHEQUERED FLAG", category: .flag)]
     
+    private static var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: TextToSpeech())
+    
     static var previews: some View {
-        MessageListView(messages: $sampleMessages, tts: TextToSpeech()
+        MessageListView(rcmNotifier: notifier, tts: TextToSpeech()
         )
     }
 }
