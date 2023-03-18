@@ -35,7 +35,7 @@ class TextToSpeech {
         "GAS": "Gasly",
         "GIO": "Giovinazzi",
         "HAM": "Hamilton",
-        "HUL": "Hülkenberg",
+        "HUL": "Huelkenberg",
         "LAT": "Latifi",
         "LEC": "Leclerc",
         "MAG": "Magnussen",
