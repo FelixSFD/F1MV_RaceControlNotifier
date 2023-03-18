@@ -18,8 +18,8 @@
 import SwiftUI
 
 struct MessageListView: View {
-    
-    let rcmNotifier: RCMNotifier
+    @ObservedObject
+    var rcmNotifier: RCMNotifier
     
     @State
     private var messages: [RaceControlMessageModel] = []
@@ -30,15 +30,15 @@ struct MessageListView: View {
     
     var body: some View {
         List {
-            ForEach(messages) { message in
+            ForEach($rcmNotifier.reversedMessages) { message in
                 HStack {
                     Button {
-                        tts.say(message.message)
+                        tts.say(message.message.wrappedValue)
                     } label: {
                         Image(systemName: "play")
                     }
                     
-                    MessageListItemView(messageText: message.message, date: message.date)
+                    MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue)
                         .listRowSeparatorTint(.gray)
                 }
             }
