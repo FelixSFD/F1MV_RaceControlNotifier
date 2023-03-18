@@ -21,12 +21,12 @@ https://user-images.githubusercontent.com/2721240/199205925-7d253991-c5a4-47cd-a
 
 You probably don't.
 
-I started this project to have some fun with SwiftUI and TTS, but it turned out to be a nice gimmick for me, because when watching Formula 1 with [F1MultiViewer](https://beta.f1mv.com), I only have one small screen left for the Race Control messages and this application makes it easier to be informed about Race Control messages.
+I started this project to have some fun with SwiftUI and TTS, but it turned out to be a nice gimmick for me, because when watching Formula 1 with [F1MultiViewer](https://beta.f1mv.com), I only have one small screen left for the Race Control messages and this application makes it easier to be informed about new messages.
 
 
 # How can I run this?
 
-As I'm not part of the Apple Developer program, I can't provide the binary of the app. You can clone the repository with Xcode and build it on your own machine.
+As I'm not member of the Apple Developer program, I can't provide the binary of the app. You can clone the repository with Xcode and build it on your own machine.
 
 ## System Requirements
 
