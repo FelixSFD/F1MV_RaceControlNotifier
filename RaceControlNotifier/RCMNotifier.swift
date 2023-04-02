@@ -134,6 +134,9 @@ class RCMNotifier: ObservableObject {
         case .meatball:
             settingsKey = "announce.flags.meatball"
             break;
+        case .blackWhite:
+            settingsKey = "announce.flags.blackWhite"
+            break;
 //        default:
 //            print("unexpected flag!")
 //            return true

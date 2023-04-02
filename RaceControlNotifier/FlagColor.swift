@@ -20,5 +20,5 @@ import Foundation
 
 /// Flags that can be waved at the track
 enum FlagColor {
-    case green, yellow, doubleYellow, red, blue, chequered, meatball
+    case green, yellow, doubleYellow, red, blue, chequered, meatball, blackWhite
 }

@@ -56,6 +56,8 @@ class RCMFetcher {
                 return .yellow
             case "double yellow":
                 return .doubleYellow
+            case "red":
+                return .red
             case "chequered":
                 return .chequered
             case "black orange":
@@ -64,6 +66,8 @@ class RCMFetcher {
                 return .green
             case "clear":
                 return .green
+            case "black and white":
+                return .blackWhite
             default:
                 print("Error parsing flag-color: \(safeFlag)")
                 return nil

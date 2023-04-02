@@ -40,6 +40,7 @@ struct SettingsView: View {
     @State var toggleFlagGreenState = GetSettingsToggle(forKey: "announce.flags.green", defaultValue: true)
     @State var toggleFlagRedState = GetSettingsToggle(forKey: "announce.flags.red", defaultValue: true)
     @State var toggleFlagMeatballState = GetSettingsToggle(forKey: "announce.flags.meatball", defaultValue: true)
+    @State var toggleFlagBlackWhiteState = GetSettingsToggle(forKey: "announce.flags.blackWhite", defaultValue: true)
     
     
     @State var toggleDeletedTimesState = GetSettingsToggle(forKey: "announce.deletedLaps", defaultValue: true)
@@ -103,6 +104,8 @@ struct SettingsView: View {
                         .disabled(!toggleFlagsState)
                     FlagToggleView(viewModel: FlagToggleView.ViewModel(toggleState: $toggleFlagMeatballState, selctedGifName: $hoverFlagName, label: "Black and Orange flag (meatball)", gifName: "mec.gif"))
                         .disabled(!toggleFlagsState)
+                    FlagToggleView(viewModel: FlagToggleView.ViewModel(toggleState: $toggleFlagBlackWhiteState, selctedGifName: $hoverFlagName, label: "Black and White flag", gifName: "blackandwhite.gif"))
+                        .disabled(!toggleFlagsState)
                 }
                 .padding(.leading)
                 
@@ -150,6 +153,7 @@ struct SettingsView: View {
                 SettingsView.SaveSettingsToggle(forKey: "announce.flags.green", toggleFlagChequeredState)
                 SettingsView.SaveSettingsToggle(forKey: "announce.flags.red", toggleFlagChequeredState)
                 SettingsView.SaveSettingsToggle(forKey: "announce.flags.meatball", toggleFlagMeatballState)
+                SettingsView.SaveSettingsToggle(forKey: "announce.flags.blackWhite", toggleFlagBlackWhiteState)
                 
                 SettingsView.SaveSettingsToggle(forKey: "announce.deletedLaps", toggleDeletedTimesState)
                 SettingsView.SaveSettingsToggle(forKey: "announce.missedApex", toggleMissedApexState)
