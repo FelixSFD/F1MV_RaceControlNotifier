@@ -117,6 +117,8 @@ class RCMFetcher {
         print("URL: \(url)")
         #endif
         
+        URLSession.shared.configuration.timeoutIntervalForRequest = TimeInterval(1.5)
+        
         guard let (data, response) = try? await URLSession.shared.data(from: url) else{throw RequestError.invalidURL}
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {throw RequestError.invalidURL}
         print("request finished")
