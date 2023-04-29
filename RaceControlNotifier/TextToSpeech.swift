@@ -104,11 +104,22 @@ class TextToSpeech {
     }
     
     
+    private func fixSessionAbbrv(_ input: String) -> String {
+        let pattern = #"\b(?<name>SQ)(?<number>[1-3])\b"#
+        let regex = try! NSRegularExpression(pattern: pattern, options: .anchorsMatchLines)
+        let stringRange = NSRange(location: 0, length: input.utf8.count)
+        let substitutionString = #"Sprint Shootout $2"#
+        let result = regex.stringByReplacingMatches(in: input, range: stringRange, withTemplate: substitutionString)
+        return result
+    }
+    
+    
     func say(_ text: String) {
         var fixedText = replaceDriver(text)
         fixedText = fixShortcuts(fixedText)
         fixedText = fixLapTimes(fixedText)
         fixedText = fixTimestamps(fixedText)
+        fixedText = fixSessionAbbrv(fixedText)
         
         let utterance = AVSpeechUtterance(string: fixedText)
         
