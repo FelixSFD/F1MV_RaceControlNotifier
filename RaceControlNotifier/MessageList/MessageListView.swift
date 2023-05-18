@@ -43,7 +43,7 @@ struct MessageListView: View {
                 }
             }
         }
-        .listStyle(.bordered)
+        .listStyle(.inset(alternatesRowBackgrounds: true))
     }
 }
 
