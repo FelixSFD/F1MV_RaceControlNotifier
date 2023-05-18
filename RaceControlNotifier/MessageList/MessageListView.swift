@@ -25,7 +25,12 @@ struct MessageListView: View {
     private var messages: [RaceControlMessageModel] = []
     
     
-    let tts: TextToSpeech
+    @ObservedObject
+    var tts: TextToSpeech
+    
+    
+    @State
+    private var isSpeaking: Bool = false
     
     
     var body: some View {
@@ -33,9 +38,13 @@ struct MessageListView: View {
             ForEach($rcmNotifier.reversedMessages) { message in
                 HStack {
                     Button {
-                        tts.say(message.message.wrappedValue)
+                        tts.say(message.message.wrappedValue, messageId: message.id)
                     } label: {
-                        Image(systemName: "play")
+                        if (tts.currentlySpeaking[message.id] == nil) {
+                            Image(systemName: "play")
+                        } else {
+                            Image(systemName: "stop.fill")
+                        }
                     }
                     
                     MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue, ttsEnabled: message.ttsEnabled.wrappedValue)

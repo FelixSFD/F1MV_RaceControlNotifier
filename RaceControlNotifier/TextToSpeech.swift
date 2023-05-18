@@ -19,11 +19,21 @@ import Foundation
 import Speech
 
 
-class TextToSpeech {
+class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     private let voice = AVSpeechSynthesisVoice(identifier: "com.apple.voice.premium.en-GB.Malcolm")
     
     
     private let synthesizer = AVSpeechSynthesizer()
+    
+    /// returns true, while the speech synthesizer is talking
+    public var isSpeaking: Bool {
+        get {
+            return synthesizer.isSpeaking
+        }
+    }
+    
+    @Published
+    public var currentlySpeaking: [UUID: AVSpeechUtterance] = [:]
     
     
     private let shortcutToDriver: [String: String] = [
@@ -53,6 +63,12 @@ class TextToSpeech {
         "VET": "Vettel",
         "ZHO": "Zhou"
     ]
+    
+    
+    override init() {
+        super.init()
+        synthesizer.delegate = self
+    }
     
     
     private func replaceDriver(_ input: String) -> String {
@@ -114,7 +130,7 @@ class TextToSpeech {
     }
     
     
-    func say(_ text: String) {
+    private func sayInternal(_ text: String) -> AVSpeechUtterance {
         var fixedText = replaceDriver(text)
         fixedText = fixShortcuts(fixedText)
         fixedText = fixLapTimes(fixedText)
@@ -134,5 +150,31 @@ class TextToSpeech {
         
         print("Will speak: \(fixedText)")
         synthesizer.speak(utterance)
+        return utterance
+    }
+    
+    
+    func say(_ text: String, messageId: UUID? = nil) {
+        let utterance = sayInternal(text)
+        
+        // if ID is passed: save what is currently speaking, so it can be displayed in the view
+        if messageId != nil {
+            DispatchQueue.main.async {
+                self.currentlySpeaking[messageId!] = utterance
+            }
+        }
+    }
+ 
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        print("Speech finished")
+        DispatchQueue.main.async {
+            if let uuid = self.currentlySpeaking.getFirstKeyForValue(forValue: utterance) {
+                self.currentlySpeaking.removeValue(forKey: uuid)
+                print("Removed utterance from currentlySpeaking")
+            } else {
+                print("Utterance not in dictionary!")
+            }
+        }
     }
 }
