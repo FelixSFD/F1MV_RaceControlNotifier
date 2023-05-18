@@ -31,7 +31,7 @@ class TextViewModel: ObservableObject {
 
 
 struct SettingsView: View {
-    @State var toggleFlagsState = GetSettingsToggle(forKey: "announce.flags", defaultValue: true)
+    @State var toggleFlagsState = GetSettingsToggle(forKey: Constants.Settings.Keys.announceFlags, defaultValue: true)
     
     @State var toggleFlagBlueState = GetSettingsToggle(forKey: "announce.flags.blue", defaultValue: false)
     @State var toggleFlagChequeredState = GetSettingsToggle(forKey: "announce.flags.chequered", defaultValue: true)
@@ -43,10 +43,10 @@ struct SettingsView: View {
     @State var toggleFlagBlackWhiteState = GetSettingsToggle(forKey: "announce.flags.blackWhite", defaultValue: true)
     
     
-    @State var toggleDeletedTimesState = GetSettingsToggle(forKey: "announce.deletedLaps", defaultValue: true)
-    @State var toggleMissedApexState = GetSettingsToggle(forKey: "announce.missedApex", defaultValue: true)
-    @State var toggleOffTrackState = GetSettingsToggle(forKey: "announce.offTrack", defaultValue: true)
-    @State var toggleSpunState = GetSettingsToggle(forKey: "announce.mazespin", defaultValue: true)
+    @State var toggleDeletedTimesState = GetSettingsToggle(forKey: Constants.Settings.Keys.announceDeletedLaps, defaultValue: true)
+    @State var toggleMissedApexState = GetSettingsToggle(forKey: Constants.Settings.Keys.announceMissedApex, defaultValue: true)
+    @State var toggleOffTrackState = GetSettingsToggle(forKey: Constants.Settings.Keys.announceOffTrack, defaultValue: true)
+    @State var toggleSpunState = GetSettingsToggle(forKey: Constants.Settings.Keys.announceSpun, defaultValue: true)
     
     
     //@State var apiBaseUrl = UserDefaults.standard.string(forKey: "api.url") ?? ""
@@ -145,7 +145,7 @@ struct SettingsView: View {
         VStack {
             Button("Save") {
                 print("Save form")
-                SettingsView.SaveSettingsToggle(forKey: "announce.flags", toggleFlagsState)
+                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceFlags, toggleFlagsState)
                 SettingsView.SaveSettingsToggle(forKey: "announce.flags.yellow", toggleFlagYellowState)
                 SettingsView.SaveSettingsToggle(forKey: "announce.flags.doubleYellow", toggleFlagDoubleYellowState)
                 SettingsView.SaveSettingsToggle(forKey: "announce.flags.blue", toggleFlagBlueState)
@@ -155,12 +155,12 @@ struct SettingsView: View {
                 SettingsView.SaveSettingsToggle(forKey: "announce.flags.meatball", toggleFlagMeatballState)
                 SettingsView.SaveSettingsToggle(forKey: "announce.flags.blackWhite", toggleFlagBlackWhiteState)
                 
-                SettingsView.SaveSettingsToggle(forKey: "announce.deletedLaps", toggleDeletedTimesState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.missedApex", toggleMissedApexState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.offTrack", toggleOffTrackState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.mazespin", toggleSpunState)
+                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceDeletedLaps, toggleDeletedTimesState)
+                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceMissedApex, toggleMissedApexState)
+                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceOffTrack, toggleOffTrackState)
+                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceSpun, toggleSpunState)
                 
-                UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: "api.url")
+                UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: Constants.Settings.Keys.apiUrl)
                 
                 print("successfully saved")
             }

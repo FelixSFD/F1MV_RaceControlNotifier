@@ -108,7 +108,7 @@ class RCMNotifier: ObservableObject {
     func messageAnnouncementEnabled(_ message: RaceControlMessageModel) -> Bool {
         switch message.category {
         case .flag:
-            if !UserDefaults.standard.bool(forKey: "announce.flags") {
+            if !UserDefaults.standard.announceFlags {
                 return false
             }
             
@@ -118,11 +118,11 @@ class RCMNotifier: ObservableObject {
             
             return flagAnnouncementEnabled(safeFlagColor)
         case .missedApex:
-            return UserDefaults.standard.bool(forKey: "announce.missedApex")
+            return UserDefaults.standard.announceMissedApex
         case .offTrack:
-            return UserDefaults.standard.bool(forKey: "announce.offTrack")
+            return UserDefaults.standard.announceOffTrack
         case .spun:
-            return UserDefaults.standard.bool(forKey: "announce.mazespin")
+            return UserDefaults.standard.announceSpun
         case .other:
             return true
         }
