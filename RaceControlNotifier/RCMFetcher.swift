@@ -26,7 +26,7 @@ class RCMFetcher {
     }
     
     
-    public var apiBaseUrl = UserDefaults.standard.string(forKey: "api.url") ?? "http://localhost:10101"
+    public var apiBaseUrl = UserDefaults.standard.apiUrl
     
     
     public struct MessageDTO: Codable {

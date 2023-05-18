@@ -50,7 +50,7 @@ struct SettingsView: View {
     
     
     //@State var apiBaseUrl = UserDefaults.standard.string(forKey: "api.url") ?? ""
-    @ObservedObject private var apiBaseUrlTextViewModel = TextViewModel(text: UserDefaults.standard.string(forKey: "api.url") ?? "")
+    @ObservedObject private var apiBaseUrlTextViewModel = TextViewModel(text: UserDefaults.standard.apiUrl)
     
     
     @State var hoverFlagName: String? = nil

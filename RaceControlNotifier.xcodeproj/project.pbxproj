@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC1874C92A162786004530DA /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1874C82A162786004530DA /* UserDefaultsExtensions.swift */; };
 		DC47D8C3288C0FA200A32091 /* RaceControlNotifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47D8C2288C0FA200A32091 /* RaceControlNotifierApp.swift */; };
 		DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47D8C4288C0FA200A32091 /* ContentView.swift */; };
 		DC47D8C7288C0FA500A32091 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC47D8C6288C0FA500A32091 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC1874C82A162786004530DA /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		DC47D8BF288C0FA200A32091 /* RaceControlNotifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaceControlNotifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC47D8C2288C0FA200A32091 /* RaceControlNotifierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceControlNotifierApp.swift; sourceTree = "<group>"; };
 		DC47D8C4288C0FA200A32091 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				DC5502F428F1B4690024113C /* SettingsView.swift */,
 				DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */,
 				DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */,
+				DC1874C82A162786004530DA /* UserDefaultsExtensions.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			files = (
 				DC5502F528F1B4690024113C /* SettingsView.swift in Sources */,
 				DC47D8D6288C132B00A32091 /* RCMNotifier.swift in Sources */,
+				DC1874C92A162786004530DA /* UserDefaultsExtensions.swift in Sources */,
 				DC47D8D8288C288E00A32091 /* TextToSpeech.swift in Sources */,
 				DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */,
 				DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */,

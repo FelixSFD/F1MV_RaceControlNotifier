@@ -27,6 +27,8 @@ class RCMNotifier: ObservableObject {
     
     private let tts: TextToSpeech
     
+    var observer: NSKeyValueObservation?
+    
     
     /// Reversed messages to make it easier to display the latest message on top
     @Published var reversedMessages: [RaceControlMessageModel] = []
@@ -39,12 +41,27 @@ class RCMNotifier: ObservableObject {
     }
     
     
+    private func startObservingSettings() {
+        observer = UserDefaults.standard.observe(\.apiUrl, options: [.initial, .new], changeHandler: { (defaults, change) in
+            // your change logic here
+            self.fetcher.apiBaseUrl = defaults.apiUrl
+        })
+    }
+    
+    
+    deinit {
+        observer?.invalidate()
+    }
+    
+    
     public func start() {
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
             Task {
                 await self.fetchNewMessages()
             }
         }
+        
+        startObservingSettings()
     }
     
     
