@@ -25,4 +25,7 @@ struct RaceControlMessageModel: Identifiable {
     var message: String
     var category: RaceControlMessageCategory
     var flag: FlagColor?
+    
+    /// true, if text-to-speech is enabled for this message
+    var ttsEnabled: Bool = false
 }

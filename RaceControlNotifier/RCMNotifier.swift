@@ -75,16 +75,18 @@ class RCMNotifier: ObservableObject {
         do {
             let allMessages = try await fetcher.getMessages()
             allMessages.forEach {
-                newMessage in
+                newMessage1 in
+                var newMessage = newMessage1
                 let announceEnabled = messageAnnouncementEnabled(newMessage)
+                newMessage.ttsEnabled = announceEnabled
                 
-                if newMessage.date > latestMessageDate && announceEnabled {
+                if newMessage.date > latestMessageDate {
                     self.messages.append(newMessage)
                     newlyAddedMessages.insert(newMessage, at: 0)
                     print("Added: \(newMessage.message)")
                     print(newMessage.date)
                     
-                    if speakMessages {
+                    if speakMessages && announceEnabled {
                         tts.say(newMessage.message)
                     }
                 }

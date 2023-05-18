@@ -38,7 +38,7 @@ struct MessageListView: View {
                         Image(systemName: "play")
                     }
                     
-                    MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue)
+                    MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue, ttsEnabled: message.ttsEnabled.wrappedValue)
                         .listRowSeparatorTint(.gray)
                 }
             }
@@ -48,7 +48,7 @@ struct MessageListView: View {
 }
 
 struct MessageListView_Previews: PreviewProvider {
-    @State static var sampleMessages = [RaceControlMessageModel(date: Date.now, message: "CAR 63 (RUS) TIME 1:19.376 DELETED - TRACK LIMITS AT TURN 12 LAP 18 15:59:37", category: .other), RaceControlMessageModel(date: Date.now, message: "CHEQUERED FLAG", category: .flag)]
+    @State static var sampleMessages = [RaceControlMessageModel(date: Date.now, message: "CAR 63 (RUS) TIME 1:19.376 DELETED - TRACK LIMITS AT TURN 12 LAP 18 15:59:37", category: .other, ttsEnabled: true), RaceControlMessageModel(date: Date.now, message: "CHEQUERED FLAG", category: .flag, ttsEnabled: false)]
     
     private static var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: TextToSpeech())
     
