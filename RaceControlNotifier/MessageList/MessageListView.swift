@@ -40,11 +40,10 @@ struct MessageListView: View {
                     Button {
                         tts.say(message.message.wrappedValue, messageId: message.id)
                     } label: {
-                        if (tts.currentlySpeaking[message.id] == nil) {
-                            Image(systemName: "play")
-                        } else {
-                            Image(systemName: "stop.fill")
-                        }
+                        let symbolName = tts.currentlySpeaking[message.id] == nil ? "play" : "stop.fill"
+                        
+                        Image(systemName: symbolName)
+                            .frame(width: 15)
                     }
                     
                     MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue, ttsEnabled: message.ttsEnabled.wrappedValue)
