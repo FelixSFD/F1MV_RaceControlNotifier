@@ -33,6 +33,10 @@ struct MessageListView: View {
     private var isSpeaking: Bool = false
     
     
+    @State
+    private var showingMessageDetail: RaceControlMessageModel? = nil
+    
+    
     var body: some View {
         List {
             ForEach($rcmNotifier.reversedMessages) { message in
@@ -49,10 +53,27 @@ struct MessageListView: View {
                     
                     MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue, ttsEnabled: message.ttsEnabled.wrappedValue)
                         .listRowSeparatorTint(.gray)
+                        .contextMenu {
+                            Button("Details") {
+                                print("Should display sheet now")
+                                showingMessageDetail = message.wrappedValue
+                            }
+                        }
                 }
             }
         }
         .listStyle(.inset(alternatesRowBackgrounds: true))
+        .sheet(item: $showingMessageDetail) {
+            msgItem in
+            VStack {
+                MessageDetailsView(message: msgItem)
+                Button("Close") {
+                    showingMessageDetail = nil
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
+        }
     }
 }
 

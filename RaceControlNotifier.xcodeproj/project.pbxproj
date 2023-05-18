@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DC1874C92A162786004530DA /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1874C82A162786004530DA /* UserDefaultsExtensions.swift */; };
 		DC1874CB2A163CED004530DA /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1874CA2A163CED004530DA /* DictionaryExtensions.swift */; };
+		DC1874CD2A1644AC004530DA /* MessageDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1874CC2A1644AC004530DA /* MessageDetailsView.swift */; };
 		DC47D8C3288C0FA200A32091 /* RaceControlNotifierApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47D8C2288C0FA200A32091 /* RaceControlNotifierApp.swift */; };
 		DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47D8C4288C0FA200A32091 /* ContentView.swift */; };
 		DC47D8C7288C0FA500A32091 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC47D8C6288C0FA500A32091 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		DC1874C82A162786004530DA /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		DC1874CA2A163CED004530DA /* DictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
+		DC1874CC2A1644AC004530DA /* MessageDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailsView.swift; sourceTree = "<group>"; };
 		DC47D8BF288C0FA200A32091 /* RaceControlNotifier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaceControlNotifier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC47D8C2288C0FA200A32091 /* RaceControlNotifierApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceControlNotifierApp.swift; sourceTree = "<group>"; };
 		DC47D8C4288C0FA200A32091 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */,
 				DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */,
+				DC1874CC2A1644AC004530DA /* MessageDetailsView.swift */,
 			);
 			path = MessageList;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				DC5502F528F1B4690024113C /* SettingsView.swift in Sources */,
 				DC47D8D6288C132B00A32091 /* RCMNotifier.swift in Sources */,
 				DC1874C92A162786004530DA /* UserDefaultsExtensions.swift in Sources */,
+				DC1874CD2A1644AC004530DA /* MessageDetailsView.swift in Sources */,
 				DC47D8D8288C288E00A32091 /* TextToSpeech.swift in Sources */,
 				DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */,
 				DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */,
