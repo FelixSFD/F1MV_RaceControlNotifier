@@ -1,5 +1,5 @@
-# RaceControlNotifier for F1MV
-Simple tool to let your Mac read race-control-messages from [F1MultiViewer](https://beta.f1mv.com) aloud using Siri's voice.
+# RaceControlNotifier for "MultiViewer for F1"
+Simple tool to let your Mac read race-control-messages from [MultiViewer](https://multiviewer.app) aloud using Siri's voice.
 
 Any message sent by Race Control will be read aloud using the voice `com.apple.voice.premium.en-GB.Malcolm` (which has to be downloaded first and is only supported on macOS 13+).
 You can apply filters to exclude messages like blue flags and deleted lap-times.
@@ -21,7 +21,7 @@ https://user-images.githubusercontent.com/2721240/199205925-7d253991-c5a4-47cd-a
 
 You probably don't.
 
-I started this project to have some fun with SwiftUI and TTS, but it turned out to be a nice gimmick for me, because when watching Formula 1 with [F1MultiViewer](https://beta.f1mv.com), I only have one small screen left for the Race Control messages and this application makes it easier to be informed about new messages.
+I started this project to have some fun with SwiftUI and TTS, but it turned out to be a nice gimmick for me, because when watching Formula 1 with [MultiViewer](https://multiviewer.app), I only have one small screen left for the Race Control messages and this application makes it easier to be informed about new messages.
 
 
 # How can I run this?
@@ -32,7 +32,7 @@ As I'm not member of the Apple Developer program, I can't provide the binary of 
 
 * Xcode 14.1+
 * macOS 13.0+
-* [F1MultiViewer](https://beta.f1mv.com) with F1TV Pro account
+* [MultiViewer](https://multiviewer.app) with an active subscription for F1TV Pro or Access
 * Premium voice `com.apple.voice.premium.en-GB.Malcolm` installed (Settings -> Accessibility -> Speech -> System voices -> Manage...)
 
 If the proper voice is not installed, Siri will fall back to a low-quality English voice.
