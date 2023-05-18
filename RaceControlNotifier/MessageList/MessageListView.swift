@@ -25,7 +25,16 @@ struct MessageListView: View {
     private var messages: [RaceControlMessageModel] = []
     
     
-    let tts: TextToSpeech
+    @ObservedObject
+    var tts: TextToSpeech
+    
+    
+    @State
+    private var isSpeaking: Bool = false
+    
+    
+    @State
+    private var showingMessageDetail: RaceControlMessageModel? = nil
     
     
     var body: some View {
@@ -33,22 +42,43 @@ struct MessageListView: View {
             ForEach($rcmNotifier.reversedMessages) { message in
                 HStack {
                     Button {
-                        tts.say(message.message.wrappedValue)
+                        tts.say(message.message.wrappedValue, messageId: message.id)
                     } label: {
-                        Image(systemName: "play")
+                        let symbolName = tts.currentlySpeaking[message.id] == nil ? "play" : "stop.fill"
+                        
+                        Image(systemName: symbolName)
+                            .frame(width: 15)
                     }
+                    .disabled(tts.currentlySpeaking[message.id] != nil)
                     
-                    MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue)
+                    MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue, ttsEnabled: message.ttsEnabled.wrappedValue)
                         .listRowSeparatorTint(.gray)
+                        .contextMenu {
+                            Button("Details") {
+                                print("Should display sheet now")
+                                showingMessageDetail = message.wrappedValue
+                            }
+                        }
                 }
             }
         }
-        .listStyle(.bordered)
+        .listStyle(.inset(alternatesRowBackgrounds: true))
+        .sheet(item: $showingMessageDetail) {
+            msgItem in
+            VStack {
+                MessageDetailsView(message: msgItem)
+                Button("Close") {
+                    showingMessageDetail = nil
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
+        }
     }
 }
 
 struct MessageListView_Previews: PreviewProvider {
-    @State static var sampleMessages = [RaceControlMessageModel(date: Date.now, message: "CAR 63 (RUS) TIME 1:19.376 DELETED - TRACK LIMITS AT TURN 12 LAP 18 15:59:37", category: .other), RaceControlMessageModel(date: Date.now, message: "CHEQUERED FLAG", category: .flag)]
+    @State static var sampleMessages = [RaceControlMessageModel(date: Date.now, message: "CAR 63 (RUS) TIME 1:19.376 DELETED - TRACK LIMITS AT TURN 12 LAP 18 15:59:37", category: .other, ttsEnabled: true), RaceControlMessageModel(date: Date.now, message: "CHEQUERED FLAG", category: .flag, ttsEnabled: false)]
     
     private static var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: TextToSpeech())
     

@@ -1,6 +1,6 @@
 //
 // RaceControlNotifier for MultiViewer
-// Copyright (c) 2022  FelixSFD
+// Copyright (c) 2023  FelixSFD
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,14 +18,11 @@
 import Foundation
 
 
-struct RaceControlMessageModel: Identifiable {
-    var id: UUID = UUID()
-    
-    var date: Date
-    var message: String
-    var category: RaceControlMessageCategory
-    var flag: FlagColor?
-    
-    /// true, if text-to-speech is enabled for this message
-    var ttsEnabled: Bool = false
+/// Extensions for the dictionary
+extension Dictionary where Value: Equatable {
+    /// Finds the key for a value
+    /// Source: https://stackoverflow.com/a/41386238/4687348
+    func getFirstKeyForValue(forValue val: Value) -> Key? {
+        return first(where: { $1 == val })?.key
+    }
 }

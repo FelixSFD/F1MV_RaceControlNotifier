@@ -24,19 +24,37 @@ struct MessageListItemView: View {
     @State
     var date: Date
     
+    
+    @State
+    var ttsEnabled: Bool
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(messageText)
                 .fontWeight(.bold)
-            Text(date.formatted())
-                .font(.caption2.italic())
-                .foregroundColor(.gray)
+            
+            HStack(alignment: .center) {
+                Text(date.formatted())
+                    .font(.caption2.italic())
+                    .foregroundColor(.gray)
+                
+                Spacer()
+                
+                if ttsEnabled {
+                    Image(systemName: "speaker.wave.2.circle")
+                } else {
+                    Image(systemName: "speaker.slash.circle")
+                }
+            }
         }
+        .opacity(ttsEnabled ? 1 : 0.7)
     }
 }
 
 struct MessageListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageListItemView(messageText: "TEST MESSAGE - RED FLAG", date: Date.now)
+        MessageListItemView(messageText: "TEST MESSAGE - RED FLAG", date: Date.now, ttsEnabled: true)
+        
+        MessageListItemView(messageText: "TEST MESSAGE - BLUE FLAG - NO TTS", date: Date.now, ttsEnabled: false)
     }
 }
