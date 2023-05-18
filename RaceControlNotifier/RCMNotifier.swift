@@ -87,7 +87,7 @@ class RCMNotifier: ObservableObject {
                     print(newMessage.date)
                     
                     if speakMessages && announceEnabled {
-                        tts.say(newMessage.message)
+                        tts.say(newMessage.message, messageId: newMessage.id)
                     }
                 }
             }

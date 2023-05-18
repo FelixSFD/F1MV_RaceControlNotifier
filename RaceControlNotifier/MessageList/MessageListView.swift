@@ -45,6 +45,7 @@ struct MessageListView: View {
                         Image(systemName: symbolName)
                             .frame(width: 15)
                     }
+                    .disabled(tts.currentlySpeaking[message.id] != nil)
                     
                     MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue, ttsEnabled: message.ttsEnabled.wrappedValue)
                         .listRowSeparatorTint(.gray)
