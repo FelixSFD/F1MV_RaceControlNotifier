@@ -78,41 +78,49 @@ struct SettingsView: View {
     var body: some View {
         TabView {
             VStack(alignment: .leading) {
-                Toggle(isOn: $toggleDeletedTimesState) {
-                    Text("Announce deleted lap-times")
-                }
-                
-                Toggle(isOn: $toggleMissedApexState) {
-                    Text("Announce \"missed apex\"-messages")
-                }
-                
-                Toggle(isOn: $toggleOffTrackState) {
-                    Text("Announce \"off track and continued\"-messages")
-                }
-                
-                Toggle(isOn: $toggleSpunState) {
-                    Text("Announce \"spun\"-messages")
-                }
-                
-                Toggle(isOn: $toggleFlagsState) {
-                    Text("Announce flags")
-                }
-
                 List {
-                    EnumToggleList(items: $flagToggleItems, allWriteable: $toggleFlagsState)
-                }
-                .padding(.leading)
-                .onAppear {
-                    let enabledFlags = UserDefaults.standard.announceFlagsEnabled
-                    print("All enabled flags: \(enabledFlags)")
-                    for flagToggleItemIndex in flagToggleItems.indices {
-                        print("Check if flag is enabled: \(flagToggleItems[flagToggleItemIndex].code)")
-                        flagToggleItems[flagToggleItemIndex].isEnabled = enabledFlags.contains(where: { enabledFlag in
-                            print("Check flag \(enabledFlag.rawValue) with ID \(flagToggleItems[flagToggleItemIndex].code)")
-                            return enabledFlag.rawValue == flagToggleItems[flagToggleItemIndex].code
-                        })
+                    Section("General messages") {
+                        Toggle(isOn: $toggleDeletedTimesState) {
+                            Text("Announce deleted lap-times")
+                        }
+                        
+                        Toggle(isOn: $toggleMissedApexState) {
+                            Text("Announce \"missed apex\"-messages")
+                        }
+                        
+                        Toggle(isOn: $toggleOffTrackState) {
+                            Text("Announce \"off track and continued\"-messages")
+                        }
+                        
+                        Toggle(isOn: $toggleSpunState) {
+                            Text("Announce \"spun\"-messages")
+                        }
+                    }
+                    Section("Flags") {
+                        // Master-toggle
+                        Toggle(isOn: $toggleFlagsState) {
+                            Text("Announce flags")
+                                .bold()
+                        }
+                        
+                        // Toggles for every flag-color
+                        EnumToggleList(items: $flagToggleItems, allWriteable: $toggleFlagsState)
+                            .padding(.leading)
+                    }
+                    .onAppear {
+                        let enabledFlags = UserDefaults.standard.announceFlagsEnabled
+                        print("All enabled flags: \(enabledFlags)")
+                        for flagToggleItemIndex in flagToggleItems.indices {
+                            print("Check if flag is enabled: \(flagToggleItems[flagToggleItemIndex].code)")
+                            flagToggleItems[flagToggleItemIndex].isEnabled = enabledFlags.contains(where: { enabledFlag in
+                                print("Check flag \(enabledFlag.rawValue) with ID \(flagToggleItems[flagToggleItemIndex].code)")
+                                return enabledFlag.rawValue == flagToggleItems[flagToggleItemIndex].code
+                            })
+                        }
                     }
                 }
+                .listStyle(.inset)
+                .toggleStyle(.switch) // set switch-style for everything in the list
             }
             .tabItem {
                 Text("Messages")
