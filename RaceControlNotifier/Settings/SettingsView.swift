@@ -31,27 +31,13 @@ class TextViewModel: ObservableObject {
 
 
 struct SettingsView: View {
-    @State var toggleFlagsState = GetSettingsToggle(forKey: Constants.Settings.Keys.announceFlags, defaultValue: true)
+    @State var toggleFlagsState = UserDefaults.standard.announceFlags
+    @State var toggleDeletedTimesState = UserDefaults.standard.announceDeletedLaps
+    @State var toggleMissedApexState = UserDefaults.standard.announceMissedApex
+    @State var toggleOffTrackState = UserDefaults.standard.announceOffTrack
+    @State var toggleSpunState = UserDefaults.standard.announceSpun
     
-    @State var toggleFlagBlueState = GetSettingsToggle(forKey: "announce.flags.blue", defaultValue: false)
-    @State var toggleFlagChequeredState = GetSettingsToggle(forKey: "announce.flags.chequered", defaultValue: true)
-    @State var toggleFlagYellowState = GetSettingsToggle(forKey: "announce.flags.yellow", defaultValue: true)
-    @State var toggleFlagDoubleYellowState = GetSettingsToggle(forKey: "announce.flags.doubleYellow", defaultValue: true)
-    @State var toggleFlagGreenState = GetSettingsToggle(forKey: "announce.flags.green", defaultValue: true)
-    @State var toggleFlagRedState = GetSettingsToggle(forKey: "announce.flags.red", defaultValue: true)
-    @State var toggleFlagMeatballState = GetSettingsToggle(forKey: "announce.flags.meatball", defaultValue: true)
-    @State var toggleFlagBlackWhiteState = GetSettingsToggle(forKey: "announce.flags.blackWhite", defaultValue: true)
-    
-    
-    @State var toggleDeletedTimesState = GetSettingsToggle(forKey: Constants.Settings.Keys.announceDeletedLaps, defaultValue: true)
-    @State var toggleMissedApexState = GetSettingsToggle(forKey: Constants.Settings.Keys.announceMissedApex, defaultValue: true)
-    @State var toggleOffTrackState = GetSettingsToggle(forKey: Constants.Settings.Keys.announceOffTrack, defaultValue: true)
-    @State var toggleSpunState = GetSettingsToggle(forKey: Constants.Settings.Keys.announceSpun, defaultValue: true)
-    
-    
-    //@State var apiBaseUrl = UserDefaults.standard.string(forKey: "api.url") ?? ""
     @ObservedObject private var apiBaseUrlTextViewModel = TextViewModel(text: UserDefaults.standard.apiUrl)
-    
     
     @State var hoverFlagName: String? = nil
     
