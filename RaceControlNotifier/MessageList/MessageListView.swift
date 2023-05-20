@@ -29,6 +29,9 @@ struct MessageListView: View {
     var tts: TextToSpeech
     
     
+    @EnvironmentObject var sca: ObservableSCA
+    
+    
     @State
     private var isSpeaking: Bool = false
     
@@ -38,6 +41,12 @@ struct MessageListView: View {
     
     
     var body: some View {
+        let outputDevice = sca.devices.first(where: { $0.isDefaultOutputDevice })
+        if outputDevice != nil {
+            Text("Output to: \(outputDevice!.name)")
+        } else {
+            Text("no device selected")
+        }
         List {
             ForEach($rcmNotifier.reversedMessages) { message in
                 HStack {

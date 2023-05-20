@@ -33,10 +33,17 @@ class ObservableSCA: ObservableObject {
         updateDefaultSystemDevice()
         
         addSCAObservers()
+        
+        loadDefaultDeviceFromUserDefaults()
     }
     
     deinit {
         removeSCAObservers()
+    }
+    
+    
+    func loadDefaultDeviceFromUserDefaults() {
+        simply.allOutputDevices.first(where: { $0.id.description == UserDefaults.standard.selectedAudioDeviceId })?.isDefaultOutputDevice = true
     }
 }
 

@@ -37,6 +37,7 @@ struct RaceControlNotifierApp: App {
         
         WindowGroup("All Messages", id: "all_messages.window") {
             messagesListView
+                .environmentObject(sca)
         }
         
         WindowGroup("Settings", id: "settings.window") {
