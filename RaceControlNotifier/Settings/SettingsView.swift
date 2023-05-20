@@ -140,9 +140,6 @@ struct SettingsView: View {
             .tabItem {
                 Text("Audio")
             }
-            .onAppear {
-                self.selectedAudioDevice = getOutputDevice()
-            }
             
             VStack(alignment: .leading) {
                 HStack {
@@ -186,6 +183,7 @@ struct SettingsView: View {
                 UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: Constants.Settings.Keys.apiUrl)
                 
                 UserDefaults.standard.set(selectedAudioDevice?.id, forKey: Constants.Settings.Keys.selectedOutputDevice)
+                sca.devices.first(where: { $0.id.description == UserDefaults.standard.selectedAudioDeviceId })?.isDefaultOutputDevice = true
                 
                 print("successfully saved")
             }
@@ -193,6 +191,9 @@ struct SettingsView: View {
             .padding(.top)
         }
         .padding()
+        .onAppear {
+            self.selectedAudioDevice = getOutputDevice()
+        }
     }
 }
 
