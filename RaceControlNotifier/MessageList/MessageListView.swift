@@ -41,12 +41,13 @@ struct MessageListView: View {
     
     
     var body: some View {
-        let outputDevice = sca.devices.first(where: { $0.isDefaultOutputDevice })
-        if outputDevice != nil {
-            Text("Output to: \(outputDevice!.name)")
-        } else {
-            Text("no device selected")
-        }
+//        let outputDevice = sca.devices.first(where: { $0.isDefaultOutputDevice })
+//        if outputDevice != nil {
+//            Text("Output to: \(outputDevice!.name)")
+//        } else {
+//            Text("no device selected")
+//        }
+        
         List {
             ForEach($rcmNotifier.reversedMessages) { message in
                 HStack {
