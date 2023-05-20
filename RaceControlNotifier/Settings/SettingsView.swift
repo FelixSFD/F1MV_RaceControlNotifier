@@ -17,6 +17,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import SimplyCoreAudio
 
 
 class TextViewModel: ObservableObject {
@@ -31,6 +32,10 @@ class TextViewModel: ObservableObject {
 
 
 struct SettingsView: View {
+    private static let simplyCA = SimplyCoreAudio()
+    
+    @EnvironmentObject var sca: ObservableSCA
+    
     @State var toggleFlagsState = UserDefaults.standard.announceFlags
     @State var toggleDeletedTimesState = UserDefaults.standard.announceDeletedLaps
     @State var toggleMissedApexState = UserDefaults.standard.announceMissedApex
@@ -43,9 +48,7 @@ struct SettingsView: View {
     
     @State var flagToggleItems: [EnumToggleList.ItemModel] = getAvailableFlagItems()
     
-    @State var selectedAudioDevice: SimplePickerViewModel? = getDefaultAudioDeviceId()
-    
-    @State var availableAudioDevices: [SimplePickerViewModel] = getAudioDevices()
+    @State var selectedAudioDevice: ObservableAudioDevice?
     
     
     private static func getAvailableFlagItems() -> [EnumToggleList.ItemModel] {
@@ -65,27 +68,14 @@ struct SettingsView: View {
     }
     
     
-    private static func getAudioDevices() -> [SimplePickerViewModel] {
-        return AudioDeviceFinder.findDevices()
-            .map { audioDevice in
-                return SimplePickerViewModel(id: audioDevice.audioDeviceID.description, label: audioDevice.name ?? audioDevice.audioDeviceID.description)
-            }
-    }
-    
-    
-    private static func getDefaultAudioDeviceId() -> SimplePickerViewModel? {
-        return getAudioDevices().first
-    }
-    
-    
-    private func getOutputDevice() -> SimplePickerViewModel? {
+    private func getOutputDevice() -> ObservableAudioDevice? {
         guard let selectedId = UserDefaults.standard.selectedAudioDeviceId else {
-            return SettingsView.getDefaultAudioDeviceId()
+            return nil
         }
         
-        return SettingsView.getAudioDevices().first { availableDevice in
-            return availableDevice.id == selectedId
-        } ?? SettingsView.getDefaultAudioDeviceId()
+        return sca.devices.first { availableDevice in
+            return availableDevice.id.description == selectedId
+        }
     }
     
     
@@ -141,18 +131,10 @@ struct SettingsView: View {
             }
             
             VStack(alignment: .leading) {
-                Picker("Output Device", selection: $selectedAudioDevice) {
-                    
-                    if self.availableAudioDevices.isEmpty {
-                        Text("No device available")
-                            .tag(nil as SimplePickerViewModel?)
-                            .disabled(true)
-                    }
-                    
-                    ForEach(self.availableAudioDevices) { audioDevice in
-                        Text(audioDevice.label)
-                            .tag(audioDevice as SimplePickerViewModel?)
-                    }
+                Text("Output device:")
+                List(sca.devices, id: \.self, selection: $selectedAudioDevice) {
+                    device in
+                    Text(device.name)
                 }
             }
             .tabItem {

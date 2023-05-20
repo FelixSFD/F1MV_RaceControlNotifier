@@ -42,8 +42,10 @@
 		DCA1DCA4290DC9EF002A1AB1 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */; };
 		DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */; };
 		DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCE02F0290F009300867F82 /* MenuBarListView.swift */; };
-		DCD4C62A2A191E33004DD736 /* AudioUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C6292A191E33004DD736 /* AudioUtils.swift */; };
 		DCD4C62C2A19242D004DD736 /* SimplePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */; };
+		DCD4C62F2A1930E5004DD736 /* SimplyCoreAudio in Frameworks */ = {isa = PBXBuildFile; productRef = DCD4C62E2A1930E5004DD736 /* SimplyCoreAudio */; };
+		DCD4C6312A193530004DD736 /* ObservableSCA.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C6302A193530004DD736 /* ObservableSCA.swift */; };
+		DCD4C6332A193549004DD736 /* ObservableAudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C6322A193549004DD736 /* ObservableAudioDevice.swift */; };
 		DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7ED2A16667B00C3F0EF /* Constants.swift */; };
 		DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */; };
 /* End PBXBuildFile section */
@@ -86,8 +88,9 @@
 		DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListItemView.swift; sourceTree = "<group>"; };
 		DCCE02F0290F009300867F82 /* MenuBarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarListView.swift; sourceTree = "<group>"; };
-		DCD4C6292A191E33004DD736 /* AudioUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioUtils.swift; sourceTree = "<group>"; };
 		DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePickerViewModel.swift; sourceTree = "<group>"; };
+		DCD4C6302A193530004DD736 /* ObservableSCA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableSCA.swift; sourceTree = "<group>"; };
+		DCD4C6322A193549004DD736 /* ObservableAudioDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableAudioDevice.swift; sourceTree = "<group>"; };
 		DCEEC7ED2A16667B00C3F0EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumToggleList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD4C62F2A1930E5004DD736 /* SimplyCoreAudio in Frameworks */,
 				DC55030B28F1D5C40024113C /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,7 +214,8 @@
 		DCD4C6282A191E1D004DD736 /* AudioUtils */ = {
 			isa = PBXGroup;
 			children = (
-				DCD4C6292A191E33004DD736 /* AudioUtils.swift */,
+				DCD4C6302A193530004DD736 /* ObservableSCA.swift */,
+				DCD4C6322A193549004DD736 /* ObservableAudioDevice.swift */,
 			);
 			path = AudioUtils;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			name = RaceControlNotifier;
 			packageProductDependencies = (
 				DC55030A28F1D5C40024113C /* SDWebImageSwiftUI */,
+				DCD4C62E2A1930E5004DD736 /* SimplyCoreAudio */,
 			);
 			productName = RaceControlNotifier;
 			productReference = DC47D8BF288C0FA200A32091 /* RaceControlNotifier.app */;
@@ -265,6 +271,7 @@
 			mainGroup = DC47D8B6288C0FA200A32091;
 			packageReferences = (
 				DC55030928F1D5C40024113C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				DCD4C62D2A1930E5004DD736 /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */,
 			);
 			productRefGroup = DC47D8C0288C0FA200A32091 /* Products */;
 			projectDirPath = "";
@@ -312,12 +319,13 @@
 				DC1874C92A162786004530DA /* UserDefaultsExtensions.swift in Sources */,
 				DC1874CD2A1644AC004530DA /* MessageDetailsView.swift in Sources */,
 				DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */,
+				DCD4C6332A193549004DD736 /* ObservableAudioDevice.swift in Sources */,
 				DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */,
 				DC47D8D8288C288E00A32091 /* TextToSpeech.swift in Sources */,
 				DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */,
+				DCD4C6312A193530004DD736 /* ObservableSCA.swift in Sources */,
 				DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */,
 				DC5502F728F1C5520024113C /* RaceControlMessageCategory.swift in Sources */,
-				DCD4C62A2A191E33004DD736 /* AudioUtils.swift in Sources */,
 				DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */,
 				DC55032C28F20C660024113C /* FlagPreviewButtonView.swift in Sources */,
 				DC47D8D2288C0FC700A32091 /* RCMFetcher.swift in Sources */,
@@ -535,6 +543,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		DCD4C62D2A1930E5004DD736 /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rnine/SimplyCoreAudio";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -542,6 +558,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC55030928F1D5C40024113C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		DCD4C62E2A1930E5004DD736 /* SimplyCoreAudio */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCD4C62D2A1930E5004DD736 /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */;
+			productName = SimplyCoreAudio;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

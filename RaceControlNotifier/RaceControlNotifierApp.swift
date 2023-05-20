@@ -25,6 +25,8 @@ struct RaceControlNotifierApp: App {
     
     @State var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: tts)
     
+    @StateObject private var sca = ObservableSCA()
+    
     
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
     
@@ -39,6 +41,7 @@ struct RaceControlNotifierApp: App {
         
         WindowGroup("Settings", id: "settings.window") {
             settingsWindow
+                .environmentObject(sca)
         }
         
         MenuBarExtra(
