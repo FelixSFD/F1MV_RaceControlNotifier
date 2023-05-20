@@ -99,7 +99,7 @@ struct SettingsView: View {
                 }
 
                 List {
-                    EnumToggleList(items: $flagToggleItems)
+                    EnumToggleList(items: $flagToggleItems, allWriteable: $toggleFlagsState)
                 }
                 .padding(.leading)
                 .onAppear {

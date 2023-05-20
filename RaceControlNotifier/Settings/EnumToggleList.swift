@@ -33,6 +33,9 @@ struct EnumToggleList : View {
     @Binding
     var items: [ItemModel]
     
+    @Binding
+    var allWriteable: Bool
+    
     
     var body: some View {
         ForEach(self.items.indices) {
@@ -41,6 +44,7 @@ struct EnumToggleList : View {
                 Text(self.items[modelIndex].label)
             }
             .toggleStyle(.switch)
+            .disabled(!$allWriteable.wrappedValue)
         }
     }
 }
@@ -54,15 +58,19 @@ struct EnumToggleListPreviewContainer : View {
         EnumToggleList.ItemModel(code: "meatball", label: "Black and orange (meatball)", isEnabled: true)
     ]
     
+    
+    @State var allReadonly: Bool
+    
     var body: some View {
-        EnumToggleList(items: $items)
+        EnumToggleList(items: $items, allWriteable: $allReadonly)
     }
 }
 
 struct EnumToggleList_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            EnumToggleListPreviewContainer()
+            EnumToggleListPreviewContainer(allReadonly: false)
+            EnumToggleListPreviewContainer(allReadonly: true)
         }
     }
 }
