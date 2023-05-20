@@ -108,7 +108,7 @@ class RCMNotifier: ObservableObject {
     func messageAnnouncementEnabled(_ message: RaceControlMessageModel) -> Bool {
         switch message.category {
         case .flag:
-            if !UserDefaults.standard.bool(forKey: "announce.flags") {
+            if !UserDefaults.standard.announceFlags {
                 return false
             }
             
@@ -118,11 +118,11 @@ class RCMNotifier: ObservableObject {
             
             return flagAnnouncementEnabled(safeFlagColor)
         case .missedApex:
-            return UserDefaults.standard.bool(forKey: "announce.missedApex")
+            return UserDefaults.standard.announceMissedApex
         case .offTrack:
-            return UserDefaults.standard.bool(forKey: "announce.offTrack")
+            return UserDefaults.standard.announceOffTrack
         case .spun:
-            return UserDefaults.standard.bool(forKey: "announce.mazespin")
+            return UserDefaults.standard.announceSpun
         case .other:
             return true
         }
@@ -130,37 +130,6 @@ class RCMNotifier: ObservableObject {
     
     
     func flagAnnouncementEnabled(_ flag: FlagColor) -> Bool {
-        let settingsKey: String
-        switch flag {
-        case .green:
-            settingsKey = "announce.flags.green"
-            break;
-        case .blue:
-            settingsKey = "announce.flags.blue"
-            break;
-        case .yellow:
-            settingsKey = "announce.flags.yellow"
-            break;
-        case .doubleYellow:
-            settingsKey = "announce.flags.doubleYellow"
-            break;
-        case .red:
-            settingsKey = "announce.flags.red"
-            break;
-        case .chequered:
-            settingsKey = "announce.flags.chequered"
-            break;
-        case .meatball:
-            settingsKey = "announce.flags.meatball"
-            break;
-        case .blackWhite:
-            settingsKey = "announce.flags.blackWhite"
-            break;
-//        default:
-//            print("unexpected flag!")
-//            return true
-        }
-        
-        return UserDefaults.standard.bool(forKey: settingsKey)
+        return UserDefaults.standard.announceFlagsEnabled.contains(where: { $0 == flag })
     }
 }

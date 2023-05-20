@@ -29,12 +29,13 @@ struct FlagToggleView: View {
     
     @State var viewModel: ViewModel
     
-    
     var body: some View {
-        Toggle(isOn: viewModel.$toggleState){
-            Text(viewModel.label)
-            
-            FlagPreviewButtonView(gifName: viewModel.gifName, selectedGifName: viewModel.$selctedGifName)
+        Toggle(isOn: viewModel.$toggleState) {
+            HStack {
+                Text(viewModel.label)
+                
+                FlagPreviewButtonView(gifName: viewModel.gifName, selectedGifName: viewModel.$selctedGifName)
+            }
         }
     }
 }

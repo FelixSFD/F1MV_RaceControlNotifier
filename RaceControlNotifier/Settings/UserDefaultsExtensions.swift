@@ -19,7 +19,57 @@ import Foundation
 
 
 extension UserDefaults {
+    /// Base URL for the F1MV API
     @objc dynamic var apiUrl: String {
-        return string(forKey: "api.url") ?? "http://localhost:10101"
+        return string(forKey: Constants.Settings.Keys.apiUrl) ?? Constants.Settings.defaultApiUrl
+    }
+    
+    
+    /// true, if flags should be announced
+    @objc dynamic var announceFlags: Bool {
+        return bool(forKey: Constants.Settings.Keys.announceFlags)
+    }
+    
+    
+    /// List of flags to announce. (only when announceFlags is true)
+    dynamic var announceFlagsEnabled: [FlagColor] {
+        get {
+            guard let jsonData = data(forKey: Constants.Settings.Keys.announceFlagsEnabled) else { return [] }
+            guard let array = try? JSONDecoder().decode([FlagColor].self, from: jsonData) else {
+                print("Error reading enabled flags from UserDefaults!")
+                return []
+            }
+            
+            return array
+        }
+        
+        set {
+            let jsonStr = try! JSONEncoder().encode(newValue)
+            setValue(jsonStr, forKey: Constants.Settings.Keys.announceFlagsEnabled)
+        }
+    }
+    
+    
+    /// true, if deleted laps should be announced
+    @objc dynamic var announceDeletedLaps: Bool {
+        return bool(forKey: Constants.Settings.Keys.announceDeletedLaps)
+    }
+    
+    
+    /// true, if missed apex messages should be announced
+    @objc dynamic var announceMissedApex: Bool {
+        return bool(forKey: Constants.Settings.Keys.announceMissedApex)
+    }
+    
+    
+    /// true, if off-track messages should be announced
+    @objc dynamic var announceOffTrack: Bool {
+        return bool(forKey: Constants.Settings.Keys.announceOffTrack)
+    }
+    
+    
+    /// true, if spinning cars should be announced
+    @objc dynamic var announceSpun: Bool {
+        return bool(forKey: Constants.Settings.Keys.announceSpun)
     }
 }

@@ -31,29 +31,24 @@ class TextViewModel: ObservableObject {
 
 
 struct SettingsView: View {
-    @State var toggleFlagsState = GetSettingsToggle(forKey: "announce.flags", defaultValue: true)
+    @State var toggleFlagsState = UserDefaults.standard.announceFlags
+    @State var toggleDeletedTimesState = UserDefaults.standard.announceDeletedLaps
+    @State var toggleMissedApexState = UserDefaults.standard.announceMissedApex
+    @State var toggleOffTrackState = UserDefaults.standard.announceOffTrack
+    @State var toggleSpunState = UserDefaults.standard.announceSpun
     
-    @State var toggleFlagBlueState = GetSettingsToggle(forKey: "announce.flags.blue", defaultValue: false)
-    @State var toggleFlagChequeredState = GetSettingsToggle(forKey: "announce.flags.chequered", defaultValue: true)
-    @State var toggleFlagYellowState = GetSettingsToggle(forKey: "announce.flags.yellow", defaultValue: true)
-    @State var toggleFlagDoubleYellowState = GetSettingsToggle(forKey: "announce.flags.doubleYellow", defaultValue: true)
-    @State var toggleFlagGreenState = GetSettingsToggle(forKey: "announce.flags.green", defaultValue: true)
-    @State var toggleFlagRedState = GetSettingsToggle(forKey: "announce.flags.red", defaultValue: true)
-    @State var toggleFlagMeatballState = GetSettingsToggle(forKey: "announce.flags.meatball", defaultValue: true)
-    @State var toggleFlagBlackWhiteState = GetSettingsToggle(forKey: "announce.flags.blackWhite", defaultValue: true)
-    
-    
-    @State var toggleDeletedTimesState = GetSettingsToggle(forKey: "announce.deletedLaps", defaultValue: true)
-    @State var toggleMissedApexState = GetSettingsToggle(forKey: "announce.missedApex", defaultValue: true)
-    @State var toggleOffTrackState = GetSettingsToggle(forKey: "announce.offTrack", defaultValue: true)
-    @State var toggleSpunState = GetSettingsToggle(forKey: "announce.mazespin", defaultValue: true)
-    
-    
-    //@State var apiBaseUrl = UserDefaults.standard.string(forKey: "api.url") ?? ""
     @ObservedObject private var apiBaseUrlTextViewModel = TextViewModel(text: UserDefaults.standard.apiUrl)
     
-    
     @State var hoverFlagName: String? = nil
+    
+    @State var flagToggleItems: [EnumToggleList.ItemModel] = getAvailableFlagItems()
+    
+    
+    private static func getAvailableFlagItems() -> [EnumToggleList.ItemModel] {
+        FlagColor.allCases.map { flagColor in
+            return EnumToggleList.ItemModel(code: flagColor.rawValue, label: flagColor.description, isEnabled: false)
+        }
+    }
     
     
     private static func GetSettingsToggle(forKey key: String, defaultValue: Bool = false) -> Bool {
@@ -69,59 +64,49 @@ struct SettingsView: View {
     var body: some View {
         TabView {
             VStack(alignment: .leading) {
-                Toggle(isOn: $toggleDeletedTimesState) {
-                    Text("Announce deleted lap-times")
-                }
-                
-                Toggle(isOn: $toggleMissedApexState) {
-                    Text("Announce \"missed apex\"-messages")
-                }
-                
-                Toggle(isOn: $toggleOffTrackState) {
-                    Text("Announce \"off track and continued\"-messages")
-                }
-                
-                Toggle(isOn: $toggleSpunState) {
-                    Text("Announce \"spun\"-messages")
-                }
-                
-                Toggle(isOn: $toggleFlagsState) {
-                    Text("Announce flags")
-                }
-                
-                VStack(alignment: .leading) {
-                    FlagToggleView(viewModel: FlagToggleView.ViewModel(toggleState: $toggleFlagDoubleYellowState, selctedGifName: $hoverFlagName, label: "Double yellow", gifName: "dyellow.gif"))
-                        .disabled(!toggleFlagsState)
-                    FlagToggleView(viewModel: FlagToggleView.ViewModel(toggleState: $toggleFlagYellowState, selctedGifName: $hoverFlagName, label: "Single yellow", gifName: "yellow.gif"))
-                        .disabled(!toggleFlagsState)
-                    FlagToggleView(viewModel: FlagToggleView.ViewModel(toggleState: $toggleFlagRedState, selctedGifName: $hoverFlagName, label: "Red", gifName: "red.gif"))
-                        .disabled(!toggleFlagsState)
-                    FlagToggleView(viewModel: FlagToggleView.ViewModel(toggleState: $toggleFlagChequeredState, selctedGifName: $hoverFlagName, label: "Chequered", gifName: "chequered.gif"))
-                        .disabled(!toggleFlagsState)
-                    FlagToggleView(viewModel: FlagToggleView.ViewModel(toggleState: $toggleFlagGreenState, selctedGifName: $hoverFlagName, label: "Green", gifName: "green.gif"))
-                        .disabled(!toggleFlagsState)
-                    FlagToggleView(viewModel: FlagToggleView.ViewModel(toggleState: $toggleFlagBlueState, selctedGifName: $hoverFlagName, label: "Blue", gifName: "blue.gif"))
-                        .disabled(!toggleFlagsState)
-                    FlagToggleView(viewModel: FlagToggleView.ViewModel(toggleState: $toggleFlagMeatballState, selctedGifName: $hoverFlagName, label: "Black and Orange flag (meatball)", gifName: "mec.gif"))
-                        .disabled(!toggleFlagsState)
-                    FlagToggleView(viewModel: FlagToggleView.ViewModel(toggleState: $toggleFlagBlackWhiteState, selctedGifName: $hoverFlagName, label: "Black and White flag", gifName: "blackandwhite.gif"))
-                        .disabled(!toggleFlagsState)
-                }
-                .padding(.leading)
-                
-                if let flagGifName = $hoverFlagName.wrappedValue {
-                    AnimatedImage(name: flagGifName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100, height: 100)
-                        .padding(.bottom)
-                    
-                    Button {
-                        hoverFlagName = nil
-                    } label: {
-                        Text("close preview")
+                List {
+                    Section("General messages") {
+                        Toggle(isOn: $toggleDeletedTimesState) {
+                            Text("Announce deleted lap-times")
+                        }
+                        
+                        Toggle(isOn: $toggleMissedApexState) {
+                            Text("Announce \"missed apex\"-messages")
+                        }
+                        
+                        Toggle(isOn: $toggleOffTrackState) {
+                            Text("Announce \"off track and continued\"-messages")
+                        }
+                        
+                        Toggle(isOn: $toggleSpunState) {
+                            Text("Announce \"spun\"-messages")
+                        }
+                    }
+                    Section("Flags") {
+                        // Master-toggle
+                        Toggle(isOn: $toggleFlagsState) {
+                            Text("Announce flags")
+                                .bold()
+                        }
+                        
+                        // Toggles for every flag-color
+                        EnumToggleList(items: $flagToggleItems, allWriteable: $toggleFlagsState)
+                            .padding(.leading)
+                    }
+                    .onAppear {
+                        let enabledFlags = UserDefaults.standard.announceFlagsEnabled
+                        print("All enabled flags: \(enabledFlags)")
+                        for flagToggleItemIndex in flagToggleItems.indices {
+                            print("Check if flag is enabled: \(flagToggleItems[flagToggleItemIndex].code)")
+                            flagToggleItems[flagToggleItemIndex].isEnabled = enabledFlags.contains(where: { enabledFlag in
+                                print("Check flag \(enabledFlag.rawValue) with ID \(flagToggleItems[flagToggleItemIndex].code)")
+                                return enabledFlag.rawValue == flagToggleItems[flagToggleItemIndex].code
+                            })
+                        }
                     }
                 }
+                .listStyle(.inset)
+                .toggleStyle(.switch) // set switch-style for everything in the list
             }
             .tabItem {
                 Text("Messages")
@@ -141,26 +126,32 @@ struct SettingsView: View {
             }
         }
         .padding()
+        .frame(minWidth: 300, idealWidth: 350, minHeight: 300, idealHeight: 450)
         
         VStack {
             Button("Save") {
                 print("Save form")
-                SettingsView.SaveSettingsToggle(forKey: "announce.flags", toggleFlagsState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.flags.yellow", toggleFlagYellowState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.flags.doubleYellow", toggleFlagDoubleYellowState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.flags.blue", toggleFlagBlueState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.flags.chequered", toggleFlagChequeredState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.flags.green", toggleFlagChequeredState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.flags.red", toggleFlagChequeredState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.flags.meatball", toggleFlagMeatballState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.flags.blackWhite", toggleFlagBlackWhiteState)
+                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceFlags, toggleFlagsState)
                 
-                SettingsView.SaveSettingsToggle(forKey: "announce.deletedLaps", toggleDeletedTimesState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.missedApex", toggleMissedApexState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.offTrack", toggleOffTrackState)
-                SettingsView.SaveSettingsToggle(forKey: "announce.mazespin", toggleSpunState)
+                // all enabled flags. Not only those who have been added
+                var newEnabledFlags: [FlagColor] = []
+                for flagStatus in flagToggleItems {
+                    print("Flag \(flagStatus.code): \(flagStatus.isEnabled ? "ENABLED" : "DISABLED")")
+                    if flagStatus.isEnabled {
+                        if let safeFlagColor = FlagColor(rawValue: flagStatus.code) {
+                            newEnabledFlags.append(safeFlagColor)
+                        }
+                    }
+                }
                 
-                UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: "api.url")
+                UserDefaults.standard.announceFlagsEnabled = newEnabledFlags
+                
+                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceDeletedLaps, toggleDeletedTimesState)
+                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceMissedApex, toggleMissedApexState)
+                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceOffTrack, toggleOffTrackState)
+                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceSpun, toggleSpunState)
+                
+                UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: Constants.Settings.Keys.apiUrl)
                 
                 print("successfully saved")
             }
