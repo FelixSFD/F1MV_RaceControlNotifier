@@ -40,6 +40,9 @@ struct Constants {
             static let announceOffTrack = "ANNOUNCE_OFF_TRACK" // announce.offTrack
             
             static let announceSpun = "ANNOUNCE_MAZESPIN" // announce.mazespin
+            
+            /// Key for the ID of the selected audio device
+            static let selectedOutputDevice = "AUDIO_OUTPUT_DEVICE_ID"
         }
         
         /// Default value for the settings key apiUrl

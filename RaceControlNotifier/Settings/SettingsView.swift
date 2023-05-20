@@ -43,6 +43,10 @@ struct SettingsView: View {
     
     @State var flagToggleItems: [EnumToggleList.ItemModel] = getAvailableFlagItems()
     
+    @State var selectedAudioDevice: SimplePickerViewModel? = getDefaultAudioDeviceId()
+    
+    @State var availableAudioDevices: [SimplePickerViewModel] = getAudioDevices()
+    
     
     private static func getAvailableFlagItems() -> [EnumToggleList.ItemModel] {
         FlagColor.allCases.map { flagColor in
@@ -58,6 +62,30 @@ struct SettingsView: View {
     
     private static func SaveSettingsToggle(forKey key: String, _ newValue: Bool) {
         UserDefaults.standard.set(newValue, forKey: key)
+    }
+    
+    
+    private static func getAudioDevices() -> [SimplePickerViewModel] {
+        return AudioDeviceFinder.findDevices()
+            .map { audioDevice in
+                return SimplePickerViewModel(id: audioDevice.audioDeviceID.description, label: audioDevice.name ?? audioDevice.audioDeviceID.description)
+            }
+    }
+    
+    
+    private static func getDefaultAudioDeviceId() -> SimplePickerViewModel? {
+        return getAudioDevices().first
+    }
+    
+    
+    private func getOutputDevice() -> SimplePickerViewModel? {
+        guard let selectedId = UserDefaults.standard.selectedAudioDeviceId else {
+            return SettingsView.getDefaultAudioDeviceId()
+        }
+        
+        return SettingsView.getAudioDevices().first { availableDevice in
+            return availableDevice.id == selectedId
+        } ?? SettingsView.getDefaultAudioDeviceId()
     }
     
     
@@ -113,6 +141,28 @@ struct SettingsView: View {
             }
             
             VStack(alignment: .leading) {
+                Picker("Output Device", selection: $selectedAudioDevice) {
+                    
+                    if self.availableAudioDevices.isEmpty {
+                        Text("No device available")
+                            .tag(nil as SimplePickerViewModel?)
+                            .disabled(true)
+                    }
+                    
+                    ForEach(self.availableAudioDevices) { audioDevice in
+                        Text(audioDevice.label)
+                            .tag(audioDevice as SimplePickerViewModel?)
+                    }
+                }
+            }
+            .tabItem {
+                Text("Audio")
+            }
+            .onAppear {
+                self.selectedAudioDevice = getOutputDevice()
+            }
+            
+            VStack(alignment: .leading) {
                 HStack {
                     Text("Base URL:")
                     TextField("http://...", text: $apiBaseUrlTextViewModel.text)
@@ -152,6 +202,8 @@ struct SettingsView: View {
                 SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceSpun, toggleSpunState)
                 
                 UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: Constants.Settings.Keys.apiUrl)
+                
+                UserDefaults.standard.set(selectedAudioDevice?.id, forKey: Constants.Settings.Keys.selectedOutputDevice)
                 
                 print("successfully saved")
             }

@@ -42,6 +42,8 @@
 		DCA1DCA4290DC9EF002A1AB1 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */; };
 		DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */; };
 		DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCE02F0290F009300867F82 /* MenuBarListView.swift */; };
+		DCD4C62A2A191E33004DD736 /* AudioUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C6292A191E33004DD736 /* AudioUtils.swift */; };
+		DCD4C62C2A19242D004DD736 /* SimplePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */; };
 		DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7ED2A16667B00C3F0EF /* Constants.swift */; };
 		DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */; };
 /* End PBXBuildFile section */
@@ -84,6 +86,8 @@
 		DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListItemView.swift; sourceTree = "<group>"; };
 		DCCE02F0290F009300867F82 /* MenuBarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarListView.swift; sourceTree = "<group>"; };
+		DCD4C6292A191E33004DD736 /* AudioUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioUtils.swift; sourceTree = "<group>"; };
+		DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePickerViewModel.swift; sourceTree = "<group>"; };
 		DCEEC7ED2A16667B00C3F0EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumToggleList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				DC820D3A290FFF6A00745B6A /* Info.plist */,
+				DCD4C6282A191E1D004DD736 /* AudioUtils */,
 				DCCE02EF290F007000867F82 /* MenuBar */,
 				DCA1DCA2290DC9DB002A1AB1 /* MessageList */,
 				DC55030C28F1D8260024113C /* GIFs */,
@@ -157,6 +162,7 @@
 				DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */,
 				DC1874C82A162786004530DA /* UserDefaultsExtensions.swift */,
 				DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */,
+				DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -199,6 +205,14 @@
 				DCCE02F0290F009300867F82 /* MenuBarListView.swift */,
 			);
 			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		DCD4C6282A191E1D004DD736 /* AudioUtils */ = {
+			isa = PBXGroup;
+			children = (
+				DCD4C6292A191E33004DD736 /* AudioUtils.swift */,
+			);
+			path = AudioUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,10 +317,12 @@
 				DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */,
 				DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */,
 				DC5502F728F1C5520024113C /* RaceControlMessageCategory.swift in Sources */,
+				DCD4C62A2A191E33004DD736 /* AudioUtils.swift in Sources */,
 				DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */,
 				DC55032C28F20C660024113C /* FlagPreviewButtonView.swift in Sources */,
 				DC47D8D2288C0FC700A32091 /* RCMFetcher.swift in Sources */,
 				DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */,
+				DCD4C62C2A19242D004DD736 /* SimplePickerViewModel.swift in Sources */,
 				DC1874CB2A163CED004530DA /* DictionaryExtensions.swift in Sources */,
 				DC5502F928F1C58E0024113C /* FlagColor.swift in Sources */,
 				DCA1DCA4290DC9EF002A1AB1 /* MessageListView.swift in Sources */,

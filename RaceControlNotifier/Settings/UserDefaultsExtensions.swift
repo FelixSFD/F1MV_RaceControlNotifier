@@ -72,4 +72,10 @@ extension UserDefaults {
     @objc dynamic var announceSpun: Bool {
         return bool(forKey: Constants.Settings.Keys.announceSpun)
     }
+    
+    
+    /// ID of the selected output device
+    @objc dynamic var selectedAudioDeviceId: String? {
+        return string(forKey: Constants.Settings.Keys.selectedOutputDevice)
+    }
 }
