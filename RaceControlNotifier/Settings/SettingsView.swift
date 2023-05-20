@@ -140,6 +140,7 @@ struct SettingsView: View {
             }
         }
         .padding()
+        .frame(minWidth: 300, idealWidth: 350, minHeight: 300, idealHeight: 450)
         
         VStack {
             Button("Save") {
