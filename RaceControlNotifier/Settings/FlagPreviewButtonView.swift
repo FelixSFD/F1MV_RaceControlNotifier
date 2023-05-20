@@ -16,6 +16,7 @@
 // along with this program.  If not, see https://www.gnu.org/licenses/.
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct FlagPreviewButtonView: View {
     
@@ -23,12 +24,32 @@ struct FlagPreviewButtonView: View {
     
     @Binding var selectedGifName: String?
     
+    @State var showFlagGif: Bool = false
+    
     var body: some View {
         Button {
             selectedGifName = gifName
+            showFlagGif = true
         } label: {
             Image(systemName: "eye.circle")
         }
         .buttonStyle(.plain)
+        .sheet(isPresented: $showFlagGif) {
+            VStack {
+                AnimatedImage(name: gifName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                    .padding(.bottom)
+                
+                Button {
+                    showFlagGif = false
+                } label: {
+                    Text("close preview")
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
+        }
     }
 }

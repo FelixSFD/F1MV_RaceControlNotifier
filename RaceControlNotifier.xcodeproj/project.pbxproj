@@ -43,6 +43,7 @@
 		DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */; };
 		DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCE02F0290F009300867F82 /* MenuBarListView.swift */; };
 		DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7ED2A16667B00C3F0EF /* Constants.swift */; };
+		DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListItemView.swift; sourceTree = "<group>"; };
 		DCCE02F0290F009300867F82 /* MenuBarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarListView.swift; sourceTree = "<group>"; };
 		DCEEC7ED2A16667B00C3F0EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumToggleList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */,
 				DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */,
 				DC1874C82A162786004530DA /* UserDefaultsExtensions.swift */,
+				DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				DC1874C92A162786004530DA /* UserDefaultsExtensions.swift in Sources */,
 				DC1874CD2A1644AC004530DA /* MessageDetailsView.swift in Sources */,
 				DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */,
+				DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */,
 				DC47D8D8288C288E00A32091 /* TextToSpeech.swift in Sources */,
 				DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */,
 				DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */,

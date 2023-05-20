@@ -33,13 +33,20 @@ extension UserDefaults {
     
     /// List of flags to announce. (only when announceFlags is true)
     dynamic var announceFlagsEnabled: [FlagColor] {
-        return object(forKey: Constants.Settings.Keys.announceFlagsEnabled) as! [FlagColor]
-    }
-    
-    
-    /// List of flags to announce. (only when announceFlags is true)
-    dynamic var announceFlagsDisabled: [FlagColor] {
-        return object(forKey: Constants.Settings.Keys.announceFlagsDisabled) as! [FlagColor]
+        get {
+            guard let jsonData = data(forKey: Constants.Settings.Keys.announceFlagsEnabled) else { return [] }
+            guard let array = try? JSONDecoder().decode([FlagColor].self, from: jsonData) else {
+                print("Error reading enabled flags from UserDefaults!")
+                return []
+            }
+            
+            return array
+        }
+        
+        set {
+            let jsonStr = try! JSONEncoder().encode(newValue)
+            setValue(jsonStr, forKey: Constants.Settings.Keys.announceFlagsEnabled)
+        }
     }
     
     

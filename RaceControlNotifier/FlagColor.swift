@@ -19,6 +19,29 @@ import Foundation
 
 
 /// Flags that can be waved at the track
-enum FlagColor {
+enum FlagColor : String, Codable, EnumToggleListCompatible {
+    var description: String {
+        switch (self) {
+        case .blue:
+            return "Blue"
+        case .red:
+            return "Red"
+        case .blackWhite:
+            return "Black and white"
+        case .doubleYellow:
+            return "Double yellow"
+        case .yellow:
+            return "Single yellow"
+        case .chequered:
+            return "Chequered"
+        case .green:
+            return "Green"
+        case .meatball:
+            return "Blag and orange (\"meatball\")"
+        }
+    }
+    
+    var id: String { rawValue }
+    
     case green, yellow, doubleYellow, red, blue, chequered, meatball, blackWhite
 }

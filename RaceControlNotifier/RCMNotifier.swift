@@ -130,37 +130,6 @@ class RCMNotifier: ObservableObject {
     
     
     func flagAnnouncementEnabled(_ flag: FlagColor) -> Bool {
-        let settingsKey: String
-        switch flag {
-        case .green:
-            settingsKey = "announce.flags.green"
-            break;
-        case .blue:
-            settingsKey = "announce.flags.blue"
-            break;
-        case .yellow:
-            settingsKey = "announce.flags.yellow"
-            break;
-        case .doubleYellow:
-            settingsKey = "announce.flags.doubleYellow"
-            break;
-        case .red:
-            settingsKey = "announce.flags.red"
-            break;
-        case .chequered:
-            settingsKey = "announce.flags.chequered"
-            break;
-        case .meatball:
-            settingsKey = "announce.flags.meatball"
-            break;
-        case .blackWhite:
-            settingsKey = "announce.flags.blackWhite"
-            break;
-//        default:
-//            print("unexpected flag!")
-//            return true
-        }
-        
-        return UserDefaults.standard.bool(forKey: settingsKey)
+        return UserDefaults.standard.announceFlagsEnabled.contains(where: { $0 == flag })
     }
 }
