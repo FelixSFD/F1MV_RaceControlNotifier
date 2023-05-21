@@ -27,7 +27,7 @@ class DisvoceredDevicesViewModel: ObservableObject {
     @Published var discoveredDevices: [Peer]
     
     private let bonjour: BonjourSession = BonjourSession(configuration: BonjourSession.Configuration(serviceType: "MultiViewer",
-                                                                                                     peerName: Host.current().name ?? "Unknown Mac with RaceControlNotifier",
+                                                                                                     peerName: MCPeerID.defaultDisplayName,
                                                                                                      defaults: .standard,
                                                                                                      security: .default,
                                                                                                      invitation: .automatic))
@@ -70,7 +70,7 @@ class MockDisvoceredDevicesViewModel: DisvoceredDevicesViewModel {
     }
     
     override func startDiscovery() {
-        discoveredDevices = (try? [Peer(peer: MCPeerID(displayName: "Sample"), discoveryInfo: nil)]) ?? []
+        discoveredDevices = (try? [Peer(peer: MCPeerID(displayName: "Sample peer"), discoveryInfo: nil)]) ?? []
     }
     
     override func stopDiscovery() {
