@@ -18,6 +18,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 import SimplyCoreAudio
+import Bonjour
 
 
 class TextViewModel: ObservableObject {
@@ -35,6 +36,7 @@ struct SettingsView: View {
     private static let simplyCA = SimplyCoreAudio()
     
     @EnvironmentObject var sca: ObservableSCA
+    @EnvironmentObject var bonjour: DisvoceredDevicesViewModel
     
     @State var toggleFlagsState = UserDefaults.standard.announceFlags
     @State var toggleDeletedTimesState = UserDefaults.standard.announceDeletedLaps
@@ -81,6 +83,24 @@ struct SettingsView: View {
     
     var body: some View {
         TabView {
+            //just for testing
+            VStack(alignment: .leading) {
+                List {
+                    ForEach(bonjour.discoveredDevices) { peer in
+                        Text(peer.name)
+                    }
+                }
+            }
+            .tabItem {
+                Text("Bonjour test")
+            }
+            .onAppear {
+                bonjour.startDiscovery()
+            }
+            .onDisappear {
+                bonjour.stopDiscovery()
+            }
+            
             VStack(alignment: .leading) {
                 List {
                     Section("General messages") {
@@ -197,8 +217,22 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
+
+struct SettingsViewPreviewWrapper: View {
+    @StateObject var bj = MockDisvoceredDevicesViewModel()
+    @StateObject var sca = ObservableSCA()
+    
+    var body: some View {
         SettingsView()
+            .environmentObject(sca)
+            .environmentObject(bj)
+    }
+}
+
+
+struct SettingsView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        SettingsViewPreviewWrapper()
     }
 }

@@ -55,7 +55,7 @@ class RCMNotifier: ObservableObject {
     
     
     public func start() {
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 200, repeats: true) { timer in
             Task {
                 await self.fetchNewMessages()
             }

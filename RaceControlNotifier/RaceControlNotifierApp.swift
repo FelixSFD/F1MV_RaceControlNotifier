@@ -27,6 +27,8 @@ struct RaceControlNotifierApp: App {
     
     @StateObject private var sca = ObservableSCA()
     
+    @StateObject private var bonjour = DisvoceredDevicesViewModel()
+    
     
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
     
@@ -43,6 +45,7 @@ struct RaceControlNotifierApp: App {
         WindowGroup("Settings", id: "settings.window") {
             settingsWindow
                 .environmentObject(sca)
+                .environmentObject(bonjour)
         }
         
         MenuBarExtra(

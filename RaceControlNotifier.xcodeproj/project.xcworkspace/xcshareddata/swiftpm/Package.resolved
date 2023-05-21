@@ -1,6 +1,24 @@
 {
   "pins" : [
     {
+      "identity" : "bonjour",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/eugenebokhan/Bonjour.git",
+      "state" : {
+        "revision" : "4e2912cddb3dcc8ec48370851ba0eb19f1a3e6af",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "discoverable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/benmechen/Discoverable",
+      "state" : {
+        "revision" : "548f5fa34bc6ff1b45de92f80e89466221e2151f",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "sdwebimage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage.git",

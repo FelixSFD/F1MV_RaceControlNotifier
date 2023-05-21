@@ -39,6 +39,9 @@
 		DC55032A28F1D8440024113C /* vsc.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031B28F1D8440024113C /* vsc.gif */; };
 		DC55032C28F20C660024113C /* FlagPreviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */; };
 		DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */; };
+		DC6D20E92A1A122200CF7986 /* Discoverable in Frameworks */ = {isa = PBXBuildFile; productRef = DC6D20E82A1A122200CF7986 /* Discoverable */; };
+		DC6D20EC2A1A15C700CF7986 /* Bonjour in Frameworks */ = {isa = PBXBuildFile; productRef = DC6D20EB2A1A15C700CF7986 /* Bonjour */; };
+		DC6D20EF2A1A190E00CF7986 /* DiscoveredDevicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6D20EE2A1A190E00CF7986 /* DiscoveredDevicesModel.swift */; };
 		DCA1DCA4290DC9EF002A1AB1 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */; };
 		DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */; };
 		DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCE02F0290F009300867F82 /* MenuBarListView.swift */; };
@@ -84,6 +87,7 @@
 		DC55031B28F1D8440024113C /* vsc.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = vsc.gif; sourceTree = "<group>"; };
 		DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPreviewButtonView.swift; sourceTree = "<group>"; };
 		DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagToggleView.swift; sourceTree = "<group>"; };
+		DC6D20EE2A1A190E00CF7986 /* DiscoveredDevicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredDevicesModel.swift; sourceTree = "<group>"; };
 		DC820D3A290FFF6A00745B6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListItemView.swift; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCD4C62F2A1930E5004DD736 /* SimplyCoreAudio in Frameworks */,
+				DC6D20E92A1A122200CF7986 /* Discoverable in Frameworks */,
+				DC6D20EC2A1A15C700CF7986 /* Bonjour in Frameworks */,
 				DC55030B28F1D5C40024113C /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,6 +167,7 @@
 		DC5502F328F1B4590024113C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				DC6D20ED2A1A18EB00CF7986 /* Bonjour */,
 				DC5502F428F1B4690024113C /* SettingsView.swift */,
 				DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */,
 				DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */,
@@ -191,6 +198,14 @@
 				DC55031228F1D8440024113C /* yellow.gif */,
 			);
 			path = GIFs;
+			sourceTree = "<group>";
+		};
+		DC6D20ED2A1A18EB00CF7986 /* Bonjour */ = {
+			isa = PBXGroup;
+			children = (
+				DC6D20EE2A1A190E00CF7986 /* DiscoveredDevicesModel.swift */,
+			);
+			path = Bonjour;
 			sourceTree = "<group>";
 		};
 		DCA1DCA2290DC9DB002A1AB1 /* MessageList */ = {
@@ -239,6 +254,8 @@
 			packageProductDependencies = (
 				DC55030A28F1D5C40024113C /* SDWebImageSwiftUI */,
 				DCD4C62E2A1930E5004DD736 /* SimplyCoreAudio */,
+				DC6D20E82A1A122200CF7986 /* Discoverable */,
+				DC6D20EB2A1A15C700CF7986 /* Bonjour */,
 			);
 			productName = RaceControlNotifier;
 			productReference = DC47D8BF288C0FA200A32091 /* RaceControlNotifier.app */;
@@ -272,6 +289,8 @@
 			packageReferences = (
 				DC55030928F1D5C40024113C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				DCD4C62D2A1930E5004DD736 /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */,
+				DC6D20E72A1A122200CF7986 /* XCRemoteSwiftPackageReference "Discoverable" */,
+				DC6D20EA2A1A15C700CF7986 /* XCRemoteSwiftPackageReference "Bonjour" */,
 			);
 			productRefGroup = DC47D8C0288C0FA200A32091 /* Products */;
 			projectDirPath = "";
@@ -330,6 +349,7 @@
 				DC55032C28F20C660024113C /* FlagPreviewButtonView.swift in Sources */,
 				DC47D8D2288C0FC700A32091 /* RCMFetcher.swift in Sources */,
 				DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */,
+				DC6D20EF2A1A190E00CF7986 /* DiscoveredDevicesModel.swift in Sources */,
 				DCD4C62C2A19242D004DD736 /* SimplePickerViewModel.swift in Sources */,
 				DC1874CB2A163CED004530DA /* DictionaryExtensions.swift in Sources */,
 				DC5502F928F1C58E0024113C /* FlagColor.swift in Sources */,
@@ -543,6 +563,22 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		DC6D20E72A1A122200CF7986 /* XCRemoteSwiftPackageReference "Discoverable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/benmechen/Discoverable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+		DC6D20EA2A1A15C700CF7986 /* XCRemoteSwiftPackageReference "Bonjour" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/eugenebokhan/Bonjour.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		DCD4C62D2A1930E5004DD736 /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rnine/SimplyCoreAudio";
@@ -558,6 +594,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC55030928F1D5C40024113C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		DC6D20E82A1A122200CF7986 /* Discoverable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC6D20E72A1A122200CF7986 /* XCRemoteSwiftPackageReference "Discoverable" */;
+			productName = Discoverable;
+		};
+		DC6D20EB2A1A15C700CF7986 /* Bonjour */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC6D20EA2A1A15C700CF7986 /* XCRemoteSwiftPackageReference "Bonjour" */;
+			productName = Bonjour;
 		};
 		DCD4C62E2A1930E5004DD736 /* SimplyCoreAudio */ = {
 			isa = XCSwiftPackageProductDependency;
