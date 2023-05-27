@@ -66,11 +66,10 @@ class DisvoceredDevicesViewModel: ObservableObject {
 
 class MockDisvoceredDevicesViewModel: DisvoceredDevicesViewModel {
     override init(isDiscovering: Bool = false, discoveredDevices: [Peer] = []) {
-        super.init(isDiscovering: false, discoveredDevices: [])
+        super.init(isDiscovering: false, discoveredDevices: discoveredDevices)
     }
     
     override func startDiscovery() {
-        discoveredDevices = (try? [Peer(peer: MCPeerID(displayName: "Sample peer"), discoveryInfo: nil)]) ?? []
     }
     
     override func stopDiscovery() {

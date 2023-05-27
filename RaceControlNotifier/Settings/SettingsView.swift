@@ -33,8 +33,6 @@ class TextViewModel: ObservableObject {
 
 
 struct SettingsView: View {
-    private static let simplyCA = SimplyCoreAudio()
-    
     @EnvironmentObject var sca: ObservableSCA
     @EnvironmentObject var bonjour: DisvoceredDevicesViewModel
     
@@ -51,6 +49,10 @@ struct SettingsView: View {
     @State var flagToggleItems: [EnumToggleList.ItemModel] = getAvailableFlagItems()
     
     @State var selectedAudioDevice: ObservableAudioDevice?
+    
+    @State var apiHostSelectedPeer: Peer? = nil
+    @State var apiHostSearchLoading: Bool = false
+    @State var apiHostOverwriteUrlAlertShowing: Bool = false
     
     
     private static func getAvailableFlagItems() -> [EnumToggleList.ItemModel] {
@@ -83,24 +85,6 @@ struct SettingsView: View {
     
     var body: some View {
         TabView {
-            //just for testing
-            VStack(alignment: .leading) {
-                List {
-                    ForEach(bonjour.discoveredDevices) { peer in
-                        Text(peer.name)
-                    }
-                }
-            }
-            .tabItem {
-                Text("Bonjour test")
-            }
-            .onAppear {
-                bonjour.startDiscovery()
-            }
-            .onDisappear {
-                bonjour.stopDiscovery()
-            }
-            
             VStack(alignment: .leading) {
                 List {
                     Section("General messages") {
@@ -166,12 +150,41 @@ struct SettingsView: View {
                     Text("Base URL:")
                     TextField("http://...", text: $apiBaseUrlTextViewModel.text)
                 }
-                .padding()
                 
                 Spacer()
+                Spacer()
+                
+                HStack {
+                    Text("Searching MultiViewer API hosts in your local network")
+                    ActivityIndicator($apiHostSearchLoading, style: .medium)
+                }
+                ApiHostSelectionView(viewModel: ApiHostSelectionView.ViewModel(selectedPeer: $apiHostSelectedPeer))
             }
+            .padding()
             .tabItem {
                 Text("API Configuration")
+            }
+            .onAppear {
+                apiHostSearchLoading = true
+                bonjour.startDiscovery()
+            }
+            .onDisappear {
+                bonjour.stopDiscovery()
+                apiHostSearchLoading = false
+            }
+            .onChange(of: apiHostSelectedPeer) { newValue in
+                apiHostOverwriteUrlAlertShowing = newValue != nil
+            }
+            .alert(isPresented: $apiHostOverwriteUrlAlertShowing) {
+                Alert(
+                    title: Text("Overwrite API-URL?"),
+                    message: Text("Do you want to overwrite the API-URL based on the address of the device '\(apiHostSelectedPeer?.name ?? "unknown device")'?"),
+                    primaryButton: .default(Text("Overwrite")) {
+                        print("Overwriting url...")
+                        print(apiHostSelectedPeer?.discoveryInfo)
+                    },
+                    secondaryButton: .cancel()
+                )
             }
         }
         .padding()
@@ -218,21 +231,14 @@ struct SettingsView: View {
 }
 
 
-struct SettingsViewPreviewWrapper: View {
-    @StateObject var bj = MockDisvoceredDevicesViewModel()
-    @StateObject var sca = ObservableSCA()
-    
-    var body: some View {
-        SettingsView()
-            .environmentObject(sca)
-            .environmentObject(bj)
-    }
-}
-
-
 struct SettingsView_Previews: PreviewProvider {
-    
     static var previews: some View {
-        SettingsViewPreviewWrapper()
+        SettingsView()
+            .environmentObject({ () -> ObservableSCA in
+                return ObservableSCA()
+            }())
+            .environmentObject({ () -> DisvoceredDevicesViewModel in
+                return MockDisvoceredDevicesViewModel()
+            }())
     }
 }
