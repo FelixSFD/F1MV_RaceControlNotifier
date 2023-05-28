@@ -21,7 +21,7 @@
 		DC5502F528F1B4690024113C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5502F428F1B4690024113C /* SettingsView.swift */; };
 		DC5502F728F1C5520024113C /* RaceControlMessageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5502F628F1C5520024113C /* RaceControlMessageCategory.swift */; };
 		DC5502F928F1C58E0024113C /* FlagColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5502F828F1C58E0024113C /* FlagColor.swift */; };
-		DC55030B28F1D5C40024113C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DC55030A28F1D5C40024113C /* SDWebImageSwiftUI */; };
+		DC55030B28F1D5C40024113C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; platformFilters = (macos, ); productRef = DC55030A28F1D5C40024113C /* SDWebImageSwiftUI */; };
 		DC55031C28F1D8440024113C /* red.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55030D28F1D8430024113C /* red.gif */; };
 		DC55031D28F1D8440024113C /* chequered.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55030E28F1D8440024113C /* chequered.gif */; };
 		DC55031E28F1D8440024113C /* void.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55030F28F1D8440024113C /* void.gif */; };
@@ -43,7 +43,7 @@
 		DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */; };
 		DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCE02F0290F009300867F82 /* MenuBarListView.swift */; };
 		DCD4C62C2A19242D004DD736 /* SimplePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */; };
-		DCD4C62F2A1930E5004DD736 /* SimplyCoreAudio in Frameworks */ = {isa = PBXBuildFile; productRef = DCD4C62E2A1930E5004DD736 /* SimplyCoreAudio */; };
+		DCD4C62F2A1930E5004DD736 /* SimplyCoreAudio in Frameworks */ = {isa = PBXBuildFile; platformFilters = (macos, ); productRef = DCD4C62E2A1930E5004DD736 /* SimplyCoreAudio */; };
 		DCD4C6312A193530004DD736 /* ObservableSCA.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C6302A193530004DD736 /* ObservableSCA.swift */; };
 		DCD4C6332A193549004DD736 /* ObservableAudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C6322A193549004DD736 /* ObservableAudioDevice.swift */; };
 		DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7ED2A16667B00C3F0EF /* Constants.swift */; };
@@ -478,8 +478,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.felixsfd.RaceControlNotifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -506,8 +510,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.felixsfd.RaceControlNotifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

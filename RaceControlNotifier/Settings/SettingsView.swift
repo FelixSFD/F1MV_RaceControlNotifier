@@ -16,8 +16,11 @@
 // along with this program.  If not, see https://www.gnu.org/licenses/.
 
 import SwiftUI
+
+#if os(macOS)
 import SDWebImageSwiftUI
 import SimplyCoreAudio
+#endif
 
 
 class TextViewModel: ObservableObject {
@@ -32,9 +35,11 @@ class TextViewModel: ObservableObject {
 
 
 struct SettingsView: View {
+    #if os(macOS)
     private static let simplyCA = SimplyCoreAudio()
     
     @EnvironmentObject var sca: ObservableSCA
+    #endif
     
     @State var toggleFlagsState = UserDefaults.standard.announceFlags
     @State var toggleDeletedTimesState = UserDefaults.standard.announceDeletedLaps
@@ -48,7 +53,9 @@ struct SettingsView: View {
     
     @State var flagToggleItems: [EnumToggleList.ItemModel] = getAvailableFlagItems()
     
+    #if os(macOS)
     @State var selectedAudioDevice: ObservableAudioDevice?
+    #endif
     
     
     private static func getAvailableFlagItems() -> [EnumToggleList.ItemModel] {
@@ -68,6 +75,7 @@ struct SettingsView: View {
     }
     
     
+    #if os(macOS)
     private func getOutputDevice() -> ObservableAudioDevice? {
         guard let selectedId = UserDefaults.standard.selectedAudioDeviceId else {
             return nil
@@ -77,6 +85,7 @@ struct SettingsView: View {
             return availableDevice.id.description == selectedId
         }
     }
+    #endif
     
     
     var body: some View {
@@ -130,6 +139,7 @@ struct SettingsView: View {
                 Text("Messages")
             }
             
+            #if os(macOS)
             VStack(alignment: .leading) {
                 Text("Output device:")
                 List(sca.devices, id: \.self, selection: $selectedAudioDevice) {
@@ -140,6 +150,7 @@ struct SettingsView: View {
             .tabItem {
                 Text("Audio")
             }
+            #endif
             
             VStack(alignment: .leading) {
                 HStack {
@@ -182,8 +193,10 @@ struct SettingsView: View {
                 
                 UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: Constants.Settings.Keys.apiUrl)
                 
+                #if os(macOS)
                 UserDefaults.standard.set(selectedAudioDevice?.id, forKey: Constants.Settings.Keys.selectedOutputDevice)
                 sca.loadDefaultDeviceFromUserDefaults()
+                #endif
                 
                 print("successfully saved")
             }
@@ -191,9 +204,11 @@ struct SettingsView: View {
             .padding(.top)
         }
         .padding()
+        #if os(macOS)
         .onAppear {
             self.selectedAudioDevice = getOutputDevice()
         }
+        #endif
     }
 }
 

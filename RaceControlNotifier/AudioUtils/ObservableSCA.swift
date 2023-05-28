@@ -5,8 +5,11 @@
 //  Created by Ruben Nine on 27/3/21.
 //
 
+#if os(macOS)
+
 import Foundation
 import SimplyCoreAudio
+
 
 class ObservableSCA: ObservableObject {
     @Published var devices = [ObservableAudioDevice]()
@@ -126,3 +129,5 @@ private extension ObservableSCA {
         observers.removeAll()
     }
 }
+
+#endif

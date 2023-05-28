@@ -5,9 +5,12 @@
 //  Created by Ruben Nine on 27/3/21.
 //
 
+#if os(macOS)
+
 import Foundation
 import SimplyCoreAudio
 import CoreAudio
+
 
 class ObservableAudioDevice: ObservableObject {
     @Published var id: AudioObjectID
@@ -97,3 +100,5 @@ func == (lhs: ObservableAudioDevice, rhs: ObservableAudioDevice) -> Bool {
 func < (lhs: ObservableAudioDevice, rhs: ObservableAudioDevice) -> Bool {
     return lhs.name < rhs.name
 }
+
+#endif
