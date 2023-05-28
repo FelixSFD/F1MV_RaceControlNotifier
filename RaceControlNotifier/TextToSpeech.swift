@@ -73,11 +73,6 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     override init() {
         super.init()
         synthesizer.delegate = self
-        
-        let voices = AVSpeechSynthesisVoice.speechVoices()
-        voices.filter({ $0.quality == .premium}).forEach { voice in
-            print("Voice: \(voice)")
-        }
     }
     
     

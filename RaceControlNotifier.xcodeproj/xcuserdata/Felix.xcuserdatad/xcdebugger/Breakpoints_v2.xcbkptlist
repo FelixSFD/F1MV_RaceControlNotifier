@@ -46,8 +46,8 @@
             filePath = "RaceControlNotifier/TextToSpeech.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "sayInternal(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "RaceControlNotifier/TextToSpeech.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "speechSynthesizer(_:didFinish:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,103 +94,10 @@
             filePath = "RaceControlNotifier/TextToSpeech.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "say(_:messageId:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "480F0327-FEC9-4348-AA61-B0C04953DABE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RaceControlNotifier/TextToSpeech.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "init()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "480F0327-FEC9-4348-AA61-B0C04953DABE - 989826ad7a1d5329"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RaceControlNotifier.TextToSpeech.init() -&gt; RaceControlNotifier.TextToSpeech"
-                  moduleName = "RaceControlNotifier"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Felix/Xcode%20Projects/RaceControlNotifier/RaceControlNotifier/TextToSpeech.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "2912">
-               </Location>
-               <Location
-                  uuid = "480F0327-FEC9-4348-AA61-B0C04953DABE - f82b085eae9c85f6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.AVSpeechSynthesisVoice) -&gt; () in RaceControlNotifier.TextToSpeech.init() -&gt; RaceControlNotifier.TextToSpeech"
-                  moduleName = "RaceControlNotifier"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Felix/Xcode%20Projects/RaceControlNotifier/RaceControlNotifier/TextToSpeech.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "480F0327-FEC9-4348-AA61-B0C04953DABE - 989826ad7a1d5329"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RaceControlNotifier.TextToSpeech.init() -&gt; RaceControlNotifier.TextToSpeech"
-                  moduleName = "RaceControlNotifier"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Felix/Xcode%20Projects/RaceControlNotifier/RaceControlNotifier/TextToSpeech.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "2948">
-               </Location>
-               <Location
-                  uuid = "480F0327-FEC9-4348-AA61-B0C04953DABE - 715dfa3958cc6f74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.AVSpeechSynthesisVoice) -&gt; Swift.Bool in RaceControlNotifier.TextToSpeech.init() -&gt; RaceControlNotifier.TextToSpeech"
-                  moduleName = "RaceControlNotifier"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Felix/Xcode%20Projects/RaceControlNotifier/RaceControlNotifier/TextToSpeech.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "480F0327-FEC9-4348-AA61-B0C04953DABE - 98aaae208cd46bf5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (__C.AVSpeechSynthesisVoice) -&gt; () in RaceControlNotifier.TextToSpeech.init() -&gt; RaceControlNotifier.TextToSpeech"
-                  moduleName = "RaceControlNotifier"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Felix/Xcode%20Projects/RaceControlNotifier/RaceControlNotifier/TextToSpeech.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
