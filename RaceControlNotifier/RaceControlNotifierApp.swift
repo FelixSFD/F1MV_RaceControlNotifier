@@ -20,7 +20,7 @@ import SwiftUI
 @main
 struct RaceControlNotifierApp: App {    
     /// Object that handles the speech
-    private static let tts = TextToSpeech()
+    private static let tts = TextToSpeech(voiceId: UserDefaults.standard.voiceId)
     
     
     @State var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: tts)

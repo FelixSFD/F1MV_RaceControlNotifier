@@ -78,4 +78,10 @@ extension UserDefaults {
     @objc dynamic var selectedAudioDeviceId: String? {
         return string(forKey: Constants.Settings.Keys.selectedOutputDevice)
     }
+    
+    
+    /// ID of the selected voice
+    @objc dynamic var voiceId: String {
+        return string(forKey: Constants.Settings.Keys.voiceId) ?? Constants.Settings.defaultVoiceId
+    }
 }
