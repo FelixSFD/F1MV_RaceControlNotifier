@@ -28,10 +28,12 @@ struct SettingsNavView: View {
     
     
     private static func getVoiceEntries() -> [VoiceSelectionItem] {
-        return AVSpeechSynthesisVoice.speechVoices().map { voiceObj in
-            return VoiceSelectionItem(voiceObject: voiceObj)
-        }
-        .sorted(by: { $0.language < $1.language })
+        return AVSpeechSynthesisVoice.speechVoices()
+            .filter({ $0.language.starts(with: "en-") })
+            .map { voiceObj in
+                return VoiceSelectionItem(voiceObject: voiceObj)
+            }
+            .sorted(by: { $0.name < $1.name })
     }
     
     
@@ -78,7 +80,15 @@ struct SettingsNavView: View {
                 self.voiceId = newValue.id
             }
             .onAppear {
-                selectedVoice = availableVoices.first(where: { $0.id == self.voiceId })!
+                guard let setVoice = availableVoices.first(where: { $0.id == self.voiceId }) else {
+                    print("NO VOICE FOUND")
+                    if !availableVoices.isEmpty {
+                        selectedVoice = availableVoices.first!
+                    }
+                    return
+                }
+                
+                selectedVoice = setVoice
             }
             #if os(iOS)
             .navigationBarTitle("Settings")
