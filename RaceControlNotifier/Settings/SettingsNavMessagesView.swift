@@ -23,7 +23,6 @@ struct SettingsNavMessagesView: View {
     @AppStorage(Constants.Settings.Keys.announceOffTrack) var toggleOffTrackState = UserDefaults.standard.announceOffTrack
     @AppStorage(Constants.Settings.Keys.announceSpun) var toggleSpunState = UserDefaults.standard.announceSpun
     
-    // TODO: Save settings
     @State var flagToggleItems: [EnumToggleList.ItemModel] = getAvailableFlagItems()
     @AppStorage(Constants.Settings.Keys.announceFlags) var toggleFlagsState = UserDefaults.standard.announceFlags
     
