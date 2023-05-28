@@ -63,7 +63,7 @@ struct RaceControlNotifierApp: App {
                         Text("Messages")
                     }
                 
-                settingsWindow
+                SettingsNavView()
                     .tabItem {
                         Image(systemName: "gear")
                         Text("Settings")

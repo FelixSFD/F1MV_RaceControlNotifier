@@ -47,6 +47,8 @@
 		DCD4C6312A193530004DD736 /* ObservableSCA.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C6302A193530004DD736 /* ObservableSCA.swift */; };
 		DCD4C6332A193549004DD736 /* ObservableAudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C6322A193549004DD736 /* ObservableAudioDevice.swift */; };
 		DCE1CC672A23A84F0049523E /* SettingsMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC662A23A84F0049523E /* SettingsMessagesView.swift */; };
+		DCE1CC692A23ADA70049523E /* SettingsNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC682A23ADA70049523E /* SettingsNavView.swift */; };
+		DCE1CC6B2A23B0A00049523E /* SettingsNavMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC6A2A23B0A00049523E /* SettingsNavMessagesView.swift */; };
 		DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7ED2A16667B00C3F0EF /* Constants.swift */; };
 		DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */; };
 /* End PBXBuildFile section */
@@ -93,6 +95,8 @@
 		DCD4C6302A193530004DD736 /* ObservableSCA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableSCA.swift; sourceTree = "<group>"; };
 		DCD4C6322A193549004DD736 /* ObservableAudioDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableAudioDevice.swift; sourceTree = "<group>"; };
 		DCE1CC662A23A84F0049523E /* SettingsMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMessagesView.swift; sourceTree = "<group>"; };
+		DCE1CC682A23ADA70049523E /* SettingsNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavView.swift; sourceTree = "<group>"; };
+		DCE1CC6A2A23B0A00049523E /* SettingsNavMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavMessagesView.swift; sourceTree = "<group>"; };
 		DCEEC7ED2A16667B00C3F0EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumToggleList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +174,8 @@
 				DC1874C82A162786004530DA /* UserDefaultsExtensions.swift */,
 				DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */,
 				DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */,
+				DCE1CC682A23ADA70049523E /* SettingsNavView.swift */,
+				DCE1CC6A2A23B0A00049523E /* SettingsNavMessagesView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -318,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC5502F528F1B4690024113C /* SettingsView.swift in Sources */,
+				DCE1CC6B2A23B0A00049523E /* SettingsNavMessagesView.swift in Sources */,
 				DC47D8D6288C132B00A32091 /* RCMNotifier.swift in Sources */,
 				DC1874C92A162786004530DA /* UserDefaultsExtensions.swift in Sources */,
 				DCE1CC672A23A84F0049523E /* SettingsMessagesView.swift in Sources */,
@@ -326,6 +333,7 @@
 				DCD4C6332A193549004DD736 /* ObservableAudioDevice.swift in Sources */,
 				DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */,
 				DC47D8D8288C288E00A32091 /* TextToSpeech.swift in Sources */,
+				DCE1CC692A23ADA70049523E /* SettingsNavView.swift in Sources */,
 				DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */,
 				DCD4C6312A193530004DD736 /* ObservableSCA.swift in Sources */,
 				DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */,

@@ -21,7 +21,7 @@ import SwiftUI
 typealias EnumToggleListCompatible = CaseIterable & Identifiable & CustomStringConvertible & Equatable
 
 struct EnumToggleList : View {
-    struct ItemModel: Identifiable {
+    struct ItemModel: Identifiable, Equatable {
         var id: String { self.code }
         
         let code: String
