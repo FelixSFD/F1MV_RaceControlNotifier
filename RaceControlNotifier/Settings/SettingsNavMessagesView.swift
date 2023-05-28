@@ -53,7 +53,9 @@ struct SettingsNavMessagesView: View {
             Form {
                 SettingsMessagesView(toggleDeletedTimesState: $toggleDeletedTimesState, toggleMissedApexState: $toggleMissedApexState, toggleOffTrackState: $toggleOffTrackState, toggleSpunState: $toggleSpunState, toggleFlagsState: $toggleFlagsState, flagToggleItems: $flagToggleItems)
             }
+            #if os(iOS)
             .navigationBarTitle("Settings")
+            #endif
         }
         .onChange(of: flagToggleItems) { newValue in
             self.saveEnabledFlags()

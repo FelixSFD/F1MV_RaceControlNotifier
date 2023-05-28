@@ -57,7 +57,7 @@ struct RaceControlNotifierApp: App {
         
         WindowGroup {
             TabView {
-                messagesListView
+                MessageListNavView(rcmNotifier: notifier, tts: RaceControlNotifierApp.tts)
                     .tabItem {
                         Image(systemName: "message.and.waveform")
                         Text("Messages")

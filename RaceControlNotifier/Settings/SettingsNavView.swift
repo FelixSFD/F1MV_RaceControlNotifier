@@ -37,7 +37,9 @@ struct SettingsNavView: View {
                 }
 
             }
+            #if os(iOS)
             .navigationBarTitle("Settings")
+            #endif
         }
     }
 }

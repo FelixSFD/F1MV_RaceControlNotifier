@@ -49,6 +49,7 @@
 		DCE1CC672A23A84F0049523E /* SettingsMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC662A23A84F0049523E /* SettingsMessagesView.swift */; };
 		DCE1CC692A23ADA70049523E /* SettingsNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC682A23ADA70049523E /* SettingsNavView.swift */; };
 		DCE1CC6B2A23B0A00049523E /* SettingsNavMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC6A2A23B0A00049523E /* SettingsNavMessagesView.swift */; };
+		DCE1CC6D2A23B6A60049523E /* MessageListNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC6C2A23B6A60049523E /* MessageListNavView.swift */; };
 		DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7ED2A16667B00C3F0EF /* Constants.swift */; };
 		DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		DCE1CC662A23A84F0049523E /* SettingsMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMessagesView.swift; sourceTree = "<group>"; };
 		DCE1CC682A23ADA70049523E /* SettingsNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavView.swift; sourceTree = "<group>"; };
 		DCE1CC6A2A23B0A00049523E /* SettingsNavMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavMessagesView.swift; sourceTree = "<group>"; };
+		DCE1CC6C2A23B6A60049523E /* MessageListNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListNavView.swift; sourceTree = "<group>"; };
 		DCEEC7ED2A16667B00C3F0EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumToggleList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */,
+				DCE1CC6C2A23B6A60049523E /* MessageListNavView.swift */,
 				DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */,
 				DC1874CC2A1644AC004530DA /* MessageDetailsView.swift */,
 			);
@@ -343,6 +346,7 @@
 				DC47D8D2288C0FC700A32091 /* RCMFetcher.swift in Sources */,
 				DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */,
 				DCD4C62C2A19242D004DD736 /* SimplePickerViewModel.swift in Sources */,
+				DCE1CC6D2A23B6A60049523E /* MessageListNavView.swift in Sources */,
 				DC1874CB2A163CED004530DA /* DictionaryExtensions.swift in Sources */,
 				DC5502F928F1C58E0024113C /* FlagColor.swift in Sources */,
 				DCA1DCA4290DC9EF002A1AB1 /* MessageListView.swift in Sources */,
