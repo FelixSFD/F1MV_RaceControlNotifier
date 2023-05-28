@@ -39,6 +39,8 @@
 		DC55032A28F1D8440024113C /* vsc.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55031B28F1D8440024113C /* vsc.gif */; };
 		DC55032C28F20C660024113C /* FlagPreviewButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */; };
 		DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */; };
+		DC74849F2A23DAAF00C0C2F3 /* SettingsVoiceOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74849E2A23DAAF00C0C2F3 /* SettingsVoiceOptionView.swift */; };
+		DC7484A12A23DADA00C0C2F3 /* VoiceSelectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7484A02A23DADA00C0C2F3 /* VoiceSelectionItem.swift */; };
 		DCA1DCA4290DC9EF002A1AB1 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */; };
 		DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */; };
 		DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCE02F0290F009300867F82 /* MenuBarListView.swift */; };
@@ -88,6 +90,8 @@
 		DC55031B28F1D8440024113C /* vsc.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = vsc.gif; sourceTree = "<group>"; };
 		DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPreviewButtonView.swift; sourceTree = "<group>"; };
 		DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagToggleView.swift; sourceTree = "<group>"; };
+		DC74849E2A23DAAF00C0C2F3 /* SettingsVoiceOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVoiceOptionView.swift; sourceTree = "<group>"; };
+		DC7484A02A23DADA00C0C2F3 /* VoiceSelectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSelectionItem.swift; sourceTree = "<group>"; };
 		DC820D3A290FFF6A00745B6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListItemView.swift; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 				DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */,
 				DCE1CC682A23ADA70049523E /* SettingsNavView.swift */,
 				DCE1CC6A2A23B0A00049523E /* SettingsNavMessagesView.swift */,
+				DC74849E2A23DAAF00C0C2F3 /* SettingsVoiceOptionView.swift */,
+				DC7484A02A23DADA00C0C2F3 /* VoiceSelectionItem.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 				DC1874C92A162786004530DA /* UserDefaultsExtensions.swift in Sources */,
 				DCE1CC672A23A84F0049523E /* SettingsMessagesView.swift in Sources */,
 				DC1874CD2A1644AC004530DA /* MessageDetailsView.swift in Sources */,
+				DC7484A12A23DADA00C0C2F3 /* VoiceSelectionItem.swift in Sources */,
 				DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */,
 				DCD4C6332A193549004DD736 /* ObservableAudioDevice.swift in Sources */,
 				DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */,
@@ -341,6 +348,7 @@
 				DCD4C6312A193530004DD736 /* ObservableSCA.swift in Sources */,
 				DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */,
 				DC5502F728F1C5520024113C /* RaceControlMessageCategory.swift in Sources */,
+				DC74849F2A23DAAF00C0C2F3 /* SettingsVoiceOptionView.swift in Sources */,
 				DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */,
 				DC55032C28F20C660024113C /* FlagPreviewButtonView.swift in Sources */,
 				DC47D8D2288C0FC700A32091 /* RCMFetcher.swift in Sources */,

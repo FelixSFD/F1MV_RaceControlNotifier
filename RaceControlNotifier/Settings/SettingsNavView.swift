@@ -19,32 +19,12 @@ import SwiftUI
 import AVFAudio
 
 
-struct VoiceSelectionItem: Identifiable, Equatable, Hashable {
-    var id: String
-    let name: String
-    let quality: AVSpeechSynthesisVoiceQuality
-    let language: String
-    let gender: String
-    
-    let voiceObject: AVSpeechSynthesisVoice
-    
-    init(voiceObject: AVSpeechSynthesisVoice) {
-        self.id = voiceObject.identifier
-        self.name = voiceObject.name
-        self.quality = voiceObject.quality
-        self.language = voiceObject.language
-        self.gender = String(reflecting: voiceObject.gender)
-        self.voiceObject = voiceObject
-    }
-}
-
-
 struct SettingsNavView: View {
     @AppStorage(Constants.Settings.Keys.apiUrl) private var apiUrl: String = UserDefaults.standard.apiUrl
     @AppStorage(Constants.Settings.Keys.voiceId) private var voiceId: String = UserDefaults.standard.voiceId
     
     private let availableVoices: [VoiceSelectionItem] = SettingsNavView.getVoiceEntries()
-    @State private var voiceIndex: Int = 0
+    @State private var selectedVoice: VoiceSelectionItem = VoiceSelectionItem(voiceObject: AVSpeechSynthesisVoice())
     
     
     private static func getVoiceEntries() -> [VoiceSelectionItem] {
@@ -66,18 +46,22 @@ struct SettingsNavView: View {
                 }
                 
                 Section {
-                    Picker("Voice", selection: $voiceIndex) {
-                        ForEach(0 ..< availableVoices.count) {
-                            let voice = self.availableVoices[$0]
-                            
-                            VStack(alignment: .leading) {
-                                Text("\(voice.name)")
-                                Text(voice.language)
-                                    .font(.caption2)
-                            }
+                    Picker("Voice", selection: $selectedVoice) {
+                        ForEach(availableVoices) { voice in
+                            SettingsVoiceOptionView(voice: voice)
+                                .tag(voice)
                         }
                     }
+                    #if os(iOS)
                     .pickerStyle(.navigationLink)
+                    #endif
+                    
+                    Button {
+                        TextToSpeech(voiceId: self.voiceId).say("This is an important message from the FIA: CAR 44 (HAM) is complaining about the car again")
+                    } label: {
+                        Text("Test voice")
+                    }
+
 
                 } header: {
                     Text("Voice")
@@ -90,11 +74,11 @@ struct SettingsNavView: View {
                 }
 
             }
-            .onChange(of: voiceIndex) { newValue in
-                self.voiceId = availableVoices[newValue].id
+            .onChange(of: selectedVoice) { newValue in
+                self.voiceId = newValue.id
             }
             .onAppear {
-                voiceIndex = availableVoices.firstIndex(where: { $0.id == self.voiceId }) ?? 0
+                selectedVoice = availableVoices.first(where: { $0.id == self.voiceId })!
             }
             #if os(iOS)
             .navigationBarTitle("Settings")
