@@ -20,7 +20,11 @@ import Speech
 
 
 class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
+    #if os(macOS)
     private let voice = AVSpeechSynthesisVoice(identifier: "com.apple.voice.premium.en-GB.Malcolm")
+    #else
+    private let voice = AVSpeechSynthesisVoice(identifier: "com.apple.voice.premium.en-GB.Serena")
+    #endif
     
     
     private let synthesizer = AVSpeechSynthesizer()
@@ -52,6 +56,7 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
         "NOR": "Norris",
         "OCO": "Ocon",
         "PER": "Perez",
+        "PIA": "Piastri",
         "RIC": "Ricciardo",
         "RUS": "Russell",
         "SAI": "Sainz",
@@ -68,6 +73,11 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     override init() {
         super.init()
         synthesizer.delegate = self
+        
+        let voices = AVSpeechSynthesisVoice.speechVoices()
+        voices.filter({ $0.quality == .premium}).forEach { voice in
+            print("Voice: \(voice)")
+        }
     }
     
     
