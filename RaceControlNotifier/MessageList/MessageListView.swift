@@ -50,43 +50,46 @@ struct MessageListView: View {
 //            Text("no device selected")
 //        }
         
-        List {
-            ForEach($rcmNotifier.reversedMessages) { message in
-                HStack {
-                    Button {
-                        tts.say(message.message.wrappedValue, messageId: message.id)
-                    } label: {
-                        let symbolName = tts.currentlySpeaking[message.id] == nil ? "play" : "stop.fill"
-                        
-                        Image(systemName: symbolName)
-                            .frame(width: 15)
-                    }
-                    .disabled(tts.currentlySpeaking[message.id] != nil)
-                    
-                    MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue, ttsEnabled: message.ttsEnabled.wrappedValue)
-                        .listRowSeparatorTint(.gray)
-                        .contextMenu {
-                            Button("Details") {
-                                print("Should display sheet now")
-                                showingMessageDetail = message.wrappedValue
-                            }
+        NavigationView {
+            List {
+                ForEach($rcmNotifier.reversedMessages) { message in
+                    HStack {
+                        Button {
+                            tts.say(message.message.wrappedValue, messageId: message.id)
+                        } label: {
+                            let symbolName = tts.currentlySpeaking[message.id] == nil ? "play" : "stop.fill"
+                            
+                            Image(systemName: symbolName)
+                                .frame(width: 15)
                         }
+                        .disabled(tts.currentlySpeaking[message.id] != nil)
+                        
+                        MessageListItemView(messageText: message.message.wrappedValue, date: message.date.wrappedValue, ttsEnabled: message.ttsEnabled.wrappedValue)
+                            .listRowSeparatorTint(.gray)
+                            .contextMenu {
+                                Button("Details") {
+                                    print("Should display sheet now")
+                                    showingMessageDetail = message.wrappedValue
+                                }
+                            }
+                    }
                 }
             }
-        }
-        #if os(macOS)
-        .listStyle(.inset(alternatesRowBackgrounds: true))
-        #endif
-        .sheet(item: $showingMessageDetail) {
-            msgItem in
-            VStack {
-                MessageDetailsView(message: msgItem)
-                Button("Close") {
-                    showingMessageDetail = nil
+#if os(macOS)
+            .listStyle(.inset(alternatesRowBackgrounds: true))
+#endif
+            .sheet(item: $showingMessageDetail) {
+                msgItem in
+                VStack {
+                    MessageDetailsView(message: msgItem)
+                    Button("Close") {
+                        showingMessageDetail = nil
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
-                .buttonStyle(.borderedProminent)
+                .padding()
             }
-            .padding()
+            .navigationTitle(Text("Messages"))
         }
     }
 }
