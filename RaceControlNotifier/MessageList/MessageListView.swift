@@ -29,7 +29,9 @@ struct MessageListView: View {
     var tts: TextToSpeech
     
     
+    #if os(macOS)
     @EnvironmentObject var sca: ObservableSCA
+    #endif
     
     
     @State
@@ -72,7 +74,9 @@ struct MessageListView: View {
                 }
             }
         }
+#if os(macOS)
         .listStyle(.inset(alternatesRowBackgrounds: true))
+#endif
         .sheet(item: $showingMessageDetail) {
             msgItem in
             VStack {
@@ -84,6 +88,7 @@ struct MessageListView: View {
             }
             .padding()
         }
+        .navigationTitle(Text("Messages"))
     }
 }
 

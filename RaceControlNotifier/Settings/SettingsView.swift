@@ -16,8 +16,11 @@
 // along with this program.  If not, see https://www.gnu.org/licenses/.
 
 import SwiftUI
+
+#if os(macOS)
 import SDWebImageSwiftUI
 import SimplyCoreAudio
+#endif
 
 
 class TextViewModel: ObservableObject {
@@ -32,9 +35,11 @@ class TextViewModel: ObservableObject {
 
 
 struct SettingsView: View {
+    #if os(macOS)
     private static let simplyCA = SimplyCoreAudio()
     
     @EnvironmentObject var sca: ObservableSCA
+    #endif
     
     @State var toggleFlagsState = UserDefaults.standard.announceFlags
     @State var toggleDeletedTimesState = UserDefaults.standard.announceDeletedLaps
@@ -48,7 +53,9 @@ struct SettingsView: View {
     
     @State var flagToggleItems: [EnumToggleList.ItemModel] = getAvailableFlagItems()
     
+    #if os(macOS)
     @State var selectedAudioDevice: ObservableAudioDevice?
+    #endif
     
     
     private static func getAvailableFlagItems() -> [EnumToggleList.ItemModel] {
@@ -68,6 +75,7 @@ struct SettingsView: View {
     }
     
     
+    #if os(macOS)
     private func getOutputDevice() -> ObservableAudioDevice? {
         guard let selectedId = UserDefaults.standard.selectedAudioDeviceId else {
             return nil
@@ -77,54 +85,47 @@ struct SettingsView: View {
             return availableDevice.id.description == selectedId
         }
     }
+    #endif
+    
+    
+    private func saveEverything() {
+        print("Save form")
+        SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceFlags, toggleFlagsState)
+        
+        // all enabled flags. Not only those who have been added
+        var newEnabledFlags: [FlagColor] = []
+        for flagStatus in flagToggleItems {
+            print("Flag \(flagStatus.code): \(flagStatus.isEnabled ? "ENABLED" : "DISABLED")")
+            if flagStatus.isEnabled {
+                if let safeFlagColor = FlagColor(rawValue: flagStatus.code) {
+                    newEnabledFlags.append(safeFlagColor)
+                }
+            }
+        }
+        
+        UserDefaults.standard.announceFlagsEnabled = newEnabledFlags
+        
+        SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceDeletedLaps, toggleDeletedTimesState)
+        SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceMissedApex, toggleMissedApexState)
+        SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceOffTrack, toggleOffTrackState)
+        SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceSpun, toggleSpunState)
+        
+        UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: Constants.Settings.Keys.apiUrl)
+        
+        #if os(macOS)
+        UserDefaults.standard.set(selectedAudioDevice?.id, forKey: Constants.Settings.Keys.selectedOutputDevice)
+        sca.loadDefaultDeviceFromUserDefaults()
+        #endif
+        
+        print("successfully saved")
+    }
     
     
     var body: some View {
+        #if os(macOS)
         TabView {
             VStack(alignment: .leading) {
-                List {
-                    Section("General messages") {
-                        Toggle(isOn: $toggleDeletedTimesState) {
-                            Text("Announce deleted lap-times")
-                        }
-                        
-                        Toggle(isOn: $toggleMissedApexState) {
-                            Text("Announce \"missed apex\"-messages")
-                        }
-                        
-                        Toggle(isOn: $toggleOffTrackState) {
-                            Text("Announce \"off track and continued\"-messages")
-                        }
-                        
-                        Toggle(isOn: $toggleSpunState) {
-                            Text("Announce \"spun\"-messages")
-                        }
-                    }
-                    Section("Flags") {
-                        // Master-toggle
-                        Toggle(isOn: $toggleFlagsState) {
-                            Text("Announce flags")
-                                .bold()
-                        }
-                        
-                        // Toggles for every flag-color
-                        EnumToggleList(items: $flagToggleItems, allWriteable: $toggleFlagsState)
-                            .padding(.leading)
-                    }
-                    .onAppear {
-                        let enabledFlags = UserDefaults.standard.announceFlagsEnabled
-                        print("All enabled flags: \(enabledFlags)")
-                        for flagToggleItemIndex in flagToggleItems.indices {
-                            print("Check if flag is enabled: \(flagToggleItems[flagToggleItemIndex].code)")
-                            flagToggleItems[flagToggleItemIndex].isEnabled = enabledFlags.contains(where: { enabledFlag in
-                                print("Check flag \(enabledFlag.rawValue) with ID \(flagToggleItems[flagToggleItemIndex].code)")
-                                return enabledFlag.rawValue == flagToggleItems[flagToggleItemIndex].code
-                            })
-                        }
-                    }
-                }
-                .listStyle(.inset)
-                .toggleStyle(.switch) // set switch-style for everything in the list
+                SettingsMessagesView(toggleDeletedTimesState: $toggleDeletedTimesState, toggleMissedApexState: $toggleMissedApexState, toggleOffTrackState: $toggleOffTrackState, toggleSpunState: $toggleSpunState, toggleFlagsState: $toggleFlagsState, flagToggleItems: $flagToggleItems)
             }
             .tabItem {
                 Text("Messages")
@@ -159,33 +160,7 @@ struct SettingsView: View {
         
         VStack {
             Button("Save") {
-                print("Save form")
-                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceFlags, toggleFlagsState)
-                
-                // all enabled flags. Not only those who have been added
-                var newEnabledFlags: [FlagColor] = []
-                for flagStatus in flagToggleItems {
-                    print("Flag \(flagStatus.code): \(flagStatus.isEnabled ? "ENABLED" : "DISABLED")")
-                    if flagStatus.isEnabled {
-                        if let safeFlagColor = FlagColor(rawValue: flagStatus.code) {
-                            newEnabledFlags.append(safeFlagColor)
-                        }
-                    }
-                }
-                
-                UserDefaults.standard.announceFlagsEnabled = newEnabledFlags
-                
-                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceDeletedLaps, toggleDeletedTimesState)
-                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceMissedApex, toggleMissedApexState)
-                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceOffTrack, toggleOffTrackState)
-                SettingsView.SaveSettingsToggle(forKey: Constants.Settings.Keys.announceSpun, toggleSpunState)
-                
-                UserDefaults.standard.set(apiBaseUrlTextViewModel.text, forKey: Constants.Settings.Keys.apiUrl)
-                
-                UserDefaults.standard.set(selectedAudioDevice?.id, forKey: Constants.Settings.Keys.selectedOutputDevice)
-                sca.loadDefaultDeviceFromUserDefaults()
-                
-                print("successfully saved")
+                self.saveEverything()
             }
             .buttonStyle(.borderedProminent)
             .padding(.top)
@@ -194,6 +169,29 @@ struct SettingsView: View {
         .onAppear {
             self.selectedAudioDevice = getOutputDevice()
         }
+        
+        #else
+        
+        // iOS
+        
+        NavigationView {
+            List {
+                NavigationLink {
+                    SettingsMessagesView(toggleDeletedTimesState: $toggleDeletedTimesState, toggleMissedApexState: $toggleMissedApexState, toggleOffTrackState: $toggleOffTrackState, toggleSpunState: $toggleSpunState, toggleFlagsState: $toggleFlagsState, flagToggleItems: $flagToggleItems)
+                } label: {
+                    Text("Messages")
+                }
+
+            }
+            .navigationTitle("Settings")
+            .toolbar {
+                Button("Save") {
+                    self.saveEverything()
+                }
+            }
+        }
+        
+        #endif
     }
 }
 

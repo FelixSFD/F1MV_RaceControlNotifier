@@ -21,7 +21,7 @@
 		DC5502F528F1B4690024113C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5502F428F1B4690024113C /* SettingsView.swift */; };
 		DC5502F728F1C5520024113C /* RaceControlMessageCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5502F628F1C5520024113C /* RaceControlMessageCategory.swift */; };
 		DC5502F928F1C58E0024113C /* FlagColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5502F828F1C58E0024113C /* FlagColor.swift */; };
-		DC55030B28F1D5C40024113C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DC55030A28F1D5C40024113C /* SDWebImageSwiftUI */; };
+		DC55030B28F1D5C40024113C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; platformFilters = (macos, ); productRef = DC55030A28F1D5C40024113C /* SDWebImageSwiftUI */; };
 		DC55031C28F1D8440024113C /* red.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55030D28F1D8430024113C /* red.gif */; };
 		DC55031D28F1D8440024113C /* chequered.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55030E28F1D8440024113C /* chequered.gif */; };
 		DC55031E28F1D8440024113C /* void.gif in Resources */ = {isa = PBXBuildFile; fileRef = DC55030F28F1D8440024113C /* void.gif */; };
@@ -43,9 +43,13 @@
 		DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */; };
 		DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCE02F0290F009300867F82 /* MenuBarListView.swift */; };
 		DCD4C62C2A19242D004DD736 /* SimplePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */; };
-		DCD4C62F2A1930E5004DD736 /* SimplyCoreAudio in Frameworks */ = {isa = PBXBuildFile; productRef = DCD4C62E2A1930E5004DD736 /* SimplyCoreAudio */; };
+		DCD4C62F2A1930E5004DD736 /* SimplyCoreAudio in Frameworks */ = {isa = PBXBuildFile; platformFilters = (macos, ); productRef = DCD4C62E2A1930E5004DD736 /* SimplyCoreAudio */; };
 		DCD4C6312A193530004DD736 /* ObservableSCA.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C6302A193530004DD736 /* ObservableSCA.swift */; };
 		DCD4C6332A193549004DD736 /* ObservableAudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD4C6322A193549004DD736 /* ObservableAudioDevice.swift */; };
+		DCE1CC672A23A84F0049523E /* SettingsMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC662A23A84F0049523E /* SettingsMessagesView.swift */; };
+		DCE1CC692A23ADA70049523E /* SettingsNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC682A23ADA70049523E /* SettingsNavView.swift */; };
+		DCE1CC6B2A23B0A00049523E /* SettingsNavMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC6A2A23B0A00049523E /* SettingsNavMessagesView.swift */; };
+		DCE1CC6D2A23B6A60049523E /* MessageListNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE1CC6C2A23B6A60049523E /* MessageListNavView.swift */; };
 		DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7ED2A16667B00C3F0EF /* Constants.swift */; };
 		DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +95,10 @@
 		DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePickerViewModel.swift; sourceTree = "<group>"; };
 		DCD4C6302A193530004DD736 /* ObservableSCA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableSCA.swift; sourceTree = "<group>"; };
 		DCD4C6322A193549004DD736 /* ObservableAudioDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableAudioDevice.swift; sourceTree = "<group>"; };
+		DCE1CC662A23A84F0049523E /* SettingsMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMessagesView.swift; sourceTree = "<group>"; };
+		DCE1CC682A23ADA70049523E /* SettingsNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavView.swift; sourceTree = "<group>"; };
+		DCE1CC6A2A23B0A00049523E /* SettingsNavMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavMessagesView.swift; sourceTree = "<group>"; };
+		DCE1CC6C2A23B6A60049523E /* MessageListNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListNavView.swift; sourceTree = "<group>"; };
 		DCEEC7ED2A16667B00C3F0EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumToggleList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,11 +170,14 @@
 			isa = PBXGroup;
 			children = (
 				DC5502F428F1B4690024113C /* SettingsView.swift */,
+				DCE1CC662A23A84F0049523E /* SettingsMessagesView.swift */,
 				DC55032B28F20C660024113C /* FlagPreviewButtonView.swift */,
 				DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */,
 				DC1874C82A162786004530DA /* UserDefaultsExtensions.swift */,
 				DCEEC7F42A167E8800C3F0EF /* EnumToggleList.swift */,
 				DCD4C62B2A19242D004DD736 /* SimplePickerViewModel.swift */,
+				DCE1CC682A23ADA70049523E /* SettingsNavView.swift */,
+				DCE1CC6A2A23B0A00049523E /* SettingsNavMessagesView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -197,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */,
+				DCE1CC6C2A23B6A60049523E /* MessageListNavView.swift */,
 				DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */,
 				DC1874CC2A1644AC004530DA /* MessageDetailsView.swift */,
 			);
@@ -315,13 +327,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC5502F528F1B4690024113C /* SettingsView.swift in Sources */,
+				DCE1CC6B2A23B0A00049523E /* SettingsNavMessagesView.swift in Sources */,
 				DC47D8D6288C132B00A32091 /* RCMNotifier.swift in Sources */,
 				DC1874C92A162786004530DA /* UserDefaultsExtensions.swift in Sources */,
+				DCE1CC672A23A84F0049523E /* SettingsMessagesView.swift in Sources */,
 				DC1874CD2A1644AC004530DA /* MessageDetailsView.swift in Sources */,
 				DCEEC7EE2A16667B00C3F0EF /* Constants.swift in Sources */,
 				DCD4C6332A193549004DD736 /* ObservableAudioDevice.swift in Sources */,
 				DCEEC7F52A167E8800C3F0EF /* EnumToggleList.swift in Sources */,
 				DC47D8D8288C288E00A32091 /* TextToSpeech.swift in Sources */,
+				DCE1CC692A23ADA70049523E /* SettingsNavView.swift in Sources */,
 				DC47D8C5288C0FA200A32091 /* ContentView.swift in Sources */,
 				DCD4C6312A193530004DD736 /* ObservableSCA.swift in Sources */,
 				DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */,
@@ -331,6 +346,7 @@
 				DC47D8D2288C0FC700A32091 /* RCMFetcher.swift in Sources */,
 				DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */,
 				DCD4C62C2A19242D004DD736 /* SimplePickerViewModel.swift in Sources */,
+				DCE1CC6D2A23B6A60049523E /* MessageListNavView.swift in Sources */,
 				DC1874CB2A163CED004530DA /* DictionaryExtensions.swift in Sources */,
 				DC5502F928F1C58E0024113C /* FlagColor.swift in Sources */,
 				DCA1DCA4290DC9EF002A1AB1 /* MessageListView.swift in Sources */,
@@ -478,8 +494,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.felixsfd.RaceControlNotifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -506,8 +526,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.felixsfd.RaceControlNotifier;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

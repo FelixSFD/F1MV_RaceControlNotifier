@@ -25,8 +25,9 @@ struct RaceControlNotifierApp: App {
     
     @State var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: tts)
     
+    #if os(macOS)
     @StateObject private var sca = ObservableSCA()
-    
+    #endif
     
     @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
     
@@ -35,6 +36,7 @@ struct RaceControlNotifierApp: App {
         let settingsWindow = SettingsView()
         let messagesListView = MessageListView(rcmNotifier: notifier, tts: RaceControlNotifierApp.tts)
         
+        #if os(macOS)
         WindowGroup("All Messages", id: "all_messages.window") {
             messagesListView
                 .environmentObject(sca)
@@ -51,5 +53,25 @@ struct RaceControlNotifierApp: App {
         {
             MenuBarListView()
         }
+        #else
+        
+        WindowGroup {
+            TabView {
+                MessageListNavView(rcmNotifier: notifier, tts: RaceControlNotifierApp.tts)
+                    .tabItem {
+                        Image(systemName: "message.and.waveform")
+                        Text("Messages")
+                    }
+                
+                SettingsNavView()
+                    .tabItem {
+                        Image(systemName: "gear")
+                        Text("Settings")
+                    }
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        }
+        
+        #endif
     }
 }
