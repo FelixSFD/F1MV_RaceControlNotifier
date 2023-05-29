@@ -30,6 +30,7 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
         didSet {
             if !currentlySpeaking.isEmpty || synthesizer.isSpeaking {
                 synthesizer.stopSpeaking(at: .word)
+                currentlySpeaking.removeAll()
             }
         }
     }
@@ -87,13 +88,6 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     init(voiceId: String) {
         super.init()
         setup(voiceId: voiceId)
-    }
-    
-    
-    func stopEverything() {
-        currentlySpeaking.forEach { _, utterance in
-            synthesizer.stopSpeaking(at: .word)
-        }
     }
     
     
