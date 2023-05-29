@@ -33,7 +33,7 @@ struct RaceControlNotifierApp: App {
     
     
     var body: some Scene {
-        let settingsWindow = SettingsView()
+        let settingsWindow = SettingsNavView()
         let messagesListView = MessageListView(rcmNotifier: notifier, tts: RaceControlNotifierApp.tts)
         
         #if os(macOS)
@@ -44,7 +44,9 @@ struct RaceControlNotifierApp: App {
         
         WindowGroup("Settings", id: "settings.window") {
             settingsWindow
+                .listStyle(.sidebar)
                 .environmentObject(sca)
+                .environmentObject(RaceControlNotifierApp.tts)
         }
         
         MenuBarExtra(

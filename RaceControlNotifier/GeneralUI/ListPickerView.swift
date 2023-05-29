@@ -49,6 +49,7 @@ struct ListPickerView<TKey: ListPickerKeyType, ID: Hashable, TValue: ListPickerV
                 Section(header: header(section)) {
                     ForEach(items, id: \.self) { item in
                         row(item, item == selection)
+                            .contentShape(Rectangle())
                             .onTapGesture {
                                 selection = item
                             }
@@ -57,6 +58,9 @@ struct ListPickerView<TKey: ListPickerKeyType, ID: Hashable, TValue: ListPickerV
                 
             }
         }
+#if os(macOS)
+        .listStyle(.bordered(alternatesRowBackgrounds: true))
+#endif
     }
     
     

@@ -20,6 +20,10 @@ import AVFAudio
 
 
 struct SettingsNavView: View {
+    private enum NavSelection: Int, CaseIterable {
+        case messages = 1, api = 2, audio = 3
+    }
+    
     @EnvironmentObject private var tts: TextToSpeech
     
     @AppStorage(Constants.Settings.Keys.apiUrl) private var apiUrl: String = UserDefaults.standard.apiUrl
@@ -31,6 +35,8 @@ struct SettingsNavView: View {
     //private let demoTts = TextToSpeech(voiceId: UserDefaults.standard.voiceId)
     @State private var firstVoiceLoad = false;
     
+    @State private var navSelection: NavSelection = .messages
+    
     
     private static func getVoiceEntries() -> [AVSpeechSynthesisVoiceQuality: [VoiceSelectionItem]] {
         return AVSpeechSynthesisVoice.speechVoices()
@@ -41,7 +47,6 @@ struct SettingsNavView: View {
             .sorted(by: { $0.name < $1.name })
             .dictionary(keyPath: \.quality)
     }
-    
     
     var body: some View {
         NavigationStack {
@@ -109,6 +114,9 @@ struct SettingsNavView: View {
             .navigationBarTitle("Settings")
             #endif
         }
+        #if os(macOS)
+        .formStyle(.grouped)
+        #endif
     }
 }
 
