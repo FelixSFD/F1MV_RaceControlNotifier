@@ -25,6 +25,7 @@ struct SettingsNavView: View {
     }
     
     @EnvironmentObject private var tts: TextToSpeech
+    @EnvironmentObject private var rcmNotifier: RCMNotifier
     
     @AppStorage(Constants.Settings.Keys.apiUrl) private var apiUrl: String = UserDefaults.standard.apiUrl
     @AppStorage(Constants.Settings.Keys.voiceId) private var voiceId: String = UserDefaults.standard.voiceId
@@ -67,6 +68,9 @@ struct SettingsNavView: View {
                     #if os(iOS)
                     Text("The URL is usually in the format:\nhttp://<MultiViewer-IP>:10101/api")
                     #endif
+                }
+                .onChange(of: apiUrl) { newValue in
+                    rcmNotifier.apiBaseUrl = newValue
                 }
                 
                 Section {

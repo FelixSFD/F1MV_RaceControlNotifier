@@ -24,7 +24,7 @@ struct RaceControlNotifierApp: App {
     private static let tts = TextToSpeech(voiceId: UserDefaults.standard.voiceId)
     
     
-    @State var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: tts)
+    private var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: tts)
     
     #if os(macOS)
     @StateObject private var sca = ObservableSCA()
@@ -50,6 +50,7 @@ struct RaceControlNotifierApp: App {
                 .listStyle(.sidebar)
                 .environmentObject(sca)
                 .environmentObject(RaceControlNotifierApp.tts)
+                .environmentObject(notifier)
         }
         
         MenuBarExtra(
@@ -72,6 +73,7 @@ struct RaceControlNotifierApp: App {
                 
                 SettingsNavView()
                     .environmentObject(RaceControlNotifierApp.tts)
+                    .environmentObject(notifier)
                     .tabItem {
                         Image(systemName: "gear")
                         Text("Settings")

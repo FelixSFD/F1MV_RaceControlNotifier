@@ -29,6 +29,12 @@ class RCMNotifier: ObservableObject {
     
     var observer: NSKeyValueObservation?
     
+
+    var apiBaseUrl: String {
+        get { fetcher.apiBaseUrl }
+        set { fetcher.apiBaseUrl = newValue }
+    }
+    
     
     /// Reversed messages to make it easier to display the latest message on top
     @Published var reversedMessages: [RaceControlMessageModel] = []
