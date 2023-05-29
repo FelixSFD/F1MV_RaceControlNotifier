@@ -18,16 +18,24 @@
 import SwiftUI
 
 struct MessageListNavView: View {
-    @ObservedObject
+    @EnvironmentObject
     var rcmNotifier: RCMNotifier
     
-    @ObservedObject
-    var tts: TextToSpeech
-    
     var body: some View {
-        NavigationView {
-            MessageListView(rcmNotifier: rcmNotifier, tts: tts)
-                .listStyle(.plain)
+        NavigationStack {
+            ZStack {
+                MessageListView()
+                    .listStyle(.plain)
+                
+                if rcmNotifier.status == .error {
+                    VStack {
+                        Image(systemName: "exclamationmark.triangle")
+                            .font(.largeTitle)
+                            .padding()
+                        Text("Could not fetch messages from Race Control. Please check your connection to MultiViewer.")
+                    }
+                }
+            }
         }
         .navigationTitle(Text("Messages"))
     }
@@ -39,6 +47,7 @@ struct MessageListNavView_Previews: PreviewProvider {
     private static var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: TextToSpeech())
     
     static var previews: some View {
-        MessageListView(rcmNotifier: notifier, tts: TextToSpeech())
+        MessageListView()
+            .environmentObject(notifier)
     }
 }

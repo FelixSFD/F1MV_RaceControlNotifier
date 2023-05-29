@@ -24,7 +24,7 @@ struct RaceControlNotifierApp: App {
     private static let tts = TextToSpeech(voiceId: UserDefaults.standard.voiceId)
     
     
-    @State var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: tts)
+    private var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: tts)
     
     #if os(macOS)
     @StateObject private var sca = ObservableSCA()
@@ -35,12 +35,14 @@ struct RaceControlNotifierApp: App {
     
     var body: some Scene {
         let settingsWindow = SettingsNavView()
-        let messagesListView = MessageListView(rcmNotifier: notifier, tts: RaceControlNotifierApp.tts)
+        let messagesListView = MessageListView()
         
         #if os(macOS)
         WindowGroup("All Messages", id: "all_messages.window") {
             messagesListView
                 .environmentObject(sca)
+                .environmentObject(RaceControlNotifierApp.tts)
+                .environmentObject(notifier)
         }
         
         WindowGroup("Settings", id: "settings.window") {
@@ -48,6 +50,7 @@ struct RaceControlNotifierApp: App {
                 .listStyle(.sidebar)
                 .environmentObject(sca)
                 .environmentObject(RaceControlNotifierApp.tts)
+                .environmentObject(notifier)
         }
         
         MenuBarExtra(
@@ -60,7 +63,9 @@ struct RaceControlNotifierApp: App {
         
         WindowGroup {
             TabView {
-                MessageListNavView(rcmNotifier: notifier, tts: RaceControlNotifierApp.tts)
+                MessageListNavView()
+                    .environmentObject(RaceControlNotifierApp.tts)
+                    .environmentObject(notifier)
                     .tabItem {
                         Image(systemName: "message.and.waveform")
                         Text("Messages")
@@ -68,6 +73,7 @@ struct RaceControlNotifierApp: App {
                 
                 SettingsNavView()
                     .environmentObject(RaceControlNotifierApp.tts)
+                    .environmentObject(notifier)
                     .tabItem {
                         Image(systemName: "gear")
                         Text("Settings")

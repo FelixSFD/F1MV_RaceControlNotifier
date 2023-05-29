@@ -18,15 +18,14 @@
 import SwiftUI
 
 struct MessageListView: View {
-    @ObservedObject
+    @EnvironmentObject
     var rcmNotifier: RCMNotifier
     
     @State
     private var messages: [RaceControlMessageModel] = []
     
     
-    @ObservedObject
-    var tts: TextToSpeech
+    @EnvironmentObject var tts: TextToSpeech
     
     
     #if os(macOS)
@@ -40,6 +39,8 @@ struct MessageListView: View {
     
     @State
     private var showingMessageDetail: RaceControlMessageModel? = nil
+    
+    @State private var showingConnectionErrorSheet: Bool = false
     
     
     var body: some View {
@@ -83,9 +84,38 @@ struct MessageListView: View {
                         .foregroundColor(Color.accentColor)
                 }
             }
+            
+            #if os(macOS)
+            if rcmNotifier.status == .error {
+                Button {
+                    showingConnectionErrorSheet = true
+                } label: {
+                    Image(systemName: "exclamationmark.triangle")
+                        .foregroundColor(Color.accentColor)
+                }
+            } else {
+                // Workaround to always expand navbar on macOS
+                Spacer()
+            }
+            #endif
         })
 #if os(macOS)
         .listStyle(.inset(alternatesRowBackgrounds: true))
+        .navigationSubtitle("Powered by MultiViewer")
+        .sheet(isPresented: $showingConnectionErrorSheet) {
+            VStack {
+                Image(systemName: "exclamationmark.triangle")
+                    .font(.largeTitle)
+                    .padding()
+                Text("Could not fetch messages from Race Control. Please check your connection to MultiViewer.")
+                
+                Button("Close") {
+                    showingConnectionErrorSheet = false
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
+        }
 #endif
         .sheet(item: $showingMessageDetail) {
             msgItem in
@@ -108,7 +138,7 @@ struct MessageListView_Previews: PreviewProvider {
     private static var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: TextToSpeech())
     
     static var previews: some View {
-        MessageListView(rcmNotifier: notifier, tts: TextToSpeech()
-        )
+        MessageListView()
+            .environmentObject(notifier)
     }
 }
