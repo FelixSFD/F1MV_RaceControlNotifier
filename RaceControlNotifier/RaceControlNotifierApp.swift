@@ -35,12 +35,13 @@ struct RaceControlNotifierApp: App {
     
     var body: some Scene {
         let settingsWindow = SettingsNavView()
-        let messagesListView = MessageListView(rcmNotifier: notifier, tts: RaceControlNotifierApp.tts)
+        let messagesListView = MessageListView(rcmNotifier: notifier)
         
         #if os(macOS)
         WindowGroup("All Messages", id: "all_messages.window") {
             messagesListView
                 .environmentObject(sca)
+                .environmentObject(RaceControlNotifierApp.tts)
         }
         
         WindowGroup("Settings", id: "settings.window") {
@@ -61,6 +62,7 @@ struct RaceControlNotifierApp: App {
         WindowGroup {
             TabView {
                 MessageListNavView(rcmNotifier: notifier, tts: RaceControlNotifierApp.tts)
+                    .environmentObject(RaceControlNotifierApp.tts)
                     .tabItem {
                         Image(systemName: "message.and.waveform")
                         Text("Messages")

@@ -26,7 +26,7 @@ struct MessageListNavView: View {
     
     var body: some View {
         NavigationView {
-            MessageListView(rcmNotifier: rcmNotifier, tts: tts)
+            MessageListView(rcmNotifier: rcmNotifier)
                 .listStyle(.plain)
         }
         .navigationTitle(Text("Messages"))
@@ -39,6 +39,6 @@ struct MessageListNavView_Previews: PreviewProvider {
     private static var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: TextToSpeech())
     
     static var previews: some View {
-        MessageListView(rcmNotifier: notifier, tts: TextToSpeech())
+        MessageListView(rcmNotifier: notifier)
     }
 }

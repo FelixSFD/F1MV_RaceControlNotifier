@@ -25,8 +25,7 @@ struct MessageListView: View {
     private var messages: [RaceControlMessageModel] = []
     
     
-    @ObservedObject
-    var tts: TextToSpeech
+    @EnvironmentObject var tts: TextToSpeech
     
     
     #if os(macOS)
@@ -108,7 +107,6 @@ struct MessageListView_Previews: PreviewProvider {
     private static var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: TextToSpeech())
     
     static var previews: some View {
-        MessageListView(rcmNotifier: notifier, tts: TextToSpeech()
-        )
+        MessageListView(rcmNotifier: notifier)
     }
 }
