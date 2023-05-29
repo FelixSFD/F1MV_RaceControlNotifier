@@ -22,6 +22,8 @@ typealias ListPickerKeyType = Hashable & Comparable
 typealias ListPickerValueType = Hashable
 
 struct ListPickerView<TKey: ListPickerKeyType, ID: Hashable, TValue: ListPickerValueType, RowContent: View, HeaderContent: View>: View {
+    @Environment(\.dismiss) var dismiss
+    
     @State var data: [TKey: [TValue]]
     @Binding var selection: TValue
     
@@ -31,23 +33,20 @@ struct ListPickerView<TKey: ListPickerKeyType, ID: Hashable, TValue: ListPickerV
     let row: (TValue, Bool) -> RowContent
     let header: (TKey) -> HeaderContent
     
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(data.sorted(by: { $0.key < $1.key }), id: \.key) { section, items in
-                    Section(header: header(section)) {
-                        ForEach(items, id: \.self) { item in
-                            row(item, item == selection)
-                                .onTapGesture {
-                                    selection = item
-                                    self.dismiss()
-                                }
-                        }
+        List {
+            ForEach(data.sorted(by: { $0.key < $1.key }), id: \.key) { section, items in
+                Section(header: header(section)) {
+                    ForEach(items, id: \.self) { item in
+                        row(item, item == selection)
+                            .onTapGesture {
+                                selection = item
+                                self.dismiss()
+                            }
                     }
-                    
                 }
+                
             }
         }
     }

@@ -61,6 +61,7 @@ struct SettingsNavView: View {
                             Text("Voice")
                             Spacer()
                             Text(selectedVoice.name)
+                                .foregroundColor(.secondary)
                         }
                     }
 
