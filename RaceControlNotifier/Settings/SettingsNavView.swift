@@ -59,9 +59,14 @@ struct SettingsNavView: View {
             Form {
                 Section {
                     TextField("API URL", text: $apiUrl)
+                        .textInputAutocapitalization(.never)
                     //LabeledContent("iOS Version", value: "16.2")
                 } header: {
                     Text("API Configuration")
+                } footer: {
+                    #if os(iOS)
+                    Text("The URL is usually in the format:\nhttp://<MultiViewer-IP>:10101/api")
+                    #endif
                 }
                 
                 Section {
