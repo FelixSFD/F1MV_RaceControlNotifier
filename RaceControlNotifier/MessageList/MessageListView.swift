@@ -74,6 +74,16 @@ struct MessageListView: View {
                 }
             }
         }
+        .toolbar(content: {
+            if !tts.currentlySpeaking.isEmpty {
+                Button {
+                    tts.stopEverything(at: .word)
+                } label: {
+                    Image(systemName: "stop.circle")
+                        .foregroundColor(Color.accentColor)
+                }
+            }
+        })
 #if os(macOS)
         .listStyle(.inset(alternatesRowBackgrounds: true))
 #endif

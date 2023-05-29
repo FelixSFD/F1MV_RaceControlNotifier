@@ -29,8 +29,7 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     var voice: AVSpeechSynthesisVoice? = nil {
         didSet {
             if !currentlySpeaking.isEmpty || synthesizer.isSpeaking {
-                synthesizer.stopSpeaking(at: .word)
-                currentlySpeaking.removeAll()
+                stopEverything(at: .word)
             }
         }
     }
@@ -88,6 +87,12 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     init(voiceId: String) {
         super.init()
         setup(voiceId: voiceId)
+    }
+    
+    
+    func stopEverything(at boundary: AVSpeechBoundary = .word) {
+        synthesizer.stopSpeaking(at: boundary)
+        currentlySpeaking.removeAll()
     }
     
     

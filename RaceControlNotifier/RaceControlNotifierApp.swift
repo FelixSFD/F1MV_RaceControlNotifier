@@ -16,6 +16,7 @@
 // along with this program.  If not, see https://www.gnu.org/licenses/.
 
 import SwiftUI
+import AVFAudio
 
 @main
 struct RaceControlNotifierApp: App {    
@@ -73,6 +74,13 @@ struct RaceControlNotifierApp: App {
                     }
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .onAppear {
+                do {
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                } catch {
+                    print("Could not activate audio")
+                }
+            }
         }
         
         #endif
