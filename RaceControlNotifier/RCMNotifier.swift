@@ -19,6 +19,10 @@ import Foundation
 
 
 class RCMNotifier: ObservableObject {
+    enum Status {
+        case ok, error
+    }
+    
     private let fetcher: RCMFetcher
     
     
@@ -38,6 +42,8 @@ class RCMNotifier: ObservableObject {
     
     /// Reversed messages to make it easier to display the latest message on top
     @Published var reversedMessages: [RaceControlMessageModel] = []
+    
+    @Published var status: Status = .ok
     
     
     init(fetcher: RCMFetcher, textToSpeech: TextToSpeech) {
@@ -97,9 +103,18 @@ class RCMNotifier: ObservableObject {
                     }
                 }
             }
+            
+            DispatchQueue.main.async {
+                self.status = .ok
+            }
         }
         catch {
             print(error)
+            DispatchQueue.main.async {
+                self.status = .error
+                self.messages.removeAll()
+                self.reversedMessages.removeAll()
+            }
         }
         
         DispatchQueue.main.async {

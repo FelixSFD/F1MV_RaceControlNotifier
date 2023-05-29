@@ -40,6 +40,8 @@ struct MessageListView: View {
     @State
     private var showingMessageDetail: RaceControlMessageModel? = nil
     
+    @State private var showingConnectionErrorSheet: Bool = false
+    
     
     var body: some View {
 //        let outputDevice = sca.devices.first(where: { $0.isDefaultOutputDevice })
@@ -82,9 +84,38 @@ struct MessageListView: View {
                         .foregroundColor(Color.accentColor)
                 }
             }
+            
+            #if os(macOS)
+            if rcmNotifier.status == .error {
+                Button {
+                    showingConnectionErrorSheet = true
+                } label: {
+                    Image(systemName: "exclamationmark.triangle")
+                        .foregroundColor(Color.accentColor)
+                }
+            } else {
+                // Workaround to always expand navbar on macOS
+                Spacer()
+            }
+            #endif
         })
 #if os(macOS)
         .listStyle(.inset(alternatesRowBackgrounds: true))
+        .navigationSubtitle("Powered by MultiViewer")
+        .sheet(isPresented: $showingConnectionErrorSheet) {
+            VStack {
+                Image(systemName: "exclamationmark.triangle")
+                    .font(.largeTitle)
+                    .padding()
+                Text("Could not fetch messages from Race Control. Please check your connection to MultiViewer.")
+                
+                Button("Close") {
+                    showingConnectionErrorSheet = false
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
+        }
 #endif
         .sheet(item: $showingMessageDetail) {
             msgItem in

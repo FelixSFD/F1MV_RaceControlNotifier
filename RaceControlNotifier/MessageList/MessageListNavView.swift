@@ -22,9 +22,20 @@ struct MessageListNavView: View {
     var rcmNotifier: RCMNotifier
     
     var body: some View {
-        NavigationView {
-            MessageListView()
-                .listStyle(.plain)
+        NavigationStack {
+            ZStack {
+                MessageListView()
+                    .listStyle(.plain)
+                
+                if rcmNotifier.status == .error {
+                    VStack {
+                        Image(systemName: "exclamationmark.triangle")
+                            .font(.largeTitle)
+                            .padding()
+                        Text("Could not fetch messages from Race Control. Please check your connection to MultiViewer.")
+                    }
+                }
+            }
         }
         .navigationTitle(Text("Messages"))
     }

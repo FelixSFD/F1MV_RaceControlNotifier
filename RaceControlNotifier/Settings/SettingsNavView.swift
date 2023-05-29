@@ -60,7 +60,9 @@ struct SettingsNavView: View {
             Form {
                 Section {
                     TextField("API URL", text: $apiUrl)
+                    #if os(iOS)
                         .textInputAutocapitalization(.never)
+                    #endif
                     //LabeledContent("iOS Version", value: "16.2")
                 } header: {
                     Text("API Configuration")
