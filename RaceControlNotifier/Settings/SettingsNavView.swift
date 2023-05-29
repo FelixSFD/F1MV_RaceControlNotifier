@@ -37,6 +37,8 @@ struct SettingsNavView: View {
     
     @State private var navSelection: NavSelection = .messages
     
+    @State private var showVoiceInfoSheet: Bool = false
+    
     
     private static func getVoiceEntries() -> [AVSpeechSynthesisVoiceQuality: [VoiceSelectionItem]] {
         return AVSpeechSynthesisVoice.speechVoices()
@@ -46,6 +48,10 @@ struct SettingsNavView: View {
             }
             .sorted(by: { $0.name < $1.name })
             .dictionary(keyPath: \.quality)
+    }
+    
+    private var voiceHelpView: some View {
+        Text("You can download new voices in Settings -> Accessibility -> Spoken Content.\nIt is recommended to use voices that are marked as \"premium\" or at least \"enhanced\".\n\nIt is not possible to select non-English voices for this application, because all messages are in English.")
     }
     
     var body: some View {
@@ -86,6 +92,33 @@ struct SettingsNavView: View {
                     }
                 } header: {
                     Text("Voice")
+                } footer: {
+                    #if os(iOS)
+                    voiceHelpView
+                    #else
+                    Button {
+                        showVoiceInfoSheet = true
+                    } label: {
+                        Image(systemName: "questionmark.circle")
+                    }
+                    .buttonStyle(.plain)
+
+                    #endif
+                }
+                .sheet(isPresented: $showVoiceInfoSheet) {
+                    VStack {
+                        voiceHelpView
+                            .frame(alignment: .leading)
+                        
+                        Button {
+                            showVoiceInfoSheet = false
+                        } label: {
+                            Text("Close")
+                        }
+                        .frame(alignment: .center)
+                    }
+                    .padding()
+
                 }
                 
                 NavigationLink {
