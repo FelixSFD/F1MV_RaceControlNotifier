@@ -65,7 +65,11 @@ extension AVSpeechSynthesisVoiceGender: CustomStringConvertible {
 
 
 
-extension AVSpeechSynthesisVoiceQuality: CustomStringConvertible, Identifiable {
+extension AVSpeechSynthesisVoiceQuality: CustomStringConvertible, Identifiable, Comparable {
+    public static func < (lhs: AVSpeechSynthesisVoiceQuality, rhs: AVSpeechSynthesisVoiceQuality) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
+    
     public var description: String {
         switch self {
         case .enhanced:

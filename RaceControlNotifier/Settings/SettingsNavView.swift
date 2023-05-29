@@ -50,15 +50,12 @@ struct SettingsNavView: View {
                 
                 Section {
                     NavigationLink {
-                        List {
-                            ForEach(availableVoices.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \.key) { section, items in
-                                Section(header: Text(section.description)) {
-                                    ForEach(items, id: \.self) { item in
-                                        SettingsVoiceOptionView(voice: item, selected: item == selectedVoice)
-                                    }
-                                }
-                            }
+                        ListPickerView(data: availableVoices, selection: $selectedVoice, id: \.id) { voice, selected in
+                            SettingsVoiceOptionView(voice: voice, selected: selected)
+                        } header: { quality in
+                            Text("\(quality.description) quality")
                         }
+                        .navigationTitle("Select voice")
                     } label: {
                         HStack {
                             Text("Voice")
