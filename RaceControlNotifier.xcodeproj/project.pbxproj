@@ -41,6 +41,7 @@
 		DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */; };
 		DC74849F2A23DAAF00C0C2F3 /* SettingsVoiceOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC74849E2A23DAAF00C0C2F3 /* SettingsVoiceOptionView.swift */; };
 		DC7484A12A23DADA00C0C2F3 /* VoiceSelectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7484A02A23DADA00C0C2F3 /* VoiceSelectionItem.swift */; };
+		DC7484A42A2481F000C0C2F3 /* ListPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7484A32A2481F000C0C2F3 /* ListPickerView.swift */; };
 		DCA1DCA4290DC9EF002A1AB1 /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */; };
 		DCA1DCA6290DCA85002A1AB1 /* MessageListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */; };
 		DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCE02F0290F009300867F82 /* MenuBarListView.swift */; };
@@ -92,6 +93,7 @@
 		DC6ABF0D28F2AA9A008E7702 /* FlagToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagToggleView.swift; sourceTree = "<group>"; };
 		DC74849E2A23DAAF00C0C2F3 /* SettingsVoiceOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVoiceOptionView.swift; sourceTree = "<group>"; };
 		DC7484A02A23DADA00C0C2F3 /* VoiceSelectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSelectionItem.swift; sourceTree = "<group>"; };
+		DC7484A32A2481F000C0C2F3 /* ListPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPickerView.swift; sourceTree = "<group>"; };
 		DC820D3A290FFF6A00745B6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DCA1DCA3290DC9EF002A1AB1 /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		DCA1DCA5290DCA85002A1AB1 /* MessageListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListItemView.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				DCD4C6282A191E1D004DD736 /* AudioUtils */,
 				DCCE02EF290F007000867F82 /* MenuBar */,
 				DCA1DCA2290DC9DB002A1AB1 /* MessageList */,
+				DC7484A22A2481BE00C0C2F3 /* GeneralUI */,
 				DC55030C28F1D8260024113C /* GIFs */,
 				DC5502F328F1B4590024113C /* Settings */,
 				DC47D8C2288C0FA200A32091 /* RaceControlNotifierApp.swift */,
@@ -208,6 +211,14 @@
 				DC55031228F1D8440024113C /* yellow.gif */,
 			);
 			path = GIFs;
+			sourceTree = "<group>";
+		};
+		DC7484A22A2481BE00C0C2F3 /* GeneralUI */ = {
+			isa = PBXGroup;
+			children = (
+				DC7484A32A2481F000C0C2F3 /* ListPickerView.swift */,
+			);
+			path = GeneralUI;
 			sourceTree = "<group>";
 		};
 		DCA1DCA2290DC9DB002A1AB1 /* MessageList */ = {
@@ -349,6 +360,7 @@
 				DC6ABF0E28F2AA9A008E7702 /* FlagToggleView.swift in Sources */,
 				DC5502F728F1C5520024113C /* RaceControlMessageCategory.swift in Sources */,
 				DC74849F2A23DAAF00C0C2F3 /* SettingsVoiceOptionView.swift in Sources */,
+				DC7484A42A2481F000C0C2F3 /* ListPickerView.swift in Sources */,
 				DCCE02F1290F009300867F82 /* MenuBarListView.swift in Sources */,
 				DC55032C28F20C660024113C /* FlagPreviewButtonView.swift in Sources */,
 				DC47D8D2288C0FC700A32091 /* RCMFetcher.swift in Sources */,
