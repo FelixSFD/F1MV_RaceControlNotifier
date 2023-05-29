@@ -21,34 +21,47 @@ import AVFAudio
 typealias ListPickerKeyType = Hashable & Comparable
 typealias ListPickerValueType = Hashable
 
-struct ListPickerView<TKey: ListPickerKeyType, ID: Hashable, TValue: ListPickerValueType, RowContent: View, HeaderContent: View>: View {
-    @Environment(\.dismiss) var dismiss
-    
+struct ListPickerView<TKey: ListPickerKeyType, ID: Hashable, TValue: ListPickerValueType, LabelContent: View, RowContent: View, HeaderContent: View>: View {
     @State var data: [TKey: [TValue]]
     @Binding var selection: TValue
     
     let id: KeyPath<TValue, ID>
     
-    //let label: (Binding<TValue?>) -> LabelContent
+    let label: (Binding<TValue>) -> LabelContent
     let row: (TValue, Bool) -> RowContent
     let header: (TKey) -> HeaderContent
     
     
-    var body: some View {
+    var navWrapper: some View {
+        NavigationLink {
+            self.listView
+        } label: {
+            HStack {
+                label($selection)
+            }
+        }
+    }
+    
+    
+    var listView: some View {
         List {
-            ForEach(data.sorted(by: { $0.key < $1.key }), id: \.key) { section, items in
+            ForEach(data.sorted(by: { $0.key > $1.key }), id: \.key) { section, items in
                 Section(header: header(section)) {
                     ForEach(items, id: \.self) { item in
                         row(item, item == selection)
                             .onTapGesture {
                                 selection = item
-                                self.dismiss()
                             }
                     }
                 }
                 
             }
         }
+    }
+    
+    
+    var body: some View {
+        self.navWrapper
     }
 }
 
@@ -59,7 +72,15 @@ struct ListPickerView_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        ListPickerView(data: data, selection: $selected, id: \.self) { rowItem, selected in
+        ListPickerView(data: data, selection: $selected, id: \.self) {
+            selection in
+            HStack {
+                Text("Voice")
+                Spacer()
+                Text(selection.wrappedValue ?? "default")
+                    .foregroundColor(.secondary)
+            }
+        } row: { rowItem, selected in
             Text(rowItem ?? "default")
         } header: { headerKey in
             HStack {

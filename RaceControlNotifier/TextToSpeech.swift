@@ -26,7 +26,13 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
 //    private let voice = AVSpeechSynthesisVoice(identifier: "com.apple.voice.premium.en-GB.Serena")
 //    #endif
     
-    private var voice: AVSpeechSynthesisVoice? = nil
+    var voice: AVSpeechSynthesisVoice? = nil {
+        didSet {
+            if !currentlySpeaking.isEmpty || synthesizer.isSpeaking {
+                synthesizer.stopSpeaking(at: .word)
+            }
+        }
+    }
     
     
     private let synthesizer = AVSpeechSynthesizer()
@@ -81,6 +87,13 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     init(voiceId: String) {
         super.init()
         setup(voiceId: voiceId)
+    }
+    
+    
+    func stopEverything() {
+        currentlySpeaking.forEach { _, utterance in
+            synthesizer.stopSpeaking(at: .word)
+        }
     }
     
     
