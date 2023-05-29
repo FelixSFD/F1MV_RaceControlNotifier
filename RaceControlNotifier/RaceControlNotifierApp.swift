@@ -64,6 +64,7 @@ struct RaceControlNotifierApp: App {
                     }
                 
                 SettingsNavView()
+                    .environmentObject(RaceControlNotifierApp.tts)
                     .tabItem {
                         Image(systemName: "gear")
                         Text("Settings")

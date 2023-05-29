@@ -20,13 +20,15 @@ import AVFAudio
 
 
 struct SettingsNavView: View {
+    @EnvironmentObject private var tts: TextToSpeech
+    
     @AppStorage(Constants.Settings.Keys.apiUrl) private var apiUrl: String = UserDefaults.standard.apiUrl
     @AppStorage(Constants.Settings.Keys.voiceId) private var voiceId: String = UserDefaults.standard.voiceId
     
     private let availableVoices: [AVSpeechSynthesisVoiceQuality: [VoiceSelectionItem]] = SettingsNavView.getVoiceEntries()
     @State private var selectedVoice: VoiceSelectionItem = VoiceSelectionItem(voiceObject: AVSpeechSynthesisVoice())
     
-    private let demoTts = TextToSpeech(voiceId: UserDefaults.standard.voiceId)
+    //private let demoTts = TextToSpeech(voiceId: UserDefaults.standard.voiceId)
     @State private var firstVoiceLoad = false;
     
     
@@ -63,8 +65,8 @@ struct SettingsNavView: View {
                         SettingsVoiceOptionView(voice: voice, selected: selected)
                             .onChange(of: selected) { newValue in
                                 if newValue {
-                                    demoTts.voice = voice.voiceObject
-                                    demoTts.say("This is an important message from the FIA: CAR 44 (HAM) is complaining about the car again")
+                                    tts.voice = voice.voiceObject
+                                    tts.say("This is an important message from the FIA: CAR 44 (HAM) is complaining about the car again")
                                 }
                             }
                     } header: { quality in
@@ -73,7 +75,7 @@ struct SettingsNavView: View {
                     .navigationTitle("Select voice")
 
                     Button {
-                        TextToSpeech(voiceId: self.voiceId).say("This is an important message from the FIA: CAR 44 (HAM) is complaining about the car again")
+                        tts.say("This is an important message from the FIA: CAR 44 (HAM) is complaining about the car again")
                     } label: {
                         Text("Test voice")
                     }
