@@ -62,3 +62,23 @@ extension AVSpeechSynthesisVoiceGender: CustomStringConvertible {
         }
     }
 }
+
+
+
+extension AVSpeechSynthesisVoiceQuality: CustomStringConvertible, Identifiable {
+    public var description: String {
+        switch self {
+        case .enhanced:
+            return "enhanced"
+        case .premium:
+            return "premium"
+        default:
+            return "default"
+        }
+    }
+    
+    
+    public var id: String {
+        return self.description
+    }
+}

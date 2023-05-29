@@ -22,24 +22,23 @@ typealias ListPickerValueType = Hashable
 
 struct ListPickerView<TKey: ListPickerKeyType, ID: Hashable, TValue: ListPickerValueType, RowContent: View, HeaderContent: View>: View {
     @State var data: [TKey: [TValue]]
-    @State var selection: TValue?
+    @Binding var selection: TValue?
     
     let id: KeyPath<Data.Element, ID>
     
+    //let label: (Binding<TValue?>) -> LabelContent
     let row: (TValue, Bool) -> RowContent
     let header: (TKey) -> HeaderContent
     
     var body: some View {
         List {
             ForEach(data.sorted(by: { $0.key < $1.key }), id: \.key) { section, items in
-                Section {
+                Section(header: header(section)) {
                     ForEach(items, id: \.self) { item in
-                       row(item, item == selection)
+                        row(item, item == selection)
                     }
-                } header: {
-                    header(section)
                 }
-
+                
             }
         }
     }
@@ -48,10 +47,11 @@ struct ListPickerView<TKey: ListPickerKeyType, ID: Hashable, TValue: ListPickerV
 
 struct ListPickerView_Previews: PreviewProvider {
     @State static var data = ["section1": ["value1", "value2"], "section2": ["value3", "value4"]]
+    @State static var selected: String?
     
     
     static var previews: some View {
-        ListPickerView(data: data, id: \.self) { rowItem, selected in
+        ListPickerView(data: data, selection: $selected, id: \.self) { rowItem, selected in
             Text(rowItem)
         } header: { headerKey in
             HStack {

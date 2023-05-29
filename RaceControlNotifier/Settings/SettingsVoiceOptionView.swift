@@ -22,12 +22,22 @@ import AVFAudio
 /// Represents a voice that can be selected
 struct SettingsVoiceOptionView: View {
     let voice: VoiceSelectionItem
+    var selected: Bool
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(voice.name)
-            Text("\(voice.gender.description) - \(voice.language) - \(voice.quality.rawValue)")
-                .font(.caption2)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(voice.name)
+                Text("\(voice.gender.description) - \(voice.language) - \(voice.quality.rawValue)")
+                    .font(.caption2)
+            }
+            
+            Spacer()
+            
+            if selected {
+                Image(systemName: "checkmark")
+                    .foregroundColor(.accentColor)
+            }
         }
     }
 }
@@ -36,6 +46,6 @@ struct SettingsVoiceOptionView_Previews: PreviewProvider {
     static let v = AVSpeechSynthesisVoice()
     
     static var previews: some View {
-        SettingsVoiceOptionView(voice: VoiceSelectionItem(id: "de.felixsfd.test.voice", name: "FelixSFD (premium)", quality: .premium, language: "de_BY", gender: AVSpeechSynthesisVoiceGender.male, voiceObject: v))
+        SettingsVoiceOptionView(voice: VoiceSelectionItem(id: "de.felixsfd.test.voice", name: "FelixSFD (premium)", quality: .premium, language: "de_BY", gender: AVSpeechSynthesisVoiceGender.male, voiceObject: v), selected: true)
     }
 }

@@ -23,17 +23,18 @@ struct SettingsNavView: View {
     @AppStorage(Constants.Settings.Keys.apiUrl) private var apiUrl: String = UserDefaults.standard.apiUrl
     @AppStorage(Constants.Settings.Keys.voiceId) private var voiceId: String = UserDefaults.standard.voiceId
     
-    private let availableVoices: [VoiceSelectionItem] = SettingsNavView.getVoiceEntries()
+    private let availableVoices: [AVSpeechSynthesisVoiceQuality: [VoiceSelectionItem]] = SettingsNavView.getVoiceEntries()
     @State private var selectedVoice: VoiceSelectionItem = VoiceSelectionItem(voiceObject: AVSpeechSynthesisVoice())
     
     
-    private static func getVoiceEntries() -> [VoiceSelectionItem] {
+    private static func getVoiceEntries() -> [AVSpeechSynthesisVoiceQuality: [VoiceSelectionItem]] {
         return AVSpeechSynthesisVoice.speechVoices()
             .filter({ $0.language.starts(with: "en-") })
             .map { voiceObj in
                 return VoiceSelectionItem(voiceObject: voiceObj)
             }
             .sorted(by: { $0.name < $1.name })
+            .dictionary(keyPath: \.quality)
     }
     
     
@@ -48,23 +49,29 @@ struct SettingsNavView: View {
                 }
                 
                 Section {
-                    Picker("Voice", selection: $selectedVoice) {
-                        ForEach(availableVoices) { voice in
-                            SettingsVoiceOptionView(voice: voice)
-                                .tag(voice)
+                    NavigationLink {
+                        List {
+                            ForEach(availableVoices.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \.key) { section, items in
+                                Section(header: Text(section.description)) {
+                                    ForEach(items, id: \.self) { item in
+                                        SettingsVoiceOptionView(voice: item, selected: item == selectedVoice)
+                                    }
+                                }
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Text("Voice")
+                            Spacer()
+                            Text(selectedVoice.name)
                         }
                     }
-                    #if os(iOS)
-                    .pickerStyle(.navigationLink)
-                    #endif
-                    
+
                     Button {
                         TextToSpeech(voiceId: self.voiceId).say("This is an important message from the FIA: CAR 44 (HAM) is complaining about the car again")
                     } label: {
                         Text("Test voice")
                     }
-
-
                 } header: {
                     Text("Voice")
                 }
@@ -80,10 +87,11 @@ struct SettingsNavView: View {
                 self.voiceId = newValue.id
             }
             .onAppear {
-                guard let setVoice = availableVoices.first(where: { $0.id == self.voiceId }) else {
+                let flatVoices = availableVoices.values.flatMap({$0})
+                guard let setVoice = flatVoices.first(where: { $0.id == self.voiceId }) else {
                     print("NO VOICE FOUND")
                     if !availableVoices.isEmpty {
-                        selectedVoice = availableVoices.first!
+                        selectedVoice = flatVoices.first!
                     }
                     return
                 }
