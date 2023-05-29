@@ -16,11 +16,12 @@
 // along with this program.  If not, see https://www.gnu.org/licenses/.
 
 import SwiftUI
+import AVFAudio
 
 @main
 struct RaceControlNotifierApp: App {    
     /// Object that handles the speech
-    private static let tts = TextToSpeech()
+    private static let tts = TextToSpeech(voiceId: UserDefaults.standard.voiceId)
     
     
     @State var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: tts)
@@ -33,7 +34,7 @@ struct RaceControlNotifierApp: App {
     
     
     var body: some Scene {
-        let settingsWindow = SettingsView()
+        let settingsWindow = SettingsNavView()
         let messagesListView = MessageListView(rcmNotifier: notifier, tts: RaceControlNotifierApp.tts)
         
         #if os(macOS)
@@ -44,7 +45,9 @@ struct RaceControlNotifierApp: App {
         
         WindowGroup("Settings", id: "settings.window") {
             settingsWindow
+                .listStyle(.sidebar)
                 .environmentObject(sca)
+                .environmentObject(RaceControlNotifierApp.tts)
         }
         
         MenuBarExtra(
@@ -64,12 +67,20 @@ struct RaceControlNotifierApp: App {
                     }
                 
                 SettingsNavView()
+                    .environmentObject(RaceControlNotifierApp.tts)
                     .tabItem {
                         Image(systemName: "gear")
                         Text("Settings")
                     }
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .onAppear {
+                do {
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                } catch {
+                    print("Could not activate audio")
+                }
+            }
         }
         
         #endif

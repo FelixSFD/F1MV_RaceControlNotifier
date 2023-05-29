@@ -43,9 +43,15 @@ struct Constants {
             
             /// Key for the ID of the selected audio device
             static let selectedOutputDevice = "AUDIO_OUTPUT_DEVICE_ID"
+            
+            /// Key for the ID of the selected voice
+            static let voiceId = "VOICE_ID"
         }
         
         /// Default value for the settings key apiUrl
         static let defaultApiUrl = "http://localhost:10101/api"
+        
+        /// Default voice to be used in TTS
+        static let defaultVoiceId = "com.apple.voice.premium.en-GB.Serena"
     }
 }

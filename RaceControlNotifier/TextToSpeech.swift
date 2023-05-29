@@ -20,11 +20,19 @@ import Speech
 
 
 class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
-    #if os(macOS)
-    private let voice = AVSpeechSynthesisVoice(identifier: "com.apple.voice.premium.en-GB.Malcolm")
-    #else
-    private let voice = AVSpeechSynthesisVoice(identifier: "com.apple.voice.premium.en-GB.Serena")
-    #endif
+//    #if os(macOS)
+//    private let voice = AVSpeechSynthesisVoice(identifier: "com.apple.voice.premium.en-GB.Malcolm")
+//    #else
+//    private let voice = AVSpeechSynthesisVoice(identifier: "com.apple.voice.premium.en-GB.Serena")
+//    #endif
+    
+    var voice: AVSpeechSynthesisVoice? = nil {
+        didSet {
+            if !currentlySpeaking.isEmpty || synthesizer.isSpeaking {
+                stopEverything(at: .word)
+            }
+        }
+    }
     
     
     private let synthesizer = AVSpeechSynthesizer()
@@ -72,6 +80,24 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     
     override init() {
         super.init()
+        setup(voiceId: Constants.Settings.defaultVoiceId)
+    }
+    
+    
+    init(voiceId: String) {
+        super.init()
+        setup(voiceId: voiceId)
+    }
+    
+    
+    func stopEverything(at boundary: AVSpeechBoundary = .word) {
+        synthesizer.stopSpeaking(at: boundary)
+        currentlySpeaking.removeAll()
+    }
+    
+    
+    private func setup(voiceId: String) {
+        self.voice = AVSpeechSynthesisVoice(identifier: voiceId)
         synthesizer.delegate = self
     }
     
