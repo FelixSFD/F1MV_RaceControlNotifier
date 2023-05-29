@@ -18,7 +18,7 @@
 import SwiftUI
 
 struct MessageListView: View {
-    @ObservedObject
+    @EnvironmentObject
     var rcmNotifier: RCMNotifier
     
     @State
@@ -107,6 +107,7 @@ struct MessageListView_Previews: PreviewProvider {
     private static var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: TextToSpeech())
     
     static var previews: some View {
-        MessageListView(rcmNotifier: notifier)
+        MessageListView()
+            .environmentObject(notifier)
     }
 }

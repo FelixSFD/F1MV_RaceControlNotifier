@@ -18,15 +18,12 @@
 import SwiftUI
 
 struct MessageListNavView: View {
-    @ObservedObject
+    @EnvironmentObject
     var rcmNotifier: RCMNotifier
-    
-    @ObservedObject
-    var tts: TextToSpeech
     
     var body: some View {
         NavigationView {
-            MessageListView(rcmNotifier: rcmNotifier)
+            MessageListView()
                 .listStyle(.plain)
         }
         .navigationTitle(Text("Messages"))
@@ -39,6 +36,7 @@ struct MessageListNavView_Previews: PreviewProvider {
     private static var notifier = RCMNotifier(fetcher: RCMFetcher(), textToSpeech: TextToSpeech())
     
     static var previews: some View {
-        MessageListView(rcmNotifier: notifier)
+        MessageListView()
+            .environmentObject(notifier)
     }
 }
