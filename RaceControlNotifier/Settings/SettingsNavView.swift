@@ -35,7 +35,6 @@ struct SettingsNavView: View {
     private let availableVoices: [AVSpeechSynthesisVoiceQuality: [VoiceSelectionItem]] = SettingsNavView.getVoiceEntries()
     @State private var selectedVoice: VoiceSelectionItem = VoiceSelectionItem(voiceObject: AVSpeechSynthesisVoice())
     
-    //private let demoTts = TextToSpeech(voiceId: UserDefaults.standard.voiceId)
     @State private var firstVoiceLoad = false;
     
     @State private var navSelection: NavSelection = .messages
@@ -54,7 +53,14 @@ struct SettingsNavView: View {
     }
     
     private var voiceHelpView: some View {
-        Text("You can download new voices in Settings -> Accessibility -> Spoken Content.\nIt is recommended to use voices that are marked as \"premium\" or at least \"enhanced\".\n\nIt is not possible to select non-English voices for this application, because all messages are in English.")
+        VStack {
+            Text("You can download new voices in Settings -> Accessibility -> Spoken Content.\nIt is recommended to use voices that are marked as \"premium\" or at least \"enhanced\".")
+            Spacer()
+            Text("It is not possible to select non-English voices for this application, because all messages are in English.")
+            Spacer()
+            Spacer()
+            Text("The default values for speed and pitch should good for most voices. But some voices might need some tweaks.")
+        }
     }
     
     var body: some View {
