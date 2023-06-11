@@ -130,7 +130,6 @@ struct SettingsNavView: View {
                     } label: {
                         Text("Reset to default")
                     }
-                    .buttonStyle(.bordered)
                     .tint(.red)
                 } header: {
                     Text("Voice")
