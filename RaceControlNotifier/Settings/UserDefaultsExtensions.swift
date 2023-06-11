@@ -84,4 +84,16 @@ extension UserDefaults {
     @objc dynamic var voiceId: String {
         return string(forKey: Constants.Settings.Keys.voiceId) ?? Constants.Settings.defaultVoiceId
     }
+    
+    
+    /// Speed of the selected voice
+    @objc dynamic var voiceSpeed: Double {
+        return value(forKey: Constants.Settings.Keys.voiceSpeed) != nil ? double(forKey: Constants.Settings.Keys.voiceSpeed) : Constants.Settings.defaultVoiceSpeed
+    }
+    
+    
+    /// Pitch of the selected voice
+    @objc dynamic var voicePitch: Double {
+        return value(forKey: Constants.Settings.Keys.voicePitch) != nil ? double(forKey: Constants.Settings.Keys.voicePitch) : Constants.Settings.defaultVoicePitch
+    }
 }

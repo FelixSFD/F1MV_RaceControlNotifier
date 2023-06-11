@@ -46,6 +46,12 @@ struct Constants {
             
             /// Key for the ID of the selected voice
             static let voiceId = "VOICE_ID"
+            
+            /// Speed in which text should be read
+            static let voiceSpeed = "VOICE_SPEED"
+            
+            /// Pitch multiplier for the voice
+            static let voicePitch = "VOICE_PITCH"
         }
         
         /// Default value for the settings key apiUrl
@@ -53,5 +59,11 @@ struct Constants {
         
         /// Default voice to be used in TTS
         static let defaultVoiceId = "com.apple.voice.premium.en-GB.Serena"
+        
+        /// Default speed
+        static let defaultVoiceSpeed: Double = 0.52
+        
+        /// Default Pitch
+        static let defaultVoicePitch: Double = 0.9
     }
 }

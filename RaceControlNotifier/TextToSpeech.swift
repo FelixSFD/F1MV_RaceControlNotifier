@@ -17,6 +17,7 @@
 
 import Foundation
 import Speech
+import SwiftUI
 
 
 class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
@@ -25,6 +26,9 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
 //    #else
 //    private let voice = AVSpeechSynthesisVoice(identifier: "com.apple.voice.premium.en-GB.Serena")
 //    #endif
+    
+    @AppStorage(Constants.Settings.Keys.voiceSpeed) private var voiceSpeed: Double = UserDefaults.standard.voiceSpeed
+    @AppStorage(Constants.Settings.Keys.voicePitch) private var voicePitch: Double = UserDefaults.standard.voicePitch
     
     var voice: AVSpeechSynthesisVoice? = nil {
         didSet {
@@ -171,8 +175,8 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
         let utterance = AVSpeechUtterance(string: fixedText)
         
         // Configure the utterance.
-        utterance.rate = 0.52
-        utterance.pitchMultiplier = 0.9
+        utterance.rate = Float(voiceSpeed)
+        utterance.pitchMultiplier = Float(voicePitch)
         //utterance.postUtteranceDelay = 0.2
         //utterance.volume = 0.8
 

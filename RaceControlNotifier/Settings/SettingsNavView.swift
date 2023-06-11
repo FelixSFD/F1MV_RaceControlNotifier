@@ -29,11 +29,12 @@ struct SettingsNavView: View {
     
     @AppStorage(Constants.Settings.Keys.apiUrl) private var apiUrl: String = UserDefaults.standard.apiUrl
     @AppStorage(Constants.Settings.Keys.voiceId) private var voiceId: String = UserDefaults.standard.voiceId
+    @AppStorage(Constants.Settings.Keys.voiceSpeed) private var voiceSpeed: Double = UserDefaults.standard.voiceSpeed
+    @AppStorage(Constants.Settings.Keys.voicePitch) private var voicePitch: Double = UserDefaults.standard.voicePitch
     
     private let availableVoices: [AVSpeechSynthesisVoiceQuality: [VoiceSelectionItem]] = SettingsNavView.getVoiceEntries()
     @State private var selectedVoice: VoiceSelectionItem = VoiceSelectionItem(voiceObject: AVSpeechSynthesisVoice())
     
-    //private let demoTts = TextToSpeech(voiceId: UserDefaults.standard.voiceId)
     @State private var firstVoiceLoad = false;
     
     @State private var navSelection: NavSelection = .messages
@@ -52,7 +53,14 @@ struct SettingsNavView: View {
     }
     
     private var voiceHelpView: some View {
-        Text("You can download new voices in Settings -> Accessibility -> Spoken Content.\nIt is recommended to use voices that are marked as \"premium\" or at least \"enhanced\".\n\nIt is not possible to select non-English voices for this application, because all messages are in English.")
+        VStack {
+            Text("You can download new voices in Settings -> Accessibility -> Spoken Content.\nIt is recommended to use voices that are marked as \"premium\" or at least \"enhanced\".")
+            Spacer()
+            Text("It is not possible to select non-English voices for this application, because all messages are in English.")
+            Spacer()
+            Spacer()
+            Text("The default values for speed and pitch should good for most voices. But some voices might need some tweaks.")
+        }
     }
     
     var body: some View {
@@ -95,12 +103,40 @@ struct SettingsNavView: View {
                         Text("\(quality.description) quality")
                     }
                     .navigationTitle("Select voice")
+                    
+                    Slider(value: $voiceSpeed, in: 0.1...1) {
+                        Text("Speed")
+                    } minimumValueLabel: {
+                        Image(systemName: "tortoise.fill")
+                            .padding(.trailing)
+                    } maximumValueLabel: {
+                        Image(systemName: "hare.fill")
+                            .padding(.leading)
+                    }
+                    
+                    Slider(value: $voicePitch, in: 0.1...1) {
+                        Text("Pitch")
+                    } minimumValueLabel: {
+                        Image(systemName: "dial.low.fill")
+                            .padding(.trailing)
+                    } maximumValueLabel: {
+                        Image(systemName: "dial.high.fill")
+                            .padding(.leading)
+                    }
 
                     Button {
                         tts.say("This is an important message from the FIA: CAR 44 (HAM) is complaining about the car again")
                     } label: {
                         Text("Test voice")
                     }
+                    
+                    Button(role: .destructive) {
+                        self.voiceSpeed = Constants.Settings.defaultVoiceSpeed
+                        self.voicePitch = Constants.Settings.defaultVoicePitch
+                    } label: {
+                        Text("Reset to default")
+                    }
+                    .tint(.red)
                 } header: {
                     Text("Voice")
                 } footer: {
