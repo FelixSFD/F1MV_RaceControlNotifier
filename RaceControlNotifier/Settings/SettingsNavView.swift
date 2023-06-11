@@ -29,6 +29,8 @@ struct SettingsNavView: View {
     
     @AppStorage(Constants.Settings.Keys.apiUrl) private var apiUrl: String = UserDefaults.standard.apiUrl
     @AppStorage(Constants.Settings.Keys.voiceId) private var voiceId: String = UserDefaults.standard.voiceId
+    @AppStorage(Constants.Settings.Keys.voiceSpeed) private var voiceSpeed: Double = UserDefaults.standard.voiceSpeed
+    @AppStorage(Constants.Settings.Keys.voicePitch) private var voicePitch: Double = UserDefaults.standard.voicePitch
     
     private let availableVoices: [AVSpeechSynthesisVoiceQuality: [VoiceSelectionItem]] = SettingsNavView.getVoiceEntries()
     @State private var selectedVoice: VoiceSelectionItem = VoiceSelectionItem(voiceObject: AVSpeechSynthesisVoice())
@@ -95,12 +97,41 @@ struct SettingsNavView: View {
                         Text("\(quality.description) quality")
                     }
                     .navigationTitle("Select voice")
+                    
+                    Slider(value: $voiceSpeed, in: 0.1...1) {
+                        Text("Speed")
+                    } minimumValueLabel: {
+                        Image(systemName: "tortoise.fill")
+                            .padding(.trailing)
+                    } maximumValueLabel: {
+                        Image(systemName: "hare.fill")
+                            .padding(.leading)
+                    }
+                    
+                    Slider(value: $voicePitch, in: 0.1...1) {
+                        Text("Pitch")
+                    } minimumValueLabel: {
+                        Image(systemName: "dial.low.fill")
+                            .padding(.trailing)
+                    } maximumValueLabel: {
+                        Image(systemName: "dial.high.fill")
+                            .padding(.leading)
+                    }
 
                     Button {
                         tts.say("This is an important message from the FIA: CAR 44 (HAM) is complaining about the car again")
                     } label: {
                         Text("Test voice")
                     }
+                    
+                    Button(role: .destructive) {
+                        self.voiceSpeed = Constants.Settings.defaultVoiceSpeed
+                        self.voicePitch = Constants.Settings.defaultVoicePitch
+                    } label: {
+                        Text("Reset to default")
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(.red)
                 } header: {
                     Text("Voice")
                 } footer: {
