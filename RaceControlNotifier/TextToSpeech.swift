@@ -63,6 +63,7 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
         "HAM": "Hamilton",
         "HUL": "Huelkenberg",
         "LAT": "Latifi",
+        "LAW": "Lawson",
         "LEC": "Leclerc",
         "MAG": "Magnussen",
         "NOR": "Norris",
@@ -127,10 +128,7 @@ class TextToSpeech : NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     
     private func fixFiaAbbrv(_ input: String) -> String {
         let pattern = #"\bFIA\b"#
-        let regex = try! NSRegularExpression(pattern: pattern, options: .anchorsMatchLines)
-        let stringRange = NSRange(location: 0, length: input.utf8.count)
-        let substitutionString = #"F. I. A."#
-        let result = regex.stringByReplacingMatches(in: input, range: stringRange, withTemplate: substitutionString)
+        let result = input.replacingOccurrences(of: pattern, with: "F.I.A.", options: .regularExpression)
         return result
     }
     
